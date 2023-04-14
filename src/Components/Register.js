@@ -11,14 +11,14 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState("");
+  // const [user, setUser] = useState("");
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
 
 
   async function onsubmit(){
-  const response = await axios.post(
+  const response  = await axios.post(
     "https://dev.go.locate.sa/api/admin/api/v1/test/register",
     {
       name,
