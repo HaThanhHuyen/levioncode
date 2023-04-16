@@ -6,7 +6,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useRef } from "react";
 
-
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,43 +15,27 @@ function Register() {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-
-  async function onsubmit(){
-  const response  = await axios.post(
-    "https://dev.go.locate.sa/api/admin/api/v1/test/register",
-    {
-      name,
-      email,
-      password,
+  async function onsubmit() {
+    try {
+      await axios.post(
+        "https://dev.go.locate.sa/api/admin/api/v1/test/register",
+        {
+          fullname: name,
+          email: email,
+          password: password,
+        }
+      ).then(res => {
+        if(res.status === 200) {
+          console.log("Đăng ký thành công");
+        }
+      })
     }
-  );
-
-  try {
-    const response = await axios.patch(
-      `https://dev.go.locate.sa/api/admin/api/v1/test/users/${response.data.user}/active`,
-      {},
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.NjQzNjIyMmQ1NzgwMTEzOWNmYzUyNzMx.FHuabwi3sRHJqU0pBYTZlaZX2nOMgAv88tzNfOPgHpM",
-        },
-      }
-    );
-    console.log(response);
-  } catch (error) {
-    console.log(error);
+    catch(err) {
+      console.log(err.response.data.errors[0].msg)
+    }
   }
-}
-
-
 
   // eslint-disable-next-line no-redeclare
-  function onsubmit(){
-    // console.log("email", email)
-    // console.log("name", name)
-    // console.log("password", password)
-  }
-
 
   return (
     <>
@@ -70,13 +53,13 @@ function Register() {
             <label htmlFor="name">Full name</label>
             <br />
             <input
-            type="text"
-            placeholder="Your Name"
-            ref={nameRef}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+              type="text"
+              placeholder="Your Name"
+              ref={nameRef}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
             <br />
           </div>
           <div>
@@ -86,7 +69,7 @@ function Register() {
               type="email"
               placeholder="Your Email"
               ref={emailRef}
-              value={email} 
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -100,7 +83,7 @@ function Register() {
               placeholder="Your Password"
               ref={passwordRef}
               value={password}
-              onChange={(e) => setPassword(e.target.value) }
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
             <br />
@@ -108,7 +91,9 @@ function Register() {
           <input className="checkbox" type="checkbox" />I accept Terms of
           Service and Privacy Policy.
           <div>
-            <button className="submit" onClick={onsubmit}>Create Account</button>
+            <button className="submit" onClick={onsubmit}>
+              Create Account
+            </button>
           </div>
           <div className="forgot_psw">
             <p>Forgot Password</p>

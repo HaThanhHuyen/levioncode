@@ -2,7 +2,26 @@ import logo1 from "../image/logo 1.png";
 import background from "../image/OBJECTS.png";
 import "../Components/sign_in.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
 function Login() {
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const onSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://dev.go.locate.sa/api/admin/api/v1/test/login", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      });
+  };
   return (
     <>
       <div id="wrapper">
@@ -23,6 +42,7 @@ function Login() {
               className="input"
               placeholder="Your Email"
               required
+              onChange={(e) => setEmail(e.target.value)}
             />
             <br />
           </div>
@@ -34,11 +54,12 @@ function Login() {
               className="input"
               placeholder="Your Password"
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
             <br />
           </div>
           <div>
-            <button className="submit">Sign in</button>
+            <button className="submit" onClick={onSubmit}>Sign in</button>
           </div>
           <div className="forgot_psw">
             <p>Forgot Password</p>
