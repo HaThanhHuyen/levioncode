@@ -1,0 +1,121 @@
+.background {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  #wrapper {
+    min-height: 100vh;
+    min-width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #login {
+    max-width: 656px;
+    max-height: 564px;
+    background-color: #ffffff;
+    padding: 40px 64px 40px 64px;
+    border-radius: 4px;
+    z-index: 2;
+    font-family: "Google Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    color: #554766;
+  
+  }
+  .logo1 {
+    width: 156px;
+    height: 44px;
+    padding-left: 200px;
+  }
+  h1 {
+    width: 352px;
+    height: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    color: #000;
+  }
+  
+  input {
+    font-family: "Google Sans";
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 10px;
+    width: 528px;
+    height: 48px;
+    border: 1px solid #cac1d8;
+    border-radius: 4px;
+  }
+  
+  input:focus {
+    border: 2px solid #554766;
+    outline: none;
+  }
+  
+  button {
+    font-family: "Google Sans";
+    justify-content: center;
+    align-items: center;
+    width: 528px;
+    height: 56px;
+    background: #9453ff;
+    border-radius: 4px;
+    border: none;
+    margin-top: 20px;
+  }
+  .submit {
+    font-family: "Google Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+  }
+  .forgot_psw span {
+    color: #554766;
+    font-family: "Google Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .forgot_psw {
+    text-align: center;
+    margin-top: 10px;
+  }
+  span {
+    font-family: "Google Sans";
+    color: #9387a8;
+    margin-left: 144px;
+    font-size: 18px;
+  }
+  a {
+    font-family: "Google Sans";
+    color: #554766;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  
+  .layout_background {
+    background-color: #140b25;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    opacity: 0.5;
+  }
+  .checkbox {
+    color: #9387a8;
+    height: 15px;
+    width: 15px;
+  }
+  

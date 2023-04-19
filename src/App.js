@@ -1,7 +1,7 @@
-// import logo from './logo.svg';
-// import './App.css';
-import Login from "../src/Components/sign_in";
-import Register from "../src/Components/Register";
+import logo from './logo.svg';
+import './App.css';
+import Login from "../src/pages/login/Login";
+import Register from "../src/pages/register/Register";
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
