@@ -1,6 +1,6 @@
-import logo1 from "../image/logo 1.png";
-import background from "../image/OBJECTS.png";
-import "../Components/sign_in.css";
+import logo1 from "../../image/logo 1.png";
+import background from "../../image/OBJECTS.png";
+import "../login/Login.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
