@@ -21,17 +21,18 @@ import lines from "../../image/lines.png";
 import shadow2 from "../../image/shadow2.png";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import "./AboutUs.css";
+// import "./AboutUs.css";
+import styles from "./AboutUs.module.css";
 
 export default function AboutUs() {
   return (
-    <div className="aboutUs">
+    <div className={styles.aboutUs}>
       <Header />
-      <div className="part-one">
-      <div className="points">
+      <div className={styles.part_one}>
+      <div className={styles.points}>
           <img src={points} alt="aboutUs-images"></img>
         </div>
-        <div className="part-one-details">
+        <div className={styles.part_one_details}>
           <h1>Who are we?</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Netus risus
@@ -40,24 +41,24 @@ export default function AboutUs() {
             elementum enim faucibus morbi enim fusce:
           </p>
         </div>
-        <div className="part-one-images">
+        <div className={styles.part_one_images}>
           <img src={aboutUs1} alt="aboutUs-images"></img>
         </div>
       </div>
-      <div className="part-two">
-        <div className="shadow">
+      <div className={styles.part_two}>
+        <div className={styles.shadow}>
           <img src={shadow} alt="aboutUs-images"></img>
         </div>
-        <div className="line">
+        <div className={styles.line}>
           <img src={line} alt="aboutUs-images"></img>
         </div>
-        <div className="triangle">
+        <div className={styles.triangle}>
           <img src={triangle} alt="aboutUs-images"></img>
         </div>
-        <div className="halfCircle">
+        <div className={styles.halfCircle}>
           <img src={halfCircle} alt="aboutUs-images"></img>
         </div>
-        <div className="part-two-left">
+        <div className={styles.part_two_left}>
           <h2>The Levion story</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst
@@ -67,28 +68,28 @@ export default function AboutUs() {
             sagittis viverra tortor eu tempus. Nibh urna ullamcorper venenatis.
           </p>
         </div>
-        <div className="part-two-right">
+        <div className={styles.part_two_right}>
           <img src={shelf} alt="aboutUs-images"></img>
-          <div className="play">
+          <div className={styles.play}>
             <img src={play} alt="aboutUs-images"></img>
           </div>
         </div>
       </div>
-      <div className="part-three">
-        <div className="part-three-left">
+      <div className={styles.part_three}>
+        <div className={styles.part_three_left}>
           <img src={people} alt="aboutUs-images"></img>
-          <div className="point2">
+          <div className={styles.point2}>
             <img src={points} alt="aboutUs-images"></img>
           </div>
         </div>
-        <div className="shadow2">
+        <div className={styles.shadow2}>
           <img src={shadow2} alt="aboutUs-images"></img>
         </div>
-        <div className="lines">
+        <div className={styles.lines}>
           <img src={lines} alt="aboutUs-images"></img>
         </div>
-        <div className="part-three-right">
-          <div className="part-three-right-details">
+        <div className={styles.part_three_right}>
+          <div className={styles.part_three_right_details}>
             <img src={eyes} alt="aboutUs-images"></img>
             <h2>Our Vision</h2>
             <p>
@@ -100,9 +101,9 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      <div className="part-four">
-        <div className="part-four-left">
-          <div className="part-four-left-detail">
+      <div className={styles.part_four}>
+        <div className={styles.part_four_left}>
+          <div className={styles.part_four_left_detail}>
             <img src={mission} alt="aboutUs-images"></img>
             <h2>Our Mission</h2>
             <p>
@@ -113,19 +114,19 @@ export default function AboutUs() {
             </p>
           </div>
         </div>
-        <div className="lines2">
+        <div className={styles.lines2}>
           <img src={lines} alt="aboutUs-images"></img>
         </div>
-        <div className="triangle2">
+        <div className={styles.triangle2}>
           <img src={triangle} alt="aboutUs-images"></img>
         </div>
-        <div className="part-four-right">
+        <div className={styles.part_four_right}>
           <img src={work} alt="aboutUs-images"></img>
         </div>
       </div>
-      <div className="part-five">
-        <div className="part-five-left">
-          <div className="part-five-details">
+      <div className={styles.part_five}>
+        <div className={styles.part_five_left}>
+          <div className={styles.part_five_details}>
             <h2>Our “Vi” Mascot story</h2>
             <p>
               At eu ut vitae platea at in. In porttitor mollis eu et ornare odio
@@ -141,16 +142,13 @@ export default function AboutUs() {
             </p>
           </div>
         </div>
-        {/* <div className="van52">
-          <img src={van2} alt="van2"></img>
-        </div> */}
-        <div className="part-five-right">
+        <div className={styles.part_five_right}>
           <img src={study} alt="aboutUs-images"></img>
         </div>
       </div>
-      <div className="part-six-aboutUs">
-        <div className="part-six-details">
-          <div className="part-six-details-contents">
+      <div className={styles.part_six_aboutUs}>
+        <div className={styles.part_six_details}>
+          <div className={styles.part_six_details_content}>
             <h2>The Levion Team</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst
@@ -162,29 +160,29 @@ export default function AboutUs() {
             </p>
           </div>
         </div>
-        <div className="part-six-images">
-          <div className="part-six-images-first">
-            <div className="girl">
+        <div className={styles.part_six_images}>
+          <div className={styles.part_six_images_first}>
+            <div className={styles.girl}>
               <img src={girl} alt="aboutUs-images"></img>
             </div>
-            <div className="man">
+            <div className={styles.man}>
               <img src={man} alt="aboutUs-images"></img>
             </div>
           </div>
           <div>
 
-            <div className="boy">
+            <div className={styles.boy}>
               <img src={boy} alt="aboutUs-images"></img>
             </div>
-            <div className="dog">
+            <div className={styles.dog}>
               <img src={dog} alt="aboutUs-images"></img>
             </div>
           </div>
           <div>
-          <div className="woman">
+          <div className={styles.woman}>
               <img src={woman} alt="aboutUs-images"></img>
             </div>
-            <div className="animal">
+            <div className={styles.animal}>
               <img src={animal} alt="aboutUs-images"></img>
             </div>
           </div>

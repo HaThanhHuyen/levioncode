@@ -30,7 +30,18 @@
   height: 44px;
   padding-left: 200px;
 }
-
+.heading h1 {
+  width: 352px;
+  height: 40px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  color: #000;
+  margin-left: 18%;
+  text-align: center;
+  color: #000;
+}
 
 input {
   font-family: "Google Sans";
@@ -50,8 +61,8 @@ input:focus {
   border: 2px solid #554766;
   outline: none;
 }
-
-button {
+  
+.btn_wrapper button {
   font-family: "Google Sans";
   justify-content: center;
   align-items: center;
@@ -62,11 +73,11 @@ button {
   border: none;
   margin-top: 20px;
 }
-.btn-wrapper {
+.btn_wrapper {
   display: flex;
   gap: 10px;
 }
-.submit {
+.btn_wrapper button{
   position: relative;
   display: flex;
   align-items: center;
@@ -88,22 +99,38 @@ button {
   position: fixed;
   opacity: 0.5;
 }
-
-.forgot_psw a{
-  display: flex;
-  margin-top: 10px;
-  text-decoration: none;
-  justify-content: center;
+.checkbox {
+  color: #9387a8;
+  height: 15px;
+  width: 15px;
 }
 
-.lds-ring {
+.input_checkbox {
+  display: flex;
+  gap: 10px;
+}
+
+.term_policy span {
+  font-weight: 700;
+}
+
+.term_policy {
+  font-weight: 400;
+}
+
+.disabled_btn {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.lds_ring {
   display: inline-block;
   position: absolute;
   width: 50px;
   height: 50px;
   right: 0%;
 }
-.lds-ring div {
+.lds_ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
@@ -116,16 +143,16 @@ button {
   border-color: #fff transparent transparent transparent;
   top: 10%
 }
-.lds-ring div:nth-child(1) {
+.lds_ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
-.lds-ring div:nth-child(2) {
+.lds_ring div:nth-child(2) {
   animation-delay: -0.3s;
 }
-.lds-ring div:nth-child(3) {
+.lds_ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
-@keyframes lds-ring {
+@keyframes lds_ring {
   0% {
     transform: rotate(0deg);
   }
@@ -133,20 +160,13 @@ button {
     transform: rotate(360deg);
   }
 }
-.change-to-signUp {
+.change_to_signIp {
   padding: 10px 0;
   display: flex;
   justify-content: center;
+  margin-top: 10px;
   color: #9387a8;
 }
-.heading h1{
-  width: 352px;
-  height: 40px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 40px;
-  text-align: center;
-  color: #000;
-  margin-left: 18%;
+.change_to_signIp span{
+  font-weight: 100;
 }

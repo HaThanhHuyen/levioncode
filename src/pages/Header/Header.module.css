@@ -13,32 +13,32 @@
     height: 10%;
     margin: 15px;
 }
-.header-category{
+.header_category{
     width: 40%;
     display: flex;
     align-items: center;
 }
-.header-right img{
+.header_right img{
     width: 30px;
     height: 26px;
 }
-.header-right{
+.header_right{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.header-category a{
+.header_category a{
     color: #9387A8;
     margin: auto;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
 }
-.header-category a:hover{
+.header_category a:hover{
     font-weight: bold;
     color: #362355;
 }
-.header-right button{
+.header_right button{
     background-color: #9453FF;
     border-radius: 4px;
     color: #FFFFFF;
@@ -50,7 +50,7 @@
     cursor: pointer;
     margin: 15px;
 }
-#btn-left{
+#btn_left{
     color: #9453FF;
     background-color: #FFFFFF;
     border: 1px solid #9453FF;

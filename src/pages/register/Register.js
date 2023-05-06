@@ -1,6 +1,6 @@
 import logo1 from "../../image/logo 1.png";
 import background from "../../image/OBJECTS.png";
-import "../register/Register.css";
+import styles from "./Register.module.css";
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -32,16 +32,16 @@ function Register() {
 
   return (
     <>
-      <div id="wrapper">
-        <div className="layout_background"></div>
-        <div className="background">
+      <div id={styles.wrapper}>
+        <div className={styles.layout_background}></div>
+        <div className={styles.background}>
           <img src={background} alt="a" />
         </div>
-        <div id="login">
-          <div className="logo1">
+        <div id={styles.login}>
+          <div className={styles.logo1}>
             <img src={logo1} alt="a" />
           </div>
-          <div className="heading">
+          <div className={styles.heading}>
             <h1>Create an account</h1>
           </div>
           
@@ -81,25 +81,25 @@ function Register() {
             <span>{validMsg.password}</span>
             <br />
           </div>
-          <div className="input-checkbox">
+          <div className={styles.input_checkbox}>
             <input
-              className="checkbox"
+              className={styles.checkbox}
               type="checkbox"
               onChange={(e) => setIsChecked(e.target.checked)}
             />
-            <div className="term_policy">
+            <div className={styles.term_policy}>
               I accept Levion's <span>Terms of Service</span> and <span>Privacy Policy</span>.
             </div>
           </div>
-          <div className="btn-wrapper">
+          <div className={styles.btn_wrapper}>
             <button
               type="button"
               onClick={onsubmit}
-              className={`submit ${!isChecked ? "disabled-btn" : ""}`}
+              className={`submit ${!isChecked ? "disabled_btn" : ""}`}
             >
               Create Account
               {!loading && (
-                <div class="lds-ring">
+                <div class={styles.lds_ring}>
                   <div></div>
                   <div></div>
                   <div></div>
@@ -108,7 +108,7 @@ function Register() {
               )}
             </button>
           </div>
-          <div className="change-to-signIn">
+          <div className={styles.change_to_signIp}>
             <span>Already have an account? </span>
             <Link to="/">Sign In</Link>
           </div>

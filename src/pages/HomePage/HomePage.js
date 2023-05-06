@@ -22,49 +22,50 @@ import fb from "../../image/facebook.png";
 import discord from "../../image/discord.png";
 import quotation from "../../image/Vector 1.png";
 import star from "../../image/star.png";
-import "../HomePage/HomePage.css";
+// import "../HomePage/HomePage.css";
+import styles from "./HomePage.module.css";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 function HomePage() {
   return (
     <>
-      <div className="background"></div>
+      <div className={styles.background}></div>
       <div>
         <Header />
-        <div className="header-home">
+        <div className={styles.header_home}>
           <h1>Vietnamese Journey with LEVION</h1>
           <p>
             We are ready to help you crafting package branding for your products
             according to you target market. We helped more than 1000 product in
             United States
           </p>
-          <div className="images-homepage">
-            <div id="images-homepage-first">
-              <div id="Asset1">
+          <div className={styles.images_homepage}>
+            <div id={styles.images_homepage_first}>
+              <div id={styles.Asset1}>
                 <img src={Asset1} alt="images" />
               </div>
-              <div id="Asset2">
+              <div id={styles.Asset2}>
                 <img src={Asset2} alt="images" />
               </div>
             </div>
-            <div id="images-homepage-two">
+            <div id={styles.images_homepage_two}>
               <button>Test Now</button>
-              <div id="Frame">
+              <div id={styles.Frame}>
                 <img src={Frame} alt="images" />
               </div>
             </div>
-            <div id="images-homepage-three">
-              <div id="Asset3">
+            <div id={styles.images_homepage_three}>
+              <div id={styles.Asset3}>
                 <img src={Asset3} alt="images" />
               </div>
-              <div id="Asset4">
+              <div id={styles.Asset4}>
                 <img src={Asset4} alt="images" />
               </div>
             </div>
           </div>
 
-          <div className="part-two">
-            <div className="part-two-details">
+          <div className={styles.part_two}>
+            <div className={styles.part_two_details}>
               <h1>
                 Learn Vietnamese - one of the world’s most interesting and
                 popular languages
@@ -76,7 +77,7 @@ function HomePage() {
                 Sodales sed cras at aliquam commodo mattis pretium.
               </p>
             </div>
-            <div className="part-two-image">
+            <div className={styles.part_two_image}>
               <div>
                 <img src={Travel} alt="images" />
                 <h4>Travel</h4>
@@ -95,18 +96,18 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="part-three">
+          <div className={styles.part_three}>
             <h1>Why learning Vietnamese with Levion?</h1>
-            <div className="part-three-content">
-              <div className="part-three-image">
+            <div className={styles.part_three_content}>
+              <div className={styles.part_three_image}>
                 <img src={learn} alt="images" />
               </div>
-              <div className="part-three-detail">
+              <div className={styles.part_three_detail}>
                 <div className="rectangle">
                   <img src={rectangle} alt="rectangle"></img>
-                </div>
-                <div className="three">
-                  <div className="three-details">
+                  <div className={styles.box}>
+                    <div className={styles.three}>
+                  <div className={styles.three_details}>
                     <img src={achievement} alt="images" />
                     <h2>Diverse courses of choice</h2>
                     <p>
@@ -115,7 +116,7 @@ function HomePage() {
                       dolor.
                     </p>
                   </div>
-                  <div className="three-details">
+                  <div className={styles.three_details}>
                     <img src={achievement} alt="images" />
                     <h2>Quality lessons with designated journeys</h2>
                     <p>
@@ -125,8 +126,8 @@ function HomePage() {
                     </p>
                   </div>
                 </div>
-                <div className="three">
-                  <div className="three-details">
+                <div className={styles.three}>
+                  <div className={styles.three_details}>
                     <img src={achievement} alt="images" />
                     <h2>Fun and intuitive ways of learning</h2>
                     <p>
@@ -135,7 +136,7 @@ function HomePage() {
                       dolor.
                     </p>
                   </div>
-                  <div className="three-details">
+                  <div className={styles.three_details}>
                     <img src={achievement} alt="images" />
                     <h2>Flexible</h2>
                     <p>
@@ -145,44 +146,49 @@ function HomePage() {
                     </p>
                   </div>
                 </div>
+                  </div>
+                  
+                </div>
+                
+                
               </div>
             </div>
           </div>
-          
-          <div className="images-homepage-2">
-            <div className="images-homepage-title">
+
+          <div className={styles.images_homepage_2}>
+            <div className={styles.images_homepage_title}>
               <h2>What we offer?</h2>
             </div>
-            <div className="images-homepage-details">
-              <div className="contents-details">
+            <div className={styles.images_homepage_details}>
+              <div className={styles.contents_details}>
                 <img src={h11} alt="images" />
                 <h4>Test your level and identify your learning journey.</h4>
               </div>
-              <div className="contents-details">
+              <div className={styles.contents_details}>
                 <img src={h12} alt="images" />
                 <h4>Giant supporting resources</h4>
               </div>
-              <div className="contents-details">
+              <div className={styles.contents_details}>
                 <img src={h13} alt="images" />
                 <h4>Community of Vietnamese-language lovers:</h4>
               </div>
-              <div className="contents-details">
+              <div className={styles.contents_details}>
                 <img src={h14} alt="images" />
                 <h4>Giant supporting resources</h4>
               </div>
             </div>
           </div>
-          <div className="part-four">
+          <div className={styles.part_four}>
             <h1>What our learners say?</h1>
-            <div className="part-four-detail">
-              <div className="part-four-details">
-                <div className="fixed-content">
-                  <div className="vote">
-                    <div className="vote-left">
+            <div className={styles.part_four_detail}>
+              <div className={styles.part_four_details}>
+                <div className={styles.fixed_content}>
+                  <div className={styles.vote}>
+                    <div className={styles.vote_left}>
                       <img src={quotation} alt="quotation"></img>&nbsp;
                       <img src={quotation} alt="quotation"></img>
                     </div>
-                    <div className="vote-right">
+                    <div className={styles.vote_right}>
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
@@ -198,7 +204,7 @@ function HomePage() {
                     Vietnamese pronunciations. Highly recommended!
                   </p>
                 </div>
-                <div className="card-name">
+                <div className={styles.card_name}>
                   <img src={avt3} alt="images" />
                   <div>
                     <h4>Tariq</h4>
@@ -206,14 +212,14 @@ function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="part-four-details">
-                <div className="fixed-content">
-                  <div className="vote">
-                    <div className="vote-left">
+              <div className={styles.part_four_details}>
+                <div className={styles.fixed_content}>
+                  <div className={styles.vote}>
+                    <div className={styles.vote_left}>
                       <img src={quotation} alt="quotation"></img>&nbsp;
                       <img src={quotation} alt="quotation"></img>
                     </div>
-                    <div className="vote-right">
+                    <div className={styles.vote_right}>
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
@@ -228,7 +234,7 @@ function HomePage() {
                     energy, and always having something to ask or say!
                   </p>
                 </div>
-                <div className="card-name">
+                <div className={styles.card_name}>
                   <img src={avt2} alt="images" />
                   <div>
                     <h4>Konrad S.</h4>
@@ -236,14 +242,14 @@ function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="part-four-details">
-                <div className="fixed-content">
-                  <div className="vote">
-                    <div className="vote-left">
+              <div className={styles.part_four_details}>
+                <div className={styles.fixed_content}>
+                  <div className={styles.vote}>
+                    <div className={styles.vote_left}>
                       <img src={quotation} alt="quotation"></img>&nbsp;
                       <img src={quotation} alt="quotation"></img>
                     </div>
-                    <div className="vote-right">
+                    <div className={styles.vote_right}>
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
                       <img src={star} alt="star"></img>&nbsp;&nbsp;
@@ -260,8 +266,8 @@ function HomePage() {
                   </p>
                 </div>
 
-                <div className="card-name">
-                  <div className="card-name-images">
+                <div className={styles.card_name}>
+                  <div className={styles.card_name_images}>
                     <img src={avt1} alt="images" />
                   </div>
 
@@ -273,12 +279,12 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="part-five">
-            <div className="part-five-images">
+          <div className={styles.part_five}>
+            <div className={styles.part_five_images}>
               <img src={cow} alt="images" />
             </div>
 
-            <div className="part-five-detail">
+            <div className={styles.part_five_detail}>
               <h2>
                 Be a part of our
                 <br />
@@ -289,27 +295,31 @@ function HomePage() {
                 become fluent and confident in&nbsp;the community we are
                 building!
               </p>
-              <div className="button-community">
-                <div className="button-redirect">
+              <div className={styles.button_community}>
+                <div className={styles.button_redirect}>
                   <img src={fb} alt="images" />
                   <button>Join us on Facebook</button>
                 </div>
-                <div className="button-redirect">
+                <div className={styles.button_redirect}>
                   <img src={discord} alt="images" />
                   <button>Join us on Discord</button>
                 </div>
               </div>
             </div>
           </div>
-          <div className="part-six">
+          <div className={styles.part_six}>
             <h2>Join our Newsletter</h2>
             <p>
               Get a notification from us on any updates and tips for your
               learning progress.
             </p>
-            <div className="submit">
-            <input name="email" type="email" placeholder="Enter your email" />
-            <button>Subscribe</button>
+            <div className={styles.submit}>
+              <input
+                name={styles.email}
+                type="email"
+                placeholder="Enter your email"
+              />
+              <button>Subscribe</button>
             </div>
           </div>
         </div>

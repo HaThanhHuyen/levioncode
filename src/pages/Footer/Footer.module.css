@@ -1,4 +1,4 @@
-#footer-bg img {
+#footer_bg img {
   position: absolute;
   width: 100%;
   left: 0px;
@@ -33,22 +33,15 @@
   justify-content: center;
 }
 
-.social-media {
+.social_media {
   width: 20%;
   display: flex;
   justify-content: space-between;
   margin: 2% auto;
 }
 
-p {
+.tittle p{
   color: #ffffff;
-}
-
-.title p {
-  color: #ffffff !important;
   display: flex;
   justify-content: center;
 }
-/* .header-home p{
-    color: blueviolet;
-} */

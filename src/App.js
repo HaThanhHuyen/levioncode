@@ -8,6 +8,8 @@ import { Routes, Route } from "react-router-dom";
 // import success from "../src/pages/success";
 import HomePage from './pages/HomePage/HomePage';
 import AboutUs from './pages/AboutUs/AboutUs';
+import CoursesList from './pages/coursesList/coursesList';
+import CourseDetail from './pages/courseDetail/courseDetail';
 import { ToastContainer } from 'react-toastify';
 
 function App() {
@@ -20,7 +22,9 @@ function App() {
         <Route path="/new_password" element={<new_password/>}/>
         <Route path="/success" element={<success/>}/>
         <Route path="/HomePage" element={<HomePage/>}/>
-        <Route path="/AboutUs" element={<AboutUs/>}/>      
+        <Route path="/AboutUs" element={<AboutUs/>}/>   
+        <Route path="/coursesList" element={<CoursesList/>}/>    
+        <Route path="/courseDetail" element={<CourseDetail/>}/>   
       </Routes>
       <ToastContainer position='top-right' />
     </div>
