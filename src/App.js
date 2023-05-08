@@ -10,6 +10,10 @@ import HomePage from './pages/HomePage/HomePage';
 import AboutUs from './pages/AboutUs/AboutUs';
 import CoursesList from './pages/coursesList/coursesList';
 import CourseDetail from './pages/courseDetail/courseDetail';
+import ShoppingCart from './pages/shoppingCart/shoppingCart'
+import CartEmpty from './pages/shoppingCart/cartEmpty';
+import CartFail from './pages/shoppingCart/cartFail'
+import CartSuccesful from './pages/shoppingCart/cartSuccessful';
 import { ToastContainer } from 'react-toastify';
 
 function App() {
@@ -25,6 +29,10 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs/>}/>   
         <Route path="/coursesList" element={<CoursesList/>}/>    
         <Route path="/courseDetail" element={<CourseDetail/>}/>   
+        <Route path="/shoppingCart" element={<ShoppingCart/>}/>   
+        <Route path="/cartEmpty" element={<CartEmpty/>}/> 
+        <Route path="/cartFail" element={<CartFail/>}/> 
+        <Route path="/cartSuccesful" element={<CartSuccesful/>}/> 
       </Routes>
       <ToastContainer position='top-right' />
     </div>

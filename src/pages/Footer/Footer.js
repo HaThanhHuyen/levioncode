@@ -19,12 +19,12 @@ export default function Footer() {
       <div className={styles.category}>
         <a href="#">Home</a>
         <a href="#">Level Test</a>
-        <a href="#">Courses</a>
+        <a href="/coursesList">Courses</a>
         <a href="#">Learning Resources</a>
-        <a href="#">About us</a>
+        <a href="/aboutUs">About us</a>
       </div>
       <div className={styles.social_media}>
-        <img src={facebook} alt="footer"></img>
+        <img className={styles.facebook} src={facebook} alt="footer"></img>
         <img src={instagram} alt="footer"></img>
         <img src={youtube} alt="footer"></img>
         <img src={tiktok} alt="footer"></img>

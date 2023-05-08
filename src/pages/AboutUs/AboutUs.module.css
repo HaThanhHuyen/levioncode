@@ -125,7 +125,9 @@
   .part_five_details {
     margin: 10% 15% 15% 14%;
   }
-
+  .aboutUs p{
+    margin-top: 30px;
+  }
   .part_six_aboutUs {
     display: flex;
     text-align: left;

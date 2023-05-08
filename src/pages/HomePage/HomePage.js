@@ -206,7 +206,7 @@ function HomePage() {
                 </div>
                 <div className={styles.card_name}>
                   <img src={avt3} alt="images" />
-                  <div>
+                  <div className={styles.card}>
                     <h4>Tariq</h4>
                     <p>Master Your Pronunciation Course</p>
                   </div>

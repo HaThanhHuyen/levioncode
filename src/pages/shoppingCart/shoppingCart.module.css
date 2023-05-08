@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  .cart {
+    margin: 64px 80px 160px 80px;
+  }
+  .title h3 {
+    color: #281c42;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    justify-content: center;
+    display: flex;
+  }
+  .cart_details {
+    display: flex;
+    margin-top: 40px;
+  }
+  .yourCart {
+    background: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 751px;
+    padding: 24px 40px 0 40px;
+  }
+  .yourCart h5 {
+    color: #362355;
+    text-align: left;
+    width: 109px;
+    height: 32px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .course {
+    /* width: 671px; */
+    height: 80px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+  .course img {
+    margin-right: 16px;
+  }
+  .course h6 {
+    color: #362355;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .courseDetail button {
+    color: #9387a8;
+    padding: 4px 8px 4px 8px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: #f7f5fa;
+    border: 1px solid #cac1d8;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-right: 8px;
+    height: 28px;
+  }
+  .courseDetail {
+    width: 367px;
+    height: 60px;
+    margin-right: 40px;
+  }
+  .fee {
+    width: 69px;
+    height: 56px;
+    margin-right: 40px;
+  }
+  .fee h6 {
+    color: #9453ff;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    width: 69px;
+    height: 28px;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .fee p {
+    color: #9387a8;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration-line: line-through;
+    width: 49px;
+    height: 24px;
+    text-align: center;
+    margin: auto;
+  }
+  .course p {
+    color: #9387a8;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    width: 59px;
+    height: 24px;
+  }
+  .courses {
+    margin-top: 24px;
+    height: 104px;
+    border-bottom: 1px solid #cac1d8;
+  }
+  .coupon {
+    text-align: left;
+    width: 489px;
+    height: 524px;
+    margin-left: 40px;
+  }
+  .couponDiscount {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 24px 40px 48px 40px;
+    margin-bottom: 40px;
+  }
+  .couponDiscount h5 {
+    color: #362355;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 24px;
+  }
+  .couponCode label {
+    color: #554766;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .couponCode {
+    width: 409px;
+    height: 100px;
+  }
+  .couponApply {
+    margin-top: 8px;
+    display: flex;
+  }
+  .couponApply input {
+    width: 297px;
+    height: 48px;
+    border: 1px solid #cac1d8;
+    border-radius: 4px;
+    margin-right: 12px;
+  }
+  .couponApply input::placeholder {
+    color: #9387a8;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px 221px 12px 12px;
+  }
+  .couponApply button {
+    color: #ffffff;
+    background-color: #9453ff;
+    border: 1px solid #9453ff;
+    border-radius: 4px;
+    width: 100px;
+    height: 48px;
+    cursor: pointer;
+  }
+  .price {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .price p {
+    color: #554766;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .price h6 {
+    color: #362355;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .discount {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    width: 409px;
+    height: 24px;
+  }
+  .discount p {
+    color: #554766;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .discount h6 {
+    color: #362355;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .total {
+    display: flex;
+    justify-content: space-between;
+    margin: 28px 0;
+  }
+  .total p {
+    color: #554766;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .total h6 {
+    color: #362355;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .discountDiv {
+    border-bottom: 1px solid #cac1d8;
+  }
+  .checkout button {
+    color: #ffffff;
+    background-color: #9453ff;
+    width: 409px;
+    height: 56px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .couponDetail {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 24px 40px 48px 40px;
+  }
+  .couponDetail h5 {
+    color: #362355;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 24px;
+  }
+  .remove p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
