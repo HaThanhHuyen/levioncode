@@ -12,7 +12,7 @@ import woman from "../../image/woman.png";
 import boy from "../../image/boy.png";
 import dog from "../../image/dog.png";
 import animal from "../../image/animal.png";
-import points from "../../image/points.png"
+import points from "../../image/points.png";
 import shadow from "../../image/shadow.png";
 import line from "../../image/line.png";
 import triangle from "../../image/triangle.png";
@@ -20,8 +20,7 @@ import halfCircle from "../../image/halfCircle.png";
 import lines from "../../image/lines.png";
 import shadow2 from "../../image/shadow2.png";
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-// import "./AboutUs.css";
+import Header from "../Header/Header"
 import styles from "./AboutUs.module.css";
 
 export default function AboutUs() {
@@ -29,7 +28,7 @@ export default function AboutUs() {
     <div className={styles.aboutUs}>
       <Header />
       <div className={styles.part_one}>
-      <div className={styles.points}>
+        <div className={styles.points}>
           <img src={points} alt="aboutUs-images"></img>
         </div>
         <div className={styles.part_one_details}>
@@ -104,7 +103,11 @@ export default function AboutUs() {
       <div className={styles.part_four}>
         <div className={styles.part_four_left}>
           <div className={styles.part_four_left_detail}>
-            <img src={mission} alt="aboutUs-images"></img>
+            <img
+              className={styles.part_four_left_detail_img}
+              src={mission}
+              alt="aboutUs-images"
+            ></img>
             <h2>Our Mission</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Netus
@@ -169,8 +172,7 @@ export default function AboutUs() {
               <img src={man} alt="aboutUs-images"></img>
             </div>
           </div>
-          <div>
-
+          <div className={styles.part_six_images_second}>
             <div className={styles.boy}>
               <img src={boy} alt="aboutUs-images"></img>
             </div>
@@ -178,8 +180,8 @@ export default function AboutUs() {
               <img src={dog} alt="aboutUs-images"></img>
             </div>
           </div>
-          <div>
-          <div className={styles.woman}>
+          <div className={styles.part_six_images_third}>
+            <div className={styles.woman}>
               <img src={woman} alt="aboutUs-images"></img>
             </div>
             <div className={styles.animal}>

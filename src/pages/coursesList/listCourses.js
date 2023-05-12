@@ -25,7 +25,7 @@ export default function ListOfCourse({ listCourse }) {
       {listCourse.map((e) => (
         <div className={styles.list} key={e.id}>
           <div className={styles.listCourseTitle}>
-            <img src={courseMan} alt="courseMan"></img>
+            <img className={styles.listCourseTitle_img} src={courseMan} alt="courseMan"></img>
             <div className={styles.listButton}>
               <button>All Levels</button>
               <button>Speaking Skills</button>

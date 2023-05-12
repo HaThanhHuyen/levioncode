@@ -3,9 +3,7 @@ import './App.css';
 import Login from "../src/pages/login/Login";
 import Register from "../src/pages/register/Register";
 import { Routes, Route } from "react-router-dom";
-// import forgot_password from "../src/pages/forgot_password";
-// import new_password from "../src/pages/new_password";
-// import success from "../src/pages/success";
+
 import HomePage from './pages/HomePage/HomePage';
 import AboutUs from './pages/AboutUs/AboutUs';
 import CoursesList from './pages/coursesList/coursesList';
@@ -15,6 +13,7 @@ import CartEmpty from './pages/shoppingCart/cartEmpty';
 import CartFail from './pages/shoppingCart/cartFail'
 import CartSuccesful from './pages/shoppingCart/cartSuccessful';
 import { ToastContainer } from 'react-toastify';
+// import Header from '../src/pages/Header/Header'
 
 function App() {
   return (
@@ -33,6 +32,7 @@ function App() {
         <Route path="/cartEmpty" element={<CartEmpty/>}/> 
         <Route path="/cartFail" element={<CartFail/>}/> 
         <Route path="/cartSuccesful" element={<CartSuccesful/>}/> 
+        {/* <Route path="/header" element={<Header/>}/>  */}
       </Routes>
       <ToastContainer position='top-right' />
     </div>

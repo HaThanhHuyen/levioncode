@@ -131,7 +131,7 @@ export default function CourseDetail() {
             </div>
 
             <div className={styles.videoTimetables}>
-              <div>
+              <div className={styles.videoTimetables1}>
                 <div className={styles.video}>
                   <h6>Introduction and Plugins</h6>
                 </div>

@@ -11,16 +11,14 @@
   color: #554766;
 }
 .coursePart1Right img {
-  position: absolute;
-  width: 411px;
+  width: 110%;
 }
 .course_part_1 h1 {
   color: #9453ff;
 }
 .course_part_1 p {
   color: #554766;
-  width: 845px;
-  height: 84px;
+  width: 52%;
   margin-top: 20px;
 }
 .coursePart1Left {
@@ -58,10 +56,10 @@
 .listCourseTitle {
   text-align: left;
 }
-.listCourseTitle img {
+/* .listCourseTitle img {
   width: 300px;
   height: 180px;
-}
+} */
 .cart {
   display: flex;
   margin: 0 0 24px 16px;
@@ -172,4 +170,45 @@
 }
 .pagination a:hover:not(.active) {
   background-color: #ffff00;
+}
+@media screen and (max-width: 768px) {
+  .course_part_1{
+    background: url("../../image/Rectangle\ 241.png");
+    margin-top: -2.5%;
+    display: block;
+  }
+  .coursePart1Left p{
+    width: 85%;
+  } 
+  .coursePart1Right{
+    width: 60%;
+    margin-top: 3%;
+    margin-left: 18%;
+  }
+  .coursePart1Left{
+    margin: 18px 24px 96px 80px;
+  }
+  .categoryOfCourse{
+    width: 100%;
+    display: none;
+  }
+  .skillAll{
+    display: none;
+  }
+  .levelAll{
+    display: none;
+  }
+  .courseListDetails{
+    flex-direction: column-reverse;
+  }
+  .listCourse{
+    margin-left: 17%;
+    width: 100%;
+  }
+  .listCourseTitle{
+    width: 100%;
+  }
+  .listCourseTitle_img{
+    width: 100%;
+  }
 }

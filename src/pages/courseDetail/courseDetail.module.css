@@ -4,8 +4,8 @@
 } */
 
 .background img {
-  width: 100%;
-  height: 618px;
+  /* width: 100%; */
+  /* height: 618px; */
   object-fit: cover;
   object-position: 80% 70%;
   opacity: 0.5;
@@ -42,8 +42,8 @@
   color: #fff539;
   /* width: 641px; */
   /* max-width: 641px; */
-  max-height: 64px;
-  height: 64px;
+  /* max-height: 64px;
+  height: 64px; */
   font-size: 48px;
   margin: 4px 0;
 }
@@ -146,7 +146,7 @@
 .materialIncludesDetails img {
   margin-right: 7.04px;
   width: 20px;
-    height: 25px;
+  height: 25px;
 }
 .addToCart button {
   color: #ffffff;
@@ -379,8 +379,8 @@
 }
 .headOfLevionTraining img {
   margin-right: 12px;
-  width: 130px;
-  height: 120px;
+  height: 100%;
+  width: 18%;
 }
 
 .titleOfInstructor h6 {
@@ -425,7 +425,7 @@
   font-size: 14px;
   line-height: 20px;
 }
-.feedbackOfStudent p{ 
+.feedbackOfStudent p {
   margin-top: -30px;
 }
 .listOfStudentInfo {
@@ -443,10 +443,49 @@
 .feedbackOfStudent {
   margin-bottom: 24px;
 }
-.avt{
-  height: 100px;
+.avt {
+  height: 50%;
 }
 .courseMan {
   width: -webkit-fill-available;
-
-} 
+}
+@media screen and (max-width: 768px) {
+  /* .background img {
+    width: 100%;
+  } */
+  .details {
+    display: block;
+  }
+  .detail_img {
+    width: 115%;
+  }
+  .learningAndSkills,
+  .videoTimetables, 
+  .listOfStudentInfo,
+  .learning_details p,
+  .learning p{
+    width: 100%;
+  }
+  .videoDetails_preview button {
+    width: 100%;
+  }
+  .part2{
+    width: 100%;
+  }
+  .video h6{
+    padding: 0;
+  }
+  .learning_details{
+    display: block;
+  }
+  .aboutThisCourse p{
+    width: 120%;
+    margin-top: 8%;
+  }
+  .videoDetails_preview {
+    display: block;
+  }
+  .videoDetails_preview button{
+    margin-top: 5%;
+  }
+}

@@ -1,7 +1,8 @@
 import logo1 from "../../image/logo 1.png";
 import background from "../../image/OBJECTS.png";
 import styles from "./Register.module.css";
-
+import facebook from "../../image/fb.png";
+import google from "../../image/google.png";
 import React from "react";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,13 +34,16 @@ function Register() {
   return (
     <>
       <div id={styles.wrapper}>
-        <div className={styles.layout_background}></div>
+        <div className={styles.layout_background}>
         <div className={styles.background}>
-          <img src={background} alt="a" />
+          {/* <img src={background} alt="a" /> */}
         </div>
-        <div id={styles.login}>
+        </div>
+        <div id={styles.register}>
           <div className={styles.logo1}>
-            <img src={logo1} alt="a" />
+          <a href="/homePage">
+              <img src={logo1} alt="a" />
+            </a>
           </div>
           <div className={styles.heading}>
             <h1>Create an account</h1>
@@ -112,7 +116,24 @@ function Register() {
             <span>Already have an account? </span>
             <Link to="/">Sign In</Link>
           </div>
+          <hr />
+          <div className={styles.continue}>
+            <Link href="">
+              <button className={styles.continue_facebook}>
+                <img src={facebook} alt="a" />
+                Continue with Facebook
+              </button>
+            </Link>
+            <br />
+            <Link href="">
+              <button className={styles.continue_google}>
+                <img src={google} alt="a" />
+                Continue with Google
+              </button>
+            </Link>
+          </div>
         </div>
+        
       </div>
     </>
   );
