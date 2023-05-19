@@ -22,7 +22,7 @@ function ShoppingCart() {
   cart.map((e) => (total += e.price));
   const discount = 20;
   return (
-    <div>
+    <div className={styles.ShoppingCart}>
       <Header />
       {cart.length === 0 ? (
         <CartEmpty />
@@ -39,16 +39,24 @@ function ShoppingCart() {
                   <div className={styles.course}>
                     <img src={coursesMan} alt="imgCourse"></img>
                     <div className={styles.courseDetail}>
-                      <h6>{course.name}</h6>
-                      <button>All Levels</button>
-                      <button>Speaking Skill</button>
-                    </div>
-                    <div className={styles.fee}>
-                      <h6>$20.00</h6>
-                      <p>$84.99</p>
-                    </div>
-                    <div className={styles.remove}>
-                      <p onClick={() => handleRemove(course)}>Remove</p>
+                      <div className={styles.courseDetail_left}>
+                        <h6>{course.name}</h6>
+                        <div className={styles.courseDetail_buttons}>
+                          <button>All Levels</button>
+                          <button>Speaking Skill</button>
+                        </div>
+                      </div>
+                      <div className={styles.courseDetail_right}>
+                        <div className={styles.fee}>
+                        <div className={styles.feeDiscount}>
+                          <h6>$20.00</h6>
+                          <p>$84.99</p>
+                        </div>
+                        </div>
+                        <div className={styles.remove}>
+                          <p onClick={() => handleRemove(course)}>Remove</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

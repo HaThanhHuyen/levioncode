@@ -5,9 +5,13 @@
   top: 0px;
   z-index: -1;
 }
-#footer {
+/* #footerMain{
+  width: 100%;
+} */
+#footerMain {
   position: relative;
   margin-top: 12%;
+  /* height: 95vh; */
 }
 .category {
   display: flex;
@@ -46,7 +50,7 @@
 }
 @media screen and (max-width: 768px) {
   #footer_bg img {
-    position: absolute;
+    /* position: absolute; */
     width: auto;
     left: 0px;
     top: 0px;
@@ -67,5 +71,9 @@
   }
   #logo{
     margin-top: 30%;
+  }
+  #footerMain{
+    margin-top: 200%;
+    height: 0;
   }
 }

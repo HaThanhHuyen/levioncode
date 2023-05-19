@@ -33,3 +33,9 @@
   .cart h1{
     font-size: 40px;
   }
+  @media screen and (max-width: 768px){
+    .cart img{
+      width: 100%;
+      height: 100%;
+    }
+  }

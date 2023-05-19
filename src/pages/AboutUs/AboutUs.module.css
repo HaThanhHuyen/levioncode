@@ -288,7 +288,6 @@
   }
   .part_three {
     display: flex;
-    width: 100%;
     flex-direction: column-reverse;
   }
   .part_three_right_details {
@@ -304,11 +303,11 @@
   }
   .part_four {
     display: block;
-    width: 100%;
   }
   .part_four_right {
     margin-left: 6%;
-    width: 100%;
+    width: 90vw;
+
   }
   .part_four_right img{
     width: 91%;
@@ -317,13 +316,8 @@
   .part_four_left_detail {
     width: 100%;
   }
-  .part_four_left_detail p {
-    width: 150%;
-
-  }
   .part_five {
     display: block;
-    width: 100%;
   }
   .part_five_left {
     width: 100%;
@@ -331,13 +325,12 @@
   }
   .part_five_right {
     width: 100%;
-    margin-left: 10%;
   }
   .part_five_right img {
     width: 100%;
   }
   .part_five_details p{
-    width: 126%;
+    width: 110%;
   }
   .part_six_aboutUs {
     display: block;

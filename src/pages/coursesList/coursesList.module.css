@@ -202,13 +202,16 @@
     flex-direction: column-reverse;
   }
   .listCourse{
-    margin-left: 17%;
-    width: 100%;
+    margin-left: 10%;
   }
   .listCourseTitle{
     width: 100%;
   }
   .listCourseTitle_img{
     width: 100%;
+  }
+  .pagination{
+    width: 50%;
+    margin: 0 auto;
   }
 }

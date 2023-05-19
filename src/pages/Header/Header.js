@@ -24,9 +24,40 @@ function Navbar() {
         </a>
       </div>
       <nav ref={navRef}>
-        <a href="">Level Test</a>
+      <div className="cow_header_nav">
+        <a href="/homePage">
+          <img src={cow_header} alt="cow_header"></img>
+        </a>
+      </div>
+      <a href="/test">Level Test</a>
         <a href="/coursesList">Courses</a>
-        <a href="">Learning Resources</a>
+        <div className="Learning">
+          <ul>
+            <li>
+              <a href="">Learning Resources</a>
+              <ul>
+                <li>
+                  <a href="#">Podscast</a>
+                </li>
+                <li>
+                  <a href="#">Digital Flashcards</a>
+                </li>
+                <li>
+                  <a href="#">Blog</a>
+                </li>
+                <li>
+                  <a href="/socialNetwork">Social Network</a>
+                </li>
+                <li>
+                  <a href="#">Our Community</a>
+                </li>
+                <li>
+                  <a href="#">eBooks</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
         <a href="/aboutUs">About us</a>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
@@ -39,7 +70,7 @@ function Navbar() {
             <button id="btn_left">Sign in</button>
           </Link>
           <Link to="/register">
-            <button>Sign up</button>
+            <button id="btn_right" >Sign up</button>
           </Link>
         </div>
       </nav>

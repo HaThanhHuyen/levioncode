@@ -25,6 +25,8 @@ import star from "../../image/star.png";
 import styles from "./HomePage.module.css";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import SimpleSlider from "../../components/SimpleSlider";
+import SimpleSlider1 from "../../components/SimpleSlider1";
 function HomePage() {
   return (
     <>
@@ -103,61 +105,70 @@ function HomePage() {
           </div>
           <div className={styles.part_three}>
             <h1>Why learning Vietnamese with Levion?</h1>
-            <div className={styles.part_three_content}>
-              <div className={styles.part_three_image}>
-                <img src={learn} alt="images" />
-              </div>
-              <div className={styles.part_three_detail}>
-                <div className={styles.rectangle}>
-                  <img className={styles.rectangles} src={rectangle} alt="rectangle"></img>
-                  <div className={styles.box}>
-                    <div className={styles.three}>
-                      <div className={styles.three_details}>
-                        <img src={achievement} alt="images" />
-                        <h2>Diverse courses of choice</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Id sodales non interdum eget. Platea et quam
-                          magna tortor, dolor.
-                        </p>
+            <div className={styles.part_three_content_slider}>
+              <div className={styles.part_three_content}>
+                <div className={styles.part_three_image}>
+                  <img src={learn} alt="images" />
+                </div>
+                <div className={styles.part_three_detail}>
+                  <div className={styles.rectangle}>
+                    <img
+                      className={styles.rectangles}
+                      src={rectangle}
+                      alt="rectangle"
+                    ></img>
+                    <div className={styles.box}>
+                      <div className={styles.three}>
+                        <div className={styles.three_details}>
+                          <img src={achievement} alt="images" />
+                          <h2>Diverse courses of choice</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Id sodales non interdum eget. Platea et quam
+                            magna tortor, dolor.
+                          </p>
+                        </div>
+                        <div className={styles.three_details}>
+                          <img src={achievement} alt="images" />
+                          <h2>Quality lessons with designated journeys</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Id sodales non interdum eget. Platea et quam
+                            magna tortor, dolor.
+                          </p>
+                        </div>
                       </div>
-                      <div className={styles.three_details}>
-                        <img src={achievement} alt="images" />
-                        <h2>Quality lessons with designated journeys</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Id sodales non interdum eget. Platea et quam
-                          magna tortor, dolor.
-                        </p>
-                      </div>
-                    </div>
-                    <div className={styles.three}>
-                      <div className={styles.three_details}>
-                        <img src={achievement} alt="images" />
-                        <h2>Fun and intuitive ways of learning</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Id sodales non interdum eget. Platea et quam
-                          magna tortor, dolor.
-                        </p>
-                      </div>
-                      <div className={styles.three_details}>
-                        <img src={achievement} alt="images" />
-                        <h2>Flexible</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Id sodales non interdum eget. Platea et quam
-                          magna tortor, dolor.
-                        </p>
+                      <div className={styles.three}>
+                        <div className={styles.three_details}>
+                          <img src={achievement} alt="images" />
+                          <h2>Fun and intuitive ways of learning</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Id sodales non interdum eget. Platea et quam
+                            magna tortor, dolor.
+                          </p>
+                        </div>
+                        <div className={styles.three_details}>
+                          <img src={achievement} alt="images" />
+                          <h2>Flexible</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Id sodales non interdum eget. Platea et quam
+                            magna tortor, dolor.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className={styles.SimpleSlider}>
+                <SimpleSlider />
+              </div>
             </div>
           </div>
 
-          {/* <div className={styles.images_homepage_2}>
+          <div className={styles.images_homepage_2}>
             <div className={styles.images_homepage_title}>
               <h2>What we offer?</h2>
             </div>
@@ -179,8 +190,8 @@ function HomePage() {
                 <h4>Giant supporting resources</h4>
               </div>
             </div>
-          </div> */}
-          {/* <div className={styles.part_four}>
+          </div>
+          <div className={styles.part_four}>
             <h1>What our learners say?</h1>
             <div className={styles.part_four_detail}>
               <div className={styles.part_four_details}>
@@ -280,12 +291,14 @@ function HomePage() {
                 </div>
               </div>
             </div>
-          </div> */}
-          {/* <div className={styles.part_five}>
+            <div className={styles.SimpleSlider1}>
+                <SimpleSlider1 />
+              </div>
+          </div>
+          <div className={styles.part_five}>
             <div className={styles.part_five_images}>
               <img src={cow} alt="images" />
             </div>
-
             <div className={styles.part_five_detail}>
               <h2>
                 Be a part of our
@@ -308,8 +321,8 @@ function HomePage() {
                 </div>
               </div>
             </div>
-          </div> */}
-          {/* <div className={styles.part_six}>
+          </div>
+          <div className={styles.part_six}>
             <h2>Join our Newsletter</h2>
             <p>
               Get a notification from us on any updates and tips for your
@@ -323,7 +336,7 @@ function HomePage() {
               />
               <button>Subscribe</button>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
 

@@ -1,0 +1,378 @@
+.profile {
+  background-color: #f7f5fa;
+  position: relative;
+  z-index: 1;
+}
+.contents {
+  position: relative;
+  display: flex;
+  margin: 0 80px;
+  margin-top: 52px;
+  z-index: 2;
+}
+.profilePerson {
+  width: 100%;
+  padding: 40px;
+  margin: 5% 0% 0% 5%;
+  background-color: #ffffff;
+}
+.uploadImg {
+  text-align: center;
+}
+
+.uploadButton h4 {
+  color: #aa77ff;
+}
+.uploadButton button {
+  display: flex;
+  justify-content: space-around;
+  /* width: 60%; */
+  height: 50px;
+  align-items: center;
+  border: 1px solid #aa77ff;
+  margin: auto;
+  background-color: #ffffff;
+  margin-top: 2%;
+  cursor: pointer;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+}
+.userInfo p {
+  color: #281c42;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.editUser {
+  display: flex;
+}
+.editUser img {
+  width: 100%;
+  height: 40%;
+}
+.userInfomationDetails {
+  display: flex;
+  /* text-align: left; */
+  align-items: center;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.userInfomationDetails img {
+  width: 24px;
+  height: 24px;
+}
+
+.userInfomationDetails p {
+  color: #281c42;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 2px;
+}
+
+.userInfomationDetails h6 {
+  color: #281c42;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  height: 28px;
+}
+.userInfomationDetails input {
+  color: #281c42;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 28px;
+}
+.UserInfoDetails {
+  margin-left: 12px;
+  width: 100%;
+}
+.inputInfo input {
+  /* padding-left: 12px; */
+  border: 1px solid #add8e6;
+  border-radius: 4px;
+  width: 100%;
+}
+.inputInfo input:focus {
+  border: 2px solid #add8e6;
+  box-shadow: 0 0 5px #add8e6;
+  padding-left: 12px;
+  outline: none;
+  border-radius: 4px;
+}
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  /* height: 6vh; */
+  /* width: 36vw; */
+  background-color: #f7f5fa;
+
+}
+.second {
+  /* width: 65%; */
+  height: 724px;
+  background-color: #ffffff;
+  margin-left: 24px;
+  margin: 5% 0% 0% 5%;
+}
+.tab {
+  /* flex: 1; */
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #DBDBDB;
+  width: 12vw;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid #9453FF;
+}
+.tab p{
+  font-size: 12px;
+  font-weight: 600;
+}
+.active-tab{
+  border: 1px solid #9453FF;
+  background-color: #ffffff !important;
+  border-bottom: none;
+}
+.active-tab:hover{
+  border: 1px solid #9453FF;
+  background-color: #ffffff !important;
+  border-bottom: none;
+}
+/* .active-tab::after{
+  border-top: 2px solid gray;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: initial;
+  animation: new 0.5s;
+}
+
+@keyframes new{
+  from{
+    top: 50px;
+    left: 0;
+    right: 0;
+    background: gray;
+  }
+  to{
+    top: 0;
+    left: 0;
+    right: 0;
+    border-top: 2px solid gray;
+  }
+} */
+.contentTabs {
+  /* border-top: 1px solid #9453FF; */
+  position: relative;
+}
+.content {
+  position: relative;
+  display: none;
+}
+.content-active {
+  display: flex;
+  transition: all 1s ease-in-out;
+  animation: example 0.3s;
+}
+.content-active img {
+  /* width: 100%;
+  height: 100%; */
+  margin-top: 2%;
+}
+.infoCourse h6 {
+  color: #362355;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 6px;
+  width: 394px;
+  height: 32px;
+}
+.infoCourse p {
+  color: #9387a8;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 6px;
+}
+.infoCourse button {
+  color: #aa77ff;
+  background-color: #ffffff;
+  height: 30px;
+  border: 1px solid #aa77ff;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.infoCourse {
+  margin-left: 3%;
+  border-right: 1px solid #9387a8;
+  height: 22vh;
+}
+.skills {
+  display: flex;
+  margin-top: 1%;
+}
+
+.levels,
+.speaking {
+  margin-right: 5%;
+  background: #f7f5fa;
+  border-radius: 4px;
+  height: 23px;
+  display: flex;
+  margin-bottom: 12px;
+  border: 1px solid #cac1d8;
+  justify-content: center;
+  text-align: center;
+}
+
+.process {
+  margin-left: 32.5px;
+  text-align: center;
+}
+.process p {
+  color: #9387a8;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.process img {
+  width: 71px;
+  height: 71px;
+}
+.LearningJourney {
+  width: 90%;
+  display: flex;
+  margin: 5%;
+  border-bottom: 1px solid;
+}
+.LearningJourney h6 {
+  margin: 0;
+}
+.LearningJourney p {
+  margin: 0;
+}
+.Content-Learning {
+  width: 100%;
+}
+
+/* @keyframes example{
+  from{
+    margin: 0;
+  }
+  to{
+    margin-left: 10px;
+  }
+} */
+.password {
+    width: 100%;
+    /* height: 679px; */
+    /* padding: 98px 162px 0px 163px; */
+    margin: 18% 18%;
+
+}
+.changePassword {
+  width: 520px;
+  height: 404px;
+  text-align: left;
+}
+.changePasswordDetail label {
+  color: #554766;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+.changePasswordDetail input {
+  color: #9387a8;
+  width: 95%;
+  height: 48px;
+  border: 1px solid #cac1d8;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+  margin-bottom: 36px;
+}
+.changePassword input::placeholder {
+  padding: 12px 0 12px 12px;
+}
+.saveChanges {
+  text-align: right;
+}
+.saveChanges button {
+  color: #f2ebfd;
+  background-color: #cac1d8;
+  margin-top: 24px;
+  height: 40px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  line-height: 24px;
+}
+.changePasswordDetail input:focus {
+  border: 2px solid #add8e6;
+  box-shadow: 0 0 5px #add8e6;
+  padding-left: 12px;
+  outline: none;
+  border-radius: 4px;
+}
+.WishList {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 80px;
+}
+.WishList img {
+  width: 280px;
+  height: 300px;
+}
+.WishList button {
+  background: #9453ff;
+  border-radius: 4px;
+  width: 432px;
+  height: 56px;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: large;
+}
+.WishList p{
+    color: #554766;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+}
+@media screen and (max-width: 768px){
+  .WishList img{
+    width: 100%;
+    height: 100%;
+  }
+}

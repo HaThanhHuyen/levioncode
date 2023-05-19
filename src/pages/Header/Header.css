@@ -1,152 +1,200 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
 
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	font-family: "Titillium Web", sans-serif;
-}
 
 :root {
-	--mainColor: #ffffff;
-	--mainColorLight: #5767aa;
-	--secondaryColor: #db2b39;
-	--textColor: #9387A8;
+  --mainColor: #ffffff;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #db2b39;
+  --textColor: #9387a8;
 }
 
 header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-    height: 88px;
-	padding: 0 2rem;
-	background-color: var(--mainColor);
-	color: var(--textColor);
-	box-shadow: 1px 1px 5px black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88px;
+  background-color: var(--mainColor);
+  color: var(--textColor);
+  box-shadow: 1px 1px 5px black;
 }
 
 nav a {
-	margin: 0 1rem;
-	color: var(--textColor);
-	text-decoration: none;
-	font-weight: 600;
-	font-size: 20px;
-	line-height: 24px;
+  margin: 0 1rem;
+  color: var(--textColor);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 nav a:hover {
-	transform: scale(1.2);
-	color: var(--secondaryColor);
+  transform: scale(1.2);
+  color: var(--secondaryColor);
 }
-nav button:hover{
-	transform: scale(1.2);
-	color: var(--secondaryColor);
+nav button:hover {
+  transform: scale(1.2);
+  color: var(--secondaryColor);
 }
-nav #btn_left:hover{
-	transform: scale(1.2);
-	color: var(--secondaryColor);
+nav #btn_left:hover {
+  transform: scale(1.2);
+  color: var(--secondaryColor);
 }
 
 header .nav-btn {
-	padding: 5px;
-	cursor: pointer;
-	background: transparent;
-	border: none;
-	outline: none;
-	color: var(--textColor);
-	visibility: hidden;
-	opacity: 1;
-	font-size: 1.8rem;
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--textColor);
+  visibility: hidden;
+  opacity: 1;
+  font-size: 1.8rem;
 }
 
 header div,
 nav {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
-.cow_header{
-    display: none;
+.cow_header {
+  display: none;
 }
 .header_right button {
-    background-color: #9453ff;
-    border-radius: 4px;
-    color: #ffffff;
-    border: none;
-    width: 100px;
-    height: 48px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
-    cursor: pointer;
+  background-color: #9453ff;
+  border-radius: 4px;
+  color: #ffffff;
+  border: none;
+  width: 100px;
+  height: 48px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+#btn_left {
+  width: 100px;
+  height: 48px;
+  color: #9453ff;
+  background-color: #ffffff;
+  border: 1px solid #9453ff;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+/* .logo {
+  margin-left: 40%;
+} */
+
+ul li:hover ul {
+  display: block;
+}
+ul li ul {
+  position: absolute;
+  width: 200px;
+  display: none;
+  background-color: rgb(244, 244, 244);
+}
+ul li ul li a {
+  font-size: 13px;
+}
+ul li ul li {
+  display: block;
+  line-height: 10%;
+}
+ul li ul li a {
+  display: block !important;
+}
+ul li ul li:hover {
+  border: 1px solid #9453ff;
+}
+.cow_header_nav{
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  header .nav-btn {
+    visibility: visible;
+    opacity: 1;
   }
-  #btn_left {
-    width: 100px;
-    height: 48px;
-    color: #9453ff;
-    background-color: #ffffff;
-    border: 1px solid #9453ff;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+  header {
+    width: 100%;
+  }
+
+  header nav {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: #f0cce6;
+    transition: 1s;
+  }
+
+  header .responsive_nav {
+    transform: translateY(100vh);
+  }
+
+  nav .nav-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  nav a {
+    font-size: 1.5rem;
+  }
+  .cow_header {
+    display: flex;
+    margin-top: 10px;
   }
   .logo {
-	margin-left: 40%;
+    display: none;
+    width: 100%;
   }
-@media screen and (max-width: 768px) {
-	header .nav-btn {
-		visibility: visible;
-		opacity: 1;
-	}
-	header{
-		width: 100%;
-	}
-
-	header nav {
-		position: fixed;
-		top: -100vh;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 1.5rem;
-		background-color: #f0cce6;
-		transition: 1s;
-	}
-
-	header .responsive_nav {
-		transform: translateY(100vh);
-	}
-
-	nav .nav-close-btn {
-		position: absolute;
-		top: 2rem;
-		right: 2rem;
-	}
-
-	nav a {
-		font-size: 1.5rem;
-	}
-	.cow_header{
-		display: flex;
-		margin-right: 400px;
-		margin-top: 10px;
-	  }
-	.logo{
-		display: none;
-		width: 100%;
-	}
-	.header_right{
-		display: contents;
-		flex-direction: column-reverse;
-	}
-	#btn_left,
-	.header_right button{
-		width: 300px;
-	}
-
+  .header_right {
+    display: contents;
+    flex-direction: column-reverse;
+  }
+  .cow_header_nav{
+    display: flex;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 860px){
+  nav{
+    width: 100%;
+    /* margin-left: 20%; */
+  }
+  /* nav a{
+    font-size: 15px;
+  } */
+  .logo{
+  justify-self: center;
+  margin: 0;
+  }
+  .header_right{
+    width: 100%;
+  }
+  #btn_left{
+    width: 100%;
+  }
+  #btn_right{
+    width: 100%;
+  }
+  @media only screen and (min-width: 860px) and (max-width: 1131px){
+    .logo{
+      justify-self: center;
+      margin: 0;
+      } 
+      nav{
+        width: 100%;
+        /* margin-left: 20%; */
+      }
+  }
 }

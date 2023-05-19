@@ -8,9 +8,7 @@
   background-color: #140b25;
   width: 100vw;
   height: 100vh;
-  position: fixed;
   opacity: 0.5;
-  top: 0;
 }
 #wrapper {
   display: flex;
@@ -18,7 +16,6 @@
   background: url("../../image/OBJECTS.png");
 }
 #register {
-  width: 50%;
   background-color: #ffffff;
   padding: 40px 64px 40px 64px;
   border-radius: 4px;
@@ -28,6 +25,11 @@
   font-size: 18px;
   line-height: 20px;
   color: #554766;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
 }
 .logo1 {
   display: flex;
@@ -190,7 +192,10 @@ button:hover {
 .change_to_signIp :hover {
   color: var(--secondaryColor);
 }
-@media screen and (max-width: 768px) {
+.continue{
+  display: none;
+}
+@media screen  and (max-width: 768px) {
  #register, 
  .btn_wrapper{
   font-size: 10px;
@@ -200,5 +205,8 @@ button:hover {
  }
  #register button{
   font-size: 10px;
+ }
+ .continue{
+  display: block;
  }
 }

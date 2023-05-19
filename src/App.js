@@ -13,7 +13,12 @@ import CartEmpty from './pages/shoppingCart/cartEmpty';
 import CartFail from './pages/shoppingCart/cartFail'
 import CartSuccesful from './pages/shoppingCart/cartSuccessful';
 import { ToastContainer } from 'react-toastify';
-// import Header from '../src/pages/Header/Header'
+import SimpleSlider from './components/SimpleSlider';
+import SimpleSlider1 from './components/SimpleSlider1';
+import Test from '../src/pages/LevelTest/Test';
+import LearningResources from './pages/LearningResources/LearningResources';
+import SocialNetwork from './pages/LearningResources/SocialNetwork';
+import Profile from './pages/Profile/Profile'
 
 function App() {
   return (
@@ -32,7 +37,13 @@ function App() {
         <Route path="/cartEmpty" element={<CartEmpty/>}/> 
         <Route path="/cartFail" element={<CartFail/>}/> 
         <Route path="/cartSuccesful" element={<CartSuccesful/>}/> 
-        {/* <Route path="/header" element={<Header/>}/>  */}
+        <Route path="/cartFail" element={<CartFail/>}/> 
+        <Route path="/simpleSlider" element={<SimpleSlider/>}/> 
+        <Route path="/simpleSlider1" element={<SimpleSlider1/>}/>
+        <Route path="/test" element={<Test/>}/> 
+        <Route path="/learningResources" element={<LearningResources/>}/> 
+        <Route path="/socialNetwork" element={<SocialNetwork/>}/> 
+        <Route path="/profile" element={<Profile/>}/> 
       </Routes>
       <ToastContainer position='top-right' />
     </div>

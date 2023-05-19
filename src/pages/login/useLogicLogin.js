@@ -46,10 +46,12 @@ function useLogicLogin() {
 
   async function onsubmit() {
     const isValid = validate();
+    console.log( "-----------------------------1")
     if (!isValid) return;
     setLoading(false);
+    console.log( "-----------------------------1")
     try {
-      const res = await axios.post(`${API_URL}/register`, {
+      const res = await axios.post(`${API_URL}/login`, {
         fullname: fullname,
         email: email,
         password: password,
