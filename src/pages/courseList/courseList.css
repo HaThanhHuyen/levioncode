@@ -1,0 +1,89 @@
+.CourseList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.listCourse {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.paginationBttns {
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #9387a8;
+  color: #9453ff;
+  cursor: pointer;
+}
+
+.paginationBttns a:hover {
+  color: white;
+  background-color: #9453ff;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: #9453ff;
+}
+
+.listButton button {
+  background-color: #f7f5fa;
+  padding: 4px 8px;
+  color: #9387a8;
+  margin-right: 8px;
+  border: 1px solid #cac1d8;
+  border-radius: 4px;
+  height: 28px;
+}
+.listButton {
+  text-align: left;
+  padding-left: 16px;
+  margin-top: 20px;
+}
+.listButton h3 {
+  margin-top: 10px;
+  margin-bottom: 4px;
+  width: 268px;
+  height: 48px;
+
+}
+.listCourseTitle_img {
+  width: 100%;
+}
+.cart button {
+  background-color: #9453ff;
+  color: #ffffff;
+  width: 167px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cart {
+  display: flex;
+  margin: 0 0 24px 16px;
+}
+.cart button {
+  width: 167px;
+  height: 40px;
+  margin-right: 8px;
+  border: none;
+  cursor: pointer;
+}
+.cart img {
+  width: 40px;
+  height: 40px;
+}

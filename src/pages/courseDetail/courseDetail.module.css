@@ -450,14 +450,14 @@
   width: -webkit-fill-available;
 }
 @media screen and (max-width: 768px) {
-  /* .background img {
+  .background img {
     width: 100%;
-  } */
+  }
   .details {
     display: block;
   }
   .detail_img {
-    width: 115%;
+    width: 100%;
   }
   .learningAndSkills,
   .videoTimetables, 

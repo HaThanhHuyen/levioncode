@@ -30,7 +30,7 @@ import SimpleSlider1 from "../../components/SimpleSlider1";
 function HomePage() {
   return (
     <>
-      <div className={styles.background}></div>
+      {/* <div className={styles.background}></div> */}
       <Header />
       <div className={styles.wrapper}>
         <div className={styles.header_home}>
@@ -167,7 +167,6 @@ function HomePage() {
               </div>
             </div>
           </div>
-
           <div className={styles.images_homepage_2}>
             <div className={styles.images_homepage_title}>
               <h2>What we offer?</h2>
@@ -249,7 +248,7 @@ function HomePage() {
                 </div>
                 <div className={styles.card_name}>
                   <img src={avt2} alt="images" />
-                  <div>
+                  <div className={styles.card}>
                     <h4>Konrad S.</h4>
                     <p>Master Your Pronunciation Course</p>
                   </div>
@@ -283,8 +282,7 @@ function HomePage() {
                   <div className={styles.card_name_images}>
                     <img src={avt1} alt="images" />
                   </div>
-
-                  <div>
+                  <div className={styles.card}>
                     <h4>Gina H.</h4>
                     <p>Master Your Pronunciation Course</p>
                   </div>
@@ -292,8 +290,8 @@ function HomePage() {
               </div>
             </div>
             <div className={styles.SimpleSlider1}>
-                <SimpleSlider1 />
-              </div>
+              <SimpleSlider1 />
+            </div>
           </div>
           <div className={styles.part_five}>
             <div className={styles.part_five_images}>
@@ -334,7 +332,9 @@ function HomePage() {
                 type="email"
                 placeholder="Enter your email"
               />
-              <button>Subscribe</button>
+              <div className={styles.submitBtn}>
+                <button>Subscribe</button>
+              </div>
             </div>
           </div>
         </div>

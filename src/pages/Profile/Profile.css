@@ -8,7 +8,7 @@
   display: flex;
   margin: 0 80px;
   margin-top: 52px;
-  z-index: 2;
+  z-index: -1;
 }
 .profilePerson {
   width: 100%;
@@ -100,7 +100,7 @@
   /* padding-left: 12px; */
   border: 1px solid #add8e6;
   border-radius: 4px;
-  width: 100%;
+  width: 97%;
 }
 .inputInfo input:focus {
   border: 2px solid #add8e6;
@@ -115,7 +115,6 @@
   /* height: 6vh; */
   /* width: 36vw; */
   background-color: #f7f5fa;
-
 }
 .second {
   /* width: 65%; */
@@ -129,22 +128,22 @@
   text-align: center;
   position: relative;
   cursor: pointer;
-  border: 1px solid #DBDBDB;
+  border: 1px solid #dbdbdb;
   width: 12vw;
   border-radius: 10px 10px 0px 0px;
-  border-bottom: 1px solid #9453FF;
+  border-bottom: 1px solid #9453ff;
 }
-.tab p{
+.tab p {
   font-size: 12px;
   font-weight: 600;
 }
-.active-tab{
-  border: 1px solid #9453FF;
+.active-tab {
+  border: 1px solid #9453ff;
   background-color: #ffffff !important;
   border-bottom: none;
 }
-.active-tab:hover{
-  border: 1px solid #9453FF;
+.active-tab:hover {
+  border: 1px solid #9453ff;
   background-color: #ffffff !important;
   border-bottom: none;
 }
@@ -188,9 +187,14 @@
   transition: all 1s ease-in-out;
   animation: example 0.3s;
 }
-.content-active img {
-  /* width: 100%;
-  height: 100%; */
+.process img {
+  width: 100%;
+  height: 100%;
+  margin-top: 2%;
+}
+.LearningJourneyLeft img {
+  width: 100%;
+  height: 85%;
   margin-top: 2%;
 }
 .infoCourse h6 {
@@ -226,7 +230,7 @@
 .infoCourse {
   margin-left: 3%;
   border-right: 1px solid #9387a8;
-  height: 22vh;
+  /* height: 22vh; */
 }
 .skills {
   display: flex;
@@ -247,7 +251,7 @@
 }
 
 .process {
-  margin-left: 32.5px;
+  margin-left: 8%;
   text-align: center;
 }
 .process p {
@@ -286,11 +290,10 @@
   }
 } */
 .password {
-    width: 100%;
-    /* height: 679px; */
-    /* padding: 98px 162px 0px 163px; */
-    margin: 18% 18%;
-
+  width: 100%;
+  /* height: 679px; */
+  /* padding: 98px 162px 0px 163px; */
+  margin: 18% 18%;
 }
 .changePassword {
   width: 520px;
@@ -364,15 +367,78 @@
   font-weight: bold;
   font-size: large;
 }
-.WishList p{
-    color: #554766;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 28px;
+.WishList p {
+  color: #554766;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
 }
-@media screen and (max-width: 768px){
-  .WishList img{
+.LearningJourneyLeft {
+  display: flex;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .contents {
+    display: block;
+    padding: 0;
+    margin: 0;
     width: 100%;
-    height: 100%;
+  }
+  .profilePerson {
+    padding: 0;
+    margin: 5% 0;
+    display: block;
+  }
+  .second {
+    margin: 0;
+    width: 100%;
+  }
+  .Content-Learning {
+    width: 100%;
+  }
+  .LearningJourney {
+    display: block;
+  }
+  .infoCourse {
+    width: 100%;
+    border: none;
+  }
+  .infoCourse p{
+    width: 100%;
+  }
+  .LearningJourneyLeft img {
+    width: 16vw;
+  }
+  .process {
+    display: flex;
+  }
+  .process img {
+    height: 6vh;
+    width: 8vw;
+  }
+  .LearningJourneyLeft{
+    width: 100%;
+  }
+  .process p{
+    margin: 5%;
+  }
+  .LearningJourney h6{
+    width: 100%;
+    font-size: 10px;
+  }
+  .skills{
+    width: 100%;
+  }
+  .password{
+    width: 100%;
+  }
+  .WishList{
+    width: 100%;
+  }
+  .WishList button{
+    width: 100%;
+  }
+  .WishList p{
+    width: 100%;
   }
 }

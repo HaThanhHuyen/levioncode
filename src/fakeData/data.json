@@ -71,17 +71,18 @@
         "level": "All Levels",
         "price": 20.00
     },
+   
     {
         "id": 10,
-        "name": "Gất App Lực",
+        "name": "JavaScript Pro",
         "img": "",
-        "skill": "Speaking",
+        "skill": "Writing",
         "level": "All Levels",
         "price": 20.00
     },
     {
         "id": 11,
-        "name": "Very App Lực",
+        "name": "Master Your Pronounciation Course",
         "img": "",
         "skill": "Speaking",
         "level": "All Levels",
@@ -89,15 +90,15 @@
     },
     {
         "id": 12,
-        "name": "App lực",
+        "name": "Master Your Pronounciation Course",
         "img": "",
         "skill": "Speaking",
         "level": "All Levels",
-        "price": 22.00
+        "price": 20.00
     },
     {
         "id": 13,
-        "name": "Stress",
+        "name": "Master Your Pronounciation Course",
         "img": "",
         "skill": "Speaking",
         "level": "All Levels",
@@ -105,25 +106,25 @@
     },
     {
         "id": 14,
-        "name": "Node & ExpressJS",
+        "name": "Master Your Pronounciation Course",
         "img": "",
-        "skill": "Listening",
+        "skill": "Speaking",
         "level": "All Levels",
         "price": 20.00
     },
     {
         "id": 15,
-        "name": "App lực",
+        "name": "Master Your Pronounciation Course",
         "img": "",
-        "skill": "Reading",
+        "skill": "Speaking",
         "level": "All Levels",
         "price": 20.00
     },
     {
         "id": 16,
-        "name": "JavaScript Pro",
+        "name": "Master Your Pronounciation Course",
         "img": "",
-        "skill": "Writing",
+        "skill": "Speaking",
         "level": "All Levels",
         "price": 20.00
     },
@@ -137,54 +138,6 @@
     },
     {
         "id": 18,
-        "name": "Master Your Pronounciation Course",
-        "img": "",
-        "skill": "Speaking",
-        "level": "All Levels",
-        "price": 20.00
-    },
-    {
-        "id": 19,
-        "name": "Master Your Pronounciation Course",
-        "img": "",
-        "skill": "Speaking",
-        "level": "All Levels",
-        "price": 20.00
-    },
-    {
-        "id": 20,
-        "name": "Master Your Pronounciation Course",
-        "img": "",
-        "skill": "Speaking",
-        "level": "All Levels",
-        "price": 20.00
-    },
-    {
-        "id": 21,
-        "name": "Master Your Pronounciation Course",
-        "img": "",
-        "skill": "Speaking",
-        "level": "All Levels",
-        "price": 20.00
-    },
-    {
-        "id": 22,
-        "name": "Master Your Pronounciation Course",
-        "img": "",
-        "skill": "Speaking",
-        "level": "All Levels",
-        "price": 20.00
-    },
-    {
-        "id": 23,
-        "name": "Master Your Pronounciation Course",
-        "img": "",
-        "skill": "Speaking",
-        "level": "All Levels",
-        "price": 20.00
-    },
-    {
-        "id": 24,
         "name": "Master Your Pronounciation Course",
         "img": "",
         "skill": "Speaking",

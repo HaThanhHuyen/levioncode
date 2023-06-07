@@ -10,8 +10,8 @@
 } */
 #footerMain {
   position: relative;
-  margin-top: 12%;
-  /* height: 95vh; */
+  /* margin-top: 12%; */
+  /* height: 100vh; */
 }
 .category {
   display: flex;
@@ -22,17 +22,17 @@
 .category a {
   color: #ffffff;
   text-decoration: none;
-  font-family: 600;
+  font-weight: bold;
 }
 .category a:hover {
-  font-weight: bold;
-  color: #db2b39;
+  color: #9453ff;
 }
 #logo {
-  margin-top: 18%;
-  margin-left: 50%;
+  text-align: center;
+  padding-top: 5%;
 }
 .social_media {
+  height: 65px;
   width: 20%;
   display: flex;
   justify-content: space-between;
@@ -43,19 +43,36 @@
   color: #ffffff !important;
   justify-content: center;
   display: flex;
-
 }
-.facebook{
+.facebook {
   width: 19%;
+}
+@media screen and (max-width: 1064px) {
+  #footer_bg img {
+    width: 100%;
+    height: 370px;
+    z-index: -1;
+  }
+  .category {
+    width: 60%;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .social_media {
+    width: 35%;
+    margin-bottom: 24px;
+  }
+  .title {
+    margin-top: 10%;
+  }
+
+
 }
 @media screen and (max-width: 768px) {
   #footer_bg img {
     /* position: absolute; */
     width: auto;
-    left: 0px;
-    top: 0px;
     width: 100%;
-    height: 500px;
     z-index: -1;
   }
   .category {
@@ -66,14 +83,9 @@
     width: 35%;
     margin-bottom: 24px;
   }
-  .title{
+  .title {
     margin-top: 10%;
   }
-  #logo{
-    margin-top: 30%;
-  }
-  #footerMain{
-    margin-top: 200%;
-    height: 0;
-  }
+
+
 }

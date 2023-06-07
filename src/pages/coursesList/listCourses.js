@@ -1,8 +1,6 @@
 import styles from "../coursesList/coursesList.module.css";
 import courseMan from "../../image/courses-man.png";
 import heart from "../../image/heart.png";
-// import data from "../../fakeData/data.json";
-// import UseLogicCourseList from "./useLogicList";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/actions";
 import { cartList } from "../redux/selector";

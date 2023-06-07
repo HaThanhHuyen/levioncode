@@ -1,5 +1,4 @@
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+
 import styles from "../shoppingCart/cartEmpty.module.css";
 import sadFace from "../../image/sadface.png";
 import { Link } from "react-router-dom";

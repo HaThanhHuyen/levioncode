@@ -5,6 +5,7 @@ import cart1 from "../../image/Icon Cart.png";
 import cow_header from "../../image/cow-header.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef } from "react";
+import { BiChevronDown } from "react-icons/bi";
 
 function Navbar() {
   const navRef = useRef();
@@ -15,65 +16,77 @@ function Navbar() {
 
   return (
     <header>
-      <a href="/homePage">
+      <Link to="/homePage" class="imgheader">
         <img src={logo} alt="logo" className="logo"></img>
-      </a>
+      </Link>
       <div className="cow_header">
-        <a href="/homePage">
+        <Link to="/homePage">
           <img src={cow_header} alt="cow_header"></img>
-        </a>
+        </Link>
       </div>
-      <nav ref={navRef}>
-      <div className="cow_header_nav">
-        <a href="/homePage">
-          <img src={cow_header} alt="cow_header"></img>
-        </a>
+      <div className="navContents">
+        <nav ref={navRef}>
+          <div className="cow_header_nav">
+            <Link to="/homePage">
+              <img src={cow_header} alt="cow_header"></img>
+            </Link>
+          </div>
+          <Link to="/test">Level Test</Link>
+          <Link to="/coursesList">Courses</Link>
+          <div className="Learning">
+            <ul>
+              <li className="menuIcon">
+                <Link to="#" className="titleLearning">
+                  Learning Resources
+                </Link>
+                <div className="LearningIcon">
+                  <BiChevronDown />
+                </div>
+                <ul className="menuLearning">
+                  <li>
+                    <Link to="#">Podscast</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Digital Flashcards</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Blog</Link>
+                  </li>
+                  <li>
+                    <Link to="/socialNetwork">Social Network</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Our Community</Link>
+                  </li>
+                  <li>
+                    <Link to="#">eBooks</Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <Link to="/aboutUs">About us</Link>
+          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+            <FaTimes />
+          </button>
+          <div className="header_right">
+            <Link to="/shoppingCart">
+              <img className="addToCart" src={cart1} alt="cart"></img>
+            </Link>
+            <Link to="/" id="SignIn">
+              <button id="btn_left">Sign in</button>
+            </Link>
+            <Link to="/register" id="SignUp">
+              <button id="btn_right">Sign up</button>
+            </Link>
+          </div>
+        </nav>
       </div>
-      <a href="/test">Level Test</a>
-        <a href="/coursesList">Courses</a>
-        <div className="Learning">
-          <ul>
-            <li>
-              <a href="">Learning Resources</a>
-              <ul>
-                <li>
-                  <a href="#">Podscast</a>
-                </li>
-                <li>
-                  <a href="#">Digital Flashcards</a>
-                </li>
-                <li>
-                  <a href="#">Blog</a>
-                </li>
-                <li>
-                  <a href="/socialNetwork">Social Network</a>
-                </li>
-                <li>
-                  <a href="#">Our Community</a>
-                </li>
-                <li>
-                  <a href="#">eBooks</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <a href="/aboutUs">About us</a>
-        <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-          <FaTimes />
-        </button>
-        <div className="header_right">
-          <Link to="/shoppingCart">
-            <img className="addToCart" src={cart1} alt="cart"></img>
-          </Link>
-          <Link to="/">
-            <button id="btn_left">Sign in</button>
-          </Link>
-          <Link to="/register">
-            <button id="btn_right" >Sign up</button>
-          </Link>
-        </div>
-      </nav>
+      <div className="btnCart">
+      <Link to="/shoppingCart">
+        <img className="addToCart1" src={cart1} alt="cart"></img>
+      </Link>
+      </div>
       <button className="nav-btn" onClick={showNavbar}>
         <FaBars />
       </button>

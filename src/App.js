@@ -18,7 +18,9 @@ import SimpleSlider1 from './components/SimpleSlider1';
 import Test from '../src/pages/LevelTest/Test';
 import LearningResources from './pages/LearningResources/LearningResources';
 import SocialNetwork from './pages/LearningResources/SocialNetwork';
-import Profile from './pages/Profile/Profile'
+import Profile from './pages/Profile/Profile';
+import Course from "../src/pages/Course/course";
+import CourseList from './pages/courseList/courseList';
 
 function App() {
   return (
@@ -43,7 +45,9 @@ function App() {
         <Route path="/test" element={<Test/>}/> 
         <Route path="/learningResources" element={<LearningResources/>}/> 
         <Route path="/socialNetwork" element={<SocialNetwork/>}/> 
-        <Route path="/profile" element={<Profile/>}/> 
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/course" element={<Course />} />
+        <Route path="/courseList" element={<CourseList />} />
       </Routes>
       <ToastContainer position='top-right' />
     </div>

@@ -89,6 +89,12 @@
 #linh {
   color: #362355;
 }
+.skillAll p{
+  margin: 0 auto;
+}
+.levelAll p{
+  margin: 0 auto;
+}
 .listButton h3 {
   margin-top: 10px;
   margin-bottom: 4px;

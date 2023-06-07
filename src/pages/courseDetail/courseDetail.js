@@ -437,7 +437,11 @@ export default function CourseDetail() {
           </div>
 
           <div className={styles.part2}>
-            <img  className={styles.courseMan} src={courseMan} alt="courseMan"></img>
+            <img
+              className={styles.courseMan}
+              src={courseMan}
+              alt="courseMan"
+            ></img>
             <div className={styles.categories}>
               <div className={styles.category_detail}>
                 <div className={styles.category_details}>

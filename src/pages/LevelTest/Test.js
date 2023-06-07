@@ -9,16 +9,20 @@ function Test() {
     <div>
       <Header />
       <div className={styles.test}>
-        <img src={test} alt="img"></img>
-        <h1>Welcome to your free Vietnamese level test</h1>
-        <p>
-          How well do you know Vietnamese? We suggest you complete the following
-          test to self-assess your level in Vietnamese, to pick the right
-          Vietnamese course for you, or just to pass the time.
-        </p>
-        <Link to="/coursesList">
-          <button>Start the Test</button>
-        </Link>
+        <div className={styles.testBody}>
+          <img src={test} alt="img"></img>
+          <h1 className={styles.testTitle}>
+            Welcome to your free Vietnamese level test
+          </h1>
+          <p className={styles.testContent}>
+            How well do you know Vietnamese? We suggest you complete the
+            following test to self-assess your level in Vietnamese, to pick the
+            right Vietnamese course for you, or just to pass the time.
+          </p>
+          <Link to="/coursesList">
+            <button className={styles.testButton}>Start the Test</button>
+          </Link>
+        </div>
       </div>
       <Footer />
     </div>

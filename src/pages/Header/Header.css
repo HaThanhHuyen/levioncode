@@ -1,10 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
 
-
 :root {
   --mainColor: #ffffff;
   --mainColorLight: #5767aa;
-  --secondaryColor: #db2b39;
+  --secondaryColor: #aa77ff;
   --textColor: #9387a8;
 }
 
@@ -17,9 +16,11 @@ header {
   color: var(--textColor);
   box-shadow: 1px 1px 5px black;
 }
-
+.imgheader {
+  padding: 0 5%;
+}
 nav a {
-  margin: 0 1rem;
+  padding: 0 1.5em;
   color: var(--textColor);
   text-decoration: none;
   font-weight: 600;
@@ -28,14 +29,9 @@ nav a {
 }
 
 nav a:hover {
-  transform: scale(1.2);
   color: var(--secondaryColor);
 }
-nav button:hover {
-  transform: scale(1.2);
-  color: var(--secondaryColor);
-}
-nav #btn_left:hover {
+nav .addToCart:hover {
   transform: scale(1.2);
   color: var(--secondaryColor);
 }
@@ -61,11 +57,12 @@ nav {
   display: none;
 }
 .header_right button {
+  display: inline-block;
+  padding: 0.1em 1.2em;
   background-color: #9453ff;
   border-radius: 4px;
   color: #ffffff;
   border: none;
-  width: 100px;
   height: 48px;
   font-style: normal;
   font-weight: 700;
@@ -74,8 +71,6 @@ nav {
   cursor: pointer;
 }
 #btn_left {
-  width: 100px;
-  height: 48px;
   color: #9453ff;
   background-color: #ffffff;
   border: 1px solid #9453ff;
@@ -84,36 +79,92 @@ nav {
   font-size: 16px;
   line-height: 24px;
 }
-/* .logo {
-  margin-left: 40%;
-} */
-
+#SignIn {
+  margin: 0 auto;
+}
+.menuLearning {
+  margin-left: 1.5%;
+  margin-top: 2%;
+  width: 12%;
+}
 ul li:hover ul {
   display: block;
 }
 ul li ul {
   position: absolute;
-  width: 200px;
   display: none;
   background-color: rgb(244, 244, 244);
+  padding: 1%;
 }
 ul li ul li a {
   font-size: 13px;
 }
-ul li ul li {
-  display: block;
-  line-height: 10%;
-}
-ul li ul li a {
-  display: block !important;
-}
-ul li ul li:hover {
-  border: 1px solid #9453ff;
-}
-.cow_header_nav{
+.cow_header_nav {
   display: none;
 }
-@media screen and (max-width: 768px) {
+.Learning ul {
+  list-style: none;
+  padding: 0;
+}
+.LearningIcon {
+  font-size: 30px;
+}
+.menuIcon {
+  display: flex;
+}
+.titleLearning {
+  margin-top: 1%;
+}
+nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: #5767aa;
+}
+.LearningIcon {
+  margin-left: -10%;
+}
+#SignIn button:hover{
+  background-color: #9453ff;
+  color: #ffffff;
+}
+#SignUp button:hover{
+  background-color: #ffffff;
+  color: #9453ff;
+  border: 1px solid #9453ff;
+}
+.addToCart1{
+  display: none;
+}
+.btnCart{
+  padding: 0 2% 2% 0;
+}
+@media screen and (max-width: 1368px) {
+  nav a {
+    font-size: 20px;
+    padding: 0 0.2em;
+  }
+  .imgheader{
+    padding: 1%;
+  }
+  .imgheader img {
+    width: 100%;
+  }
+  .LearningIcon {
+    padding-left: 1em;
+  }
+}
+@media screen and (max-width: 1164px) {
+  nav a {
+    font-size: 18px;
+    padding: 0 0.2em;
+  }
+  .imgheader img {
+    width: 100%;
+  }
+  .addToCart1{
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) {
   header .nav-btn {
     visibility: visible;
     opacity: 1;
@@ -151,8 +202,8 @@ ul li ul li:hover {
     font-size: 1.5rem;
   }
   .cow_header {
+    margin: 0 auto;
     display: flex;
-    margin-top: 10px;
   }
   .logo {
     display: none;
@@ -162,39 +213,10 @@ ul li ul li:hover {
     display: contents;
     flex-direction: column-reverse;
   }
-  .cow_header_nav{
+  .cow_header_nav {
     display: flex;
   }
-}
-@media only screen and (min-width: 768px) and (max-width: 860px){
-  nav{
-    width: 100%;
-    /* margin-left: 20%; */
-  }
-  /* nav a{
-    font-size: 15px;
-  } */
-  .logo{
-  justify-self: center;
-  margin: 0;
-  }
-  .header_right{
-    width: 100%;
-  }
-  #btn_left{
-    width: 100%;
-  }
-  #btn_right{
-    width: 100%;
-  }
-  @media only screen and (min-width: 860px) and (max-width: 1131px){
-    .logo{
-      justify-self: center;
-      margin: 0;
-      } 
-      nav{
-        width: 100%;
-        /* margin-left: 20%; */
-      }
+  .addToCart1{
+    display: flex ;
   }
 }

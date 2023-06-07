@@ -117,6 +117,7 @@ export default function Profile() {
             >
               <div className="Content-Learning">
                 <div className="LearningJourney">
+                <div className="LearningJourneyLeft">
                   <img src={imageMain} alt="imageMain"></img>
                   <div className="infoCourse">
                     <h6>Master your pronunciation Course</h6>
@@ -132,6 +133,7 @@ export default function Profile() {
                     <a href="/coursesList">
                       <button>Go to course</button>
                     </a>
+                  </div>
                   </div>
                   <div className="process">
                     <img src={process} alt="process"></img>
@@ -139,6 +141,7 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className="LearningJourney">
+                <div className="LearningJourneyLeft">
                   <img src={imageMain} alt="imageMain"></img>
                   <div className="infoCourse">
                     <h6>Master your pronunciation Course</h6>
@@ -154,6 +157,7 @@ export default function Profile() {
                     <a href="/coursesList">
                       <button>Go to course</button>
                     </a>
+                  </div>
                   </div>
                   <div className="process">
                     <img src={process} alt="process"></img>
@@ -161,6 +165,7 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className="LearningJourney">
+                <div className="LearningJourneyLeft">
                   <img src={imageMain} alt="imageMain"></img>
                   <div className="infoCourse">
                     <h6>Master your pronunciation Course</h6>
@@ -176,6 +181,7 @@ export default function Profile() {
                     <a href="/coursesList">
                       <button>Go to course</button>
                     </a>
+                  </div>
                   </div>
                   <div className="process">
                     <img src={process} alt="process"></img>

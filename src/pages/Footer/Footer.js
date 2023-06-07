@@ -5,15 +5,18 @@ import youtube from "../../image/youtube.png";
 import tiktok from "../../image/tiktok.png";
 import instagram from "../../image/ig.png";
 import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
       <div id={styles.footerMain}>
-          <div id={styles.footer_bg}>
-            <img src={background} alt="footer"></img>
-          </div>
+        <div id={styles.footer_bg}>
+          <img src={background} alt="footer"></img>
+        </div>
         <div id={styles.logo}>
+          <Link to = "/homePage">
           <img src={logo} alt="footer"></img>
+          </Link>
         </div>
         <div className={styles.category}>
           <a href="#">Home</a>

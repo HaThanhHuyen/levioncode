@@ -9,7 +9,6 @@ import PaginationOfCourse from "./paginationOfCourse";
 import UseLogicCourseList from "./useLogicList";
 export default function CourseList() {
   const {
-    handleSearch,
     listCourse,
     handleFilterSkills,
     handleFilterLevels,
