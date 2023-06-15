@@ -32,7 +32,7 @@ function Navbar() {
             </Link>
           </div>
           <Link to="/test">Level Test</Link>
-          <Link to="/coursesList">Courses</Link>
+          <Link to="/courseList">Courses</Link>
           <div className="Learning">
             <ul>
               <li className="menuIcon">

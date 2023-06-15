@@ -1,26 +1,36 @@
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../../context/LevionContext";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import logo1 from "../../image/logo 1.png";
 import background from "../../image/OBJECTS.png";
-// import "../login/Login.module.css";
 import styles from "./Login.module.css";
-import { Link } from "react-router-dom";
 import facebook from "../../image/fb.png";
 import google from "../../image/google.png";
-import { useState } from "react";
-import axios from "axios";
-import useLogicLogin from "./useLogicLogin";
 
 function Login() {
-  const {
-    setEmail,
-    setPassword,
-    isChecked,
-    loading,
-    emailRef,
-    validMsg,
-    passwordRef,
-    setIsChecked,
-    onSubmit,
-  } = useLogicLogin();
+  const { googleSignIn, user } = UserAuth();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      navigate("/profile"); // Chuyển hướng sau khi đăng nhập thành công
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+  useEffect(() => {
+    if (user != null) {
+      navigate("/"); // Chuyển hướng sau khi đăng nhập thành công
+    }
+  }, [user, navigate]);
 
   return (
     <>
@@ -49,10 +59,9 @@ function Login() {
               className={styles.login_input}
               type="email"
               placeholder="Your Email"
-              ref={emailRef}
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <span>{validMsg.email}</span>
             <br />
           </div>
           <div>
@@ -62,18 +71,17 @@ function Login() {
               className={styles.login_input}
               type="password"
               placeholder="Your Password"
-              ref={passwordRef}
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <span>{validMsg.password}</span>
             <br />
           </div>
 
           <div className={styles.btn_wrapper}>
-            <button className={styles.submit} onClick={onSubmit}>
+            <button className={styles.submit} >
               Sign In
               {!loading && (
-                <div class={styles.lds_ring}>
+                <div className={styles.lds_ring}>
                   <div></div>
                   <div></div>
                   <div></div>
@@ -99,7 +107,7 @@ function Login() {
             </Link>
             <br />
             <Link href="">
-              <button className={styles.continue_google}>
+              <button className={styles.continue_google} onClick={handleGoogleSignIn}>
                 <img src={google} alt="a" />
                 Continue with Google
               </button>
@@ -110,4 +118,5 @@ function Login() {
     </>
   );
 }
+
 export default Login;

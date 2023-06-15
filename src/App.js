@@ -6,7 +6,6 @@ import { Routes, Route } from "react-router-dom";
 
 import HomePage from './pages/HomePage/HomePage';
 import AboutUs from './pages/AboutUs/AboutUs';
-import CoursesList from './pages/coursesList/coursesList';
 import CourseDetail from './pages/courseDetail/courseDetail';
 import ShoppingCart from './pages/shoppingCart/shoppingCart'
 import CartEmpty from './pages/shoppingCart/cartEmpty';
@@ -21,10 +20,12 @@ import SocialNetwork from './pages/LearningResources/SocialNetwork';
 import Profile from './pages/Profile/Profile';
 import Course from "../src/pages/Course/course";
 import CourseList from './pages/courseList/courseList';
+import { LevionContextProvider } from './context/LevionContext';
 
 function App() {
   return (
     <div className="App">
+      <LevionContextProvider>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -32,8 +33,7 @@ function App() {
         <Route path="/new_password" element={<new_password/>}/>
         <Route path="/success" element={<success/>}/>
         <Route path="/HomePage" element={<HomePage/>}/>
-        <Route path="/AboutUs" element={<AboutUs/>}/>   
-        <Route path="/coursesList" element={<CoursesList/>}/>    
+        <Route path="/AboutUs" element={<AboutUs/>}/>     
         <Route path="/courseDetail" element={<CourseDetail/>}/>   
         <Route path="/shoppingCart" element={<ShoppingCart/>}/>   
         <Route path="/cartEmpty" element={<CartEmpty/>}/> 
@@ -49,7 +49,9 @@ function App() {
         <Route path="/course" element={<Course />} />
         <Route path="/courseList" element={<CourseList />} />
       </Routes>
+      </LevionContextProvider>
       <ToastContainer position='top-right' />
+
     </div>
   );
 }

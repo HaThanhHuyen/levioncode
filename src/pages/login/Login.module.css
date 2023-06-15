@@ -180,9 +180,9 @@ button:hover {
   color: var(--secondaryColor);
   
 }
-.continue{
+/* .continue{
   display: none;
-}
+} */
 @media screen and (max-width: 768px){
   #login, 
   .btn_wrapper{

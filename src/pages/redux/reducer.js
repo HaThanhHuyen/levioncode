@@ -1,9 +1,7 @@
 const initState = {
     course: {},
     cart: [
-      { id: 12, name: "Master Your Pronounciation Course", price: 20.0 },
-      { id: 22, name: "Master Your Pronounciation Course", price: 20.0 },
-      { id: 32, name: "Master Your Pronounciation Course", price: 20.0 },
+
     ],
   };
   
@@ -16,7 +14,7 @@ const initState = {
     switch (action.type) {
       case "ADD_TO_CART":
         if ([...state.cart].findIndex((e) => e.id === idPayload) >= 0) {
-          alert("aaaaa");
+          alert("success");
         } else {
           return {
             ...state,

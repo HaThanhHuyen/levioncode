@@ -1,4 +1,4 @@
-import styles from "../coursesList/coursesList.module.css";
+import styles from "../courseList/courseList.module.css";
 import course from "../../image/courses.png";
 export default function TitleOfCourseList() {
   return (

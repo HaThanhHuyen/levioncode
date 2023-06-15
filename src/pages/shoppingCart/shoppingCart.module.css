@@ -1,7 +1,5 @@
 .cart {
-  /* margin: 64px 80px 160px 80px; */
-  height: 100%;
-  width: 100%;
+  padding: 64px 80px 160px 80px;
 }
 .title h3 {
   color: #281c42;
@@ -13,16 +11,15 @@
   display: flex;
 }
 .cart_details {
+  padding-top: 2%;
   display: flex;
-  /* margin-top: 40px; */
   justify-content: center;
 }
 .yourCart {
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  /* width: 100%; */
-  padding: 24px 40px 0 40px;
+  padding: 3%;
 }
 .yourCart h5 {
   color: #362355;
@@ -63,7 +60,6 @@
   border: 1px solid #cac1d8;
   border-radius: 4px;
   height: 28px;
-  margin-top: 5%;
   margin-right: 5%;
 }
 .courseDetail {
@@ -118,7 +114,8 @@
   border-bottom: 1px solid #cac1d8;
 }
 .courseDetail_buttons {
-  display: flex; 
+  display: flex;
+  width: 151%;
 }
 .coupon {
   text-align: left;
@@ -203,7 +200,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
-  width: 409px;
+  /* width: 409px; */
   height: 24px;
 }
 .discount p {
