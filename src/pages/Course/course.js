@@ -14,6 +14,7 @@ import Quiz, { QuizHasNotImg } from "../Course/quiz";
 import UseLogic from "../Course/useLogic";
 import { dataQuestions } from "../../fakeData/question";
 import Search from "../../components/Search";
+
 export default function Course() {
   const {
     handleAnswer,
@@ -36,7 +37,7 @@ export default function Course() {
       <TitlePC />
       <div className={style.screenPC}>
         <div className={style.left}>
-          <Section sections={lessons} handleCollaspe={handleCollapse} />
+          {/* <Section sections={lessons} handleCollaspe={handleCollapse} /> */}
         </div>
         <div className={style.right}>
           <div className={style.part1}>

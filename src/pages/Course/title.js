@@ -3,6 +3,7 @@ import style from "./course.module.css";
 import logo from "../../image/logo 1.png";
 import process from "../../image/process.png";
 import avt from "../../image/avtcourse.png";
+import { Link } from "react-router-dom";
 export const TitleMobile = () => {
   return (
     <div className={style.title}>
@@ -36,7 +37,9 @@ export const TitlePC = () => {
               <p>Course Progress</p>
             </div>
           </div>
+          <Link to ="/profile ">
           <img src={avt} alt="avt"></img>
+          </Link>
         </div>
       </div>
     </div>

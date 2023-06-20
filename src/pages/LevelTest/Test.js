@@ -19,7 +19,7 @@ function Test() {
             following test to self-assess your level in Vietnamese, to pick the
             right Vietnamese course for you, or just to pass the time.
           </p>
-          <Link to="/coursesList">
+          <Link to="/course">
             <button className={styles.testButton}>Start the Test</button>
           </Link>
         </div>

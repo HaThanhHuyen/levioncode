@@ -44,7 +44,7 @@ export default function LearningResources() {
                 <p>Digital Flashcards</p>
               </div>
             </a>
-            <a href="/homePage">
+            <a href="/blog">
               <div className={styles.block}>
                 <img src={Blog} alt="learningResources-images"></img>
                 <p>Blog</p>

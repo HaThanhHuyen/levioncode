@@ -12,6 +12,7 @@
 }
 .header_info p {
   color: #9387a8;
+  font-size: 20px;
 }
 .images_homepage {
   display: flex;
@@ -90,6 +91,7 @@
 .part_two p {
   color: #9387a8;
   margin-top: 2%;
+  font-size: 20px;
 }
 
 .part_two_image {

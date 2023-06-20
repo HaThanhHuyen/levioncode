@@ -36,7 +36,7 @@ function Navbar() {
           <div className="Learning">
             <ul>
               <li className="menuIcon">
-                <Link to="#" className="titleLearning">
+                <Link to="/learningResources" className="titleLearning">
                   Learning Resources
                 </Link>
                 <div className="LearningIcon">
@@ -50,7 +50,7 @@ function Navbar() {
                     <Link to="#">Digital Flashcards</Link>
                   </li>
                   <li>
-                    <Link to="#">Blog</Link>
+                    <Link to="/blog">Blog</Link>
                   </li>
                   <li>
                     <Link to="/socialNetwork">Social Network</Link>

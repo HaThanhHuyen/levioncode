@@ -1,11 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
+  @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 :root {
   --mainColor: #ffffff;
   --mainColorLight: #5767aa;
   --secondaryColor: #aa77ff;
   --textColor: #9387a8;
+  --fontFamily: 'Source Code Pro', monospace;
 }
+
 
 header {
   display: flex;
@@ -26,6 +29,7 @@ nav a {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
+  /* font-family: var(--fontFamily); */
 }
 
 nav a:hover {

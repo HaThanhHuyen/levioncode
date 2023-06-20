@@ -21,6 +21,8 @@ import Profile from './pages/Profile/Profile';
 import Course from "../src/pages/Course/course";
 import CourseList from './pages/courseList/courseList';
 import { LevionContextProvider } from './context/LevionContext';
+import Blog from './pages/Blog/blog';
+import BlogDetail from './pages/Blog/blogDetail';
 
 function App() {
   return (
@@ -29,9 +31,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/forgot_password" element={<forgot_password/>}/>
-        <Route path="/new_password" element={<new_password/>}/>
-        <Route path="/success" element={<success/>}/>
         <Route path="/HomePage" element={<HomePage/>}/>
         <Route path="/AboutUs" element={<AboutUs/>}/>     
         <Route path="/courseDetail" element={<CourseDetail/>}/>   
@@ -48,6 +47,8 @@ function App() {
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/course" element={<Course />} />
         <Route path="/courseList" element={<CourseList />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blogDetail/:id" element={<BlogDetail />} />
       </Routes>
       </LevionContextProvider>
       <ToastContainer position='top-right' />

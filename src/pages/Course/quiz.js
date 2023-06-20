@@ -1,6 +1,4 @@
 import style from "../Course/course.module.css";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
 import React from "react";
 
 export default function Quiz({
@@ -51,7 +49,6 @@ export default function Quiz({
 }
 export function QuizHasNotImg({
   index,
-  img,
   questionName,
   a,
   b,

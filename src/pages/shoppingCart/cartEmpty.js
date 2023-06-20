@@ -10,7 +10,7 @@ function CartEmpty(){
                 <h1>Shopping Cart</h1>
                 <img src={sadFace} alt="img"></img>
                 <p>Your cart is empty. Keep Going to find a course!</p>
-                <Link to='/coursesList'><button>Go to Courses</button></Link>
+                <Link to='/courseList'><button>Go to Courses</button></Link>
             </div>
         </div>
     );
