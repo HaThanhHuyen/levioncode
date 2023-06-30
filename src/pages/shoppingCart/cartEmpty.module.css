@@ -28,7 +28,21 @@
 }
 @media screen and (max-width: 768px){
   .cart img{
-    width: 100%;
+    width: 80%;
     height: 100%;
   }
+  .cart{
+    width: 100%;
+    padding: 20% 0;
+    margin: 0;
+  }
+  .cart button {
+    width: 255px;
+    height: 56px;
+
+  }
+  .cart p{
+    width: 81%;
+    text-align: center;
+}
 }

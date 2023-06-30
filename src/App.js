@@ -23,6 +23,7 @@ import CourseList from './pages/courseList/courseList';
 import { LevionContextProvider } from './context/LevionContext';
 import Blog from './pages/Blog/blog';
 import BlogDetail from './pages/Blog/blogDetail';
+import Podcast from './pages/Podcast/Podcast';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/courseList" element={<CourseList />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blogDetail/:id" element={<BlogDetail />} />
+        <Route path="/podcast" element={<Podcast />} />
       </Routes>
       </LevionContextProvider>
       <ToastContainer position='top-right' />

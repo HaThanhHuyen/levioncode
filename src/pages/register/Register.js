@@ -10,24 +10,15 @@ import useLogicRegister from "./useLogicRegister";
 
 function Register() {
   const {
-    formData,
-    isLoading,
     nameRef,
     onsubmit,
-    name,
     setName,
     emailRef,
-    email,
     setEmail,
     passwordRef,
-    password,
     setPassword,
     setIsChecked,
     isChecked,
-    loading,
-    setLoading,
-    debounce,
-    checkboxbutton,
     validMsg,
   } = useLogicRegister();
 
@@ -50,7 +41,7 @@ function Register() {
           </div>
           
           <div>
-            <label htmlFor="name">Full name</label>
+            <label htmlFor="name">Full name</label><strong>*</strong>
             <br />
             <input
               type="text"
@@ -62,7 +53,7 @@ function Register() {
             <br />
           </div>
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email</label><strong>*</strong>
             <br />
             <input
               type="email"
@@ -74,7 +65,7 @@ function Register() {
             <br />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password</label><strong>*</strong>
             <br />
             <input
               type="password"
@@ -102,14 +93,14 @@ function Register() {
               className={`submit ${!isChecked ? "disabled_btn" : ""}`}
             >
               Create Account
-              {!loading && (
+              {/* {!loading && (
                 <div class={styles.lds_ring}>
                   <div></div>
                   <div></div>
                   <div></div>
                   <div></div>
                 </div>
-              )}
+              )} */}
             </button>
           </div>
           <div className={styles.change_to_signIp}>

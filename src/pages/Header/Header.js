@@ -44,7 +44,7 @@ function Navbar() {
                 </div>
                 <ul className="menuLearning">
                   <li>
-                    <Link to="#">Podscast</Link>
+                    <Link to="/podcast">Podscast</Link>
                   </li>
                   <li>
                     <Link to="#">Digital Flashcards</Link>

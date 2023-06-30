@@ -45,7 +45,10 @@
   display: flex;
 }
 .facebook {
-  width: 19%;
+  width: 20%;
+}
+.social_media img{
+  height: 60px;
 }
 @media screen and (max-width: 1064px) {
   #footer_bg img {
@@ -86,6 +89,4 @@
   .title {
     margin-top: 10%;
   }
-
-
 }

@@ -12,6 +12,8 @@ import ReactPaginate from "react-paginate";
 import React, { useState } from "react";
 import Calender from "../../components/Calender";
 import Eye from "../../components/Eye";
+import imageblog from "../../image/imageblog.png";
+import Data from "../../fakeData/postData.json";
 function Blog() {
   const coursesPerPage = 6;
   const [pageNumber, setPageNumber] = useState(0);
@@ -67,7 +69,21 @@ function Blog() {
               </div>
             </div>
             <div className={styles.postAndcategories}>
-              <FilterPost />
+              <div className={styles.popularPost}>
+                <h3>Popular Post</h3>
+                <div className={styles.postDetail}>
+                  {Data.map((post) => (
+                    <div key={post.id} className={styles.postBody}>
+                      <img src={imageblog} alt="blog-images"></img>
+                      <div className={styles.text}>
+                        <h3>{post.title}</h3>
+                        <p>{post.name}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* <FilterPost /> */}
               <FilterCategoris />
             </div>
           </div>
@@ -96,8 +112,9 @@ function Blog() {
                       <h4>{list.detail}</h4>
                     </h3>
                   </div>
-                  <Link to = {`/blogDetail/${list.id}`}><button>Read More</button></Link>
-
+                  <Link to={`/blogDetail/${list.id}`}>
+                    <button>Read More</button>
+                  </Link>
                 </div>
               </div>
             ))}

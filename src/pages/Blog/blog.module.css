@@ -2,6 +2,7 @@
   display: flex;
   background: url("../../image/Rectangle\ 241.png");
   margin-top: 3px;
+  padding: 2%;
 }
 .first_details {
   display: flex;
@@ -15,9 +16,12 @@
   width: 100%;
 }
 .first_details h1 {
+  font-size: 48px;
   color: #9453ff;
 }
 .first_details p {
+  font-size: 20px;
+  line-height: 28px;
   color: #554766;
 }
 .blogDetail {
@@ -26,14 +30,14 @@
   padding-top: 5%;
 }
 .categoryOfBlog {
-  padding: 0 2.5%;
-  width: 30%;
+  padding-left: 2%;
+  width: 21%;
 }
 .templateContainerBlog {
   display: flex;
 }
 .searchInput_ContainerBlog {
-  border: 1px solid;
+  border: 1px solid #CAC1D8;
   border-radius: 5px;
   width: 100%;
 }
@@ -47,8 +51,12 @@
   width: 80%;
 }
 .popularPost {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #CAC1D8;
   padding-top: 5%;
+}
+.popularPost h3{
+  padding: 3% 0;
+
 }
 .postBody {
   display: flex;
@@ -65,7 +73,7 @@
   padding-top: 5%;
 }
 .categoris {
-  padding-top: 5%;
+  padding-top: 8%;
 }
 .categorisBody p {
   padding-left: 5%;
@@ -90,7 +98,7 @@
 .listBlog {
   display: flex;
   flex-wrap: wrap;
-  width: 70%;
+  width: 60%;
 }
 .listBlogDetail {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -130,17 +138,18 @@
   justify-content: space-between;
   display: flex;
 }
-.headerBlock,
+/* .headerBlock,
 .firstBlock,
 .secondBlock{
   width: 100%;
-}
+} */
 .titleBlog h4 {
   font-size: 14px;
   font-weight: 400;
   color: #9387a8;
 }
 .headerBlock p {
+  margin-left: 4px;
   margin-top: -2%;
   color: #9387a8;
 }
@@ -180,8 +189,9 @@
     flex-direction: column-reverse;
   }
   .listBlog {
-    padding: 15%;
+    padding: 6%;
     display: block;
+    width: 88%; 
   }
   .listBlogDetail {
     width: 100%;
@@ -198,5 +208,13 @@
   .categorisDetail {
     padding-top: 2%;
     padding-bottom: 5%;
+  }
+  .first_details h1 {
+    font-size: 32px;
+  }
+  .first_details p {
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 8%;
   }
 }

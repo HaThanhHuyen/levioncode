@@ -23,13 +23,15 @@
 .backBlock {
   display: flex;
   width: 30%;
-  padding: 2% 0% 0 2.5%;
+  padding: 2% 0% 0% 5%;
 }
 .backBlock p {
   color: #9387a8;
 }
-.backBlock a{
-    text-decoration: none;
+.backBlock a {
+  margin-top: -3px;
+  padding-left: 2%;
+  text-decoration: none;
 }
 .blogDetail {
   justify-content: space-around;
@@ -37,8 +39,8 @@
   padding-top: 2%;
 }
 .categoryOfBlog {
-  padding: 0 2.5%;
-  width: 30%;
+  padding: 0 5%;
+  width: 21%;
 }
 .templateContainerBlog {
   display: flex;
@@ -60,6 +62,9 @@
 .popularPost {
   border-bottom: 1px solid;
   padding-top: 5%;
+}
+.h3 {
+  padding-top: 4%;
 }
 .postBody {
   display: flex;
@@ -174,20 +179,20 @@
 .profileBlog,
 .firstBlockHeader,
 .secondBlockHeader {
-    width: 20%;
-    display: flex;
+  width: 20%;
+  display: flex;
 }
-.profileBlog p{
+.profileBlog p {
   padding-left: 5%;
 }
 .firstBlockHeader {
   padding: 0% 10%;
 }
-.BlockHeader p{
+.BlockHeader p {
   margin-top: -2%;
   padding-left: 5%;
 }
-.blogDetail h1 {
+.blockDetailName {
   font-size: 28px;
 }
 .blockDetailHeader {
@@ -199,11 +204,13 @@
 .blockDetailBody p {
   font-size: 16px;
   color: #554766;
-  padding: 2% 0;
 }
 .blockDetailBody h1 {
-  font-size: 16px;
+  /* padding: 2% 0 1% 0; */
   color: #362355;
+}
+.blockDetailBody_img2 {
+  padding: 2% 0;
 }
 .textBlogBody {
   width: 100%;
@@ -214,6 +221,19 @@
 .community {
   display: flex;
   padding: 1% 0;
+}
+.text1 {
+  padding-top: 1%;
+}
+.text2 {
+  padding: 4% 6% 2%;
+  font-size: 16px;
+}
+.text3 {
+  font-size: 24px;
+}
+.text4 {
+  padding: 2% 0;
 }
 .hashtagButton button {
   background-color: #f7f5fa;
@@ -230,15 +250,23 @@
   margin: 0 2%;
 }
 .relatedListBlock {
+  padding-bottom: 6%;
+  padding-top: 3%;
   display: flex;
   flex-wrap: wrap;
 }
-.BlockHeader{
-    width: 100%;
-    display: flex;
+.BlockHeader {
+  width: 100%;
+  display: flex;
 }
-.Loremh1{
+.Loremh1 {
   font-size: 24px;
+}
+.blockDetailBody {
+  width: 91%;
+}
+.related {
+  padding: 6% 0;
 }
 @media screen and (max-width: 768px) {
   .firstBlog {
@@ -262,34 +290,67 @@
     width: 100%;
   }
   .categoryOfBlog {
-    width: 95%;
+    width: 89%;
   }
   .categorisDetail {
     padding-top: 2%;
     padding-bottom: 5%;
   }
-  .blockDetailBody img{
+  .blockDetailBody img {
     width: 100%;
   }
-  .blockDetail{
+  .blockDetail {
     width: 100%;
   }
   .related {
-    padding: 0 10%;
-    width: 80%;
+    padding: 5%;
+    width: 90%;
   }
   .relatedList {
     width: 100%;
   }
-  .blockDetailHeader    {
+  .blockDetailHeader {
+    padding: 0 5%;
     display: block;
   }
   .profileBlog,
   .BlockHeader,
   .firstBlockHeader,
-  .secondBlockHeader{
+  .secondBlockHeader {
     width: 100%;
-    padding : 1% 0;
+    padding: 1% 0;
   }
-
+  .first_details h1 {
+    font-size: 48px;
+    color: #9453ff;
+  }
+  .blockDetailName {
+    padding: 5%;
+  }
+  .blockDetailBody {
+    width: 100%;
+    padding-top: 5%;
+  }
+  .blockDetailBody p{
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .textBlogBody{
+    padding: 5%;
+    width: 86%;
+  }
+  .text2{
+    font-size: 14px;
+  }
+  .text3{
+    padding-top: 10%;
+  }
+  .socials,
+  .hashtag{
+    padding: 5%;
+  }
+  .relatedListBlock{
+    width: 106%;
+    padding-top: 8%;
+  }
 }

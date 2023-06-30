@@ -29,7 +29,7 @@ export default function LearningResources() {
         </div>
         <div className={styles.second}>
           <div className={styles.second_first}>
-            <a href="/homePage">
+            <a href="/podcast">
               <div className={styles.block}>
                 <img src={Podcast} alt="learningResources-images"></img>
                 <p>Podcast</p>

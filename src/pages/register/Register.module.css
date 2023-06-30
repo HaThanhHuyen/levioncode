@@ -22,7 +22,7 @@
   z-index: 2;
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 20px;
   color: #554766;
   width: 30%;
@@ -36,15 +36,13 @@
   justify-content: center;
 }
 .heading h1 {
-  /* width: 352px;
-  height: 40px; */
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 40px;
   color: #000;
   text-align: center;
-  color: #000;
+  padding: 6%;
 }
 
 #register input {
@@ -74,9 +72,9 @@ input:focus {
   background: #9453ff;
   border-radius: 4px;
   border: none;
-  margin-top: 20px;
 }
 .btn_wrapper {
+  padding: 7% 0 1% 0;
   display: flex;
   gap: 10px;
 }
@@ -148,6 +146,10 @@ input:focus {
 .lds_ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
+strong{
+  color: #BB222A;
+  padding-left: 1%;
+}
 @keyframes lds_ring {
   0% {
     transform: rotate(0deg);
@@ -160,7 +162,6 @@ input:focus {
   padding: 10px 0;
   display: flex;
   justify-content: center;
-  margin-top: 10px;
   color: #9387a8;
 }
 .change_to_signIp span {

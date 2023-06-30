@@ -280,66 +280,72 @@
     height: 100vh;
   }
   .coupon {
-    padding: 0;
+    padding-top: 10%;
     width: 100%;
     margin: 0 auto;
   }
-  .couponDiscount {
-    width: 70vw;
+  .couponDiscount { 
     height: 30vh;
-    /* padding: 24px 40px 24px 40px; */
-    margin-left: 5%;
   }
   .couponCode {
     width: 0;
     height: 0;
   }
-  .cart {
+  /* .cart {
     width: 100vw;
     height: 100vh;
     margin: 0 auto;
+  } */
+  .cart{
+    padding: 5%;
   }
   .checkout button,
   .discount {
     width: 100%;
   }
-  .couponDetail {
-    width: 70vw;
-    height: 50vh;
-    margin-left: 5%;
+
+  .cart_details {
+    padding-top: 5%;
   }
-  .yourCart {
+  .title h3{
+    font-size: 32px;
+  }
+  /* .yourCart {
     width: 70vw;
     padding: 24px 40px 24px 40px;
     margin: 0 auto;
 
-  }
+  } */
   /* .yourCart h5 {
     text-align: center;
     width: 100%;
     margin: 0 auto;
   } */
   .courseDetail_buttons {
-    display: flex;
+    width: 120%;
   }
   .courseDetail button {
     margin: 0;
   }
   .course img {
-    width: 100%;
+    height: 80px;
+    width: 30%;
   }
   .course button {
+    margin-right: 5%;
     font-size: 8px;
-    width: 21vw;
+    width: 21vw;  
   }
   .courseDetail h6 {
-    font-size: 15px;
+    font-size: 14px;
     margin: 0 auto;
   }
   .courseDetail,
   .courseDetail_right{
+
     display: block;
-    width: 35vw;
+    width: 53vw;
+
   }
   .courses{
     height: 20vh;
@@ -356,15 +362,17 @@
     height: 4vh;
   }
   .remove p{
+    font-size: 12px;
     margin: 0;
-  }
+}
+  
   .discount h6{
     margin-top: 5%;
   }
-}
-@media screen and (min-width: 769px) and (max-width: 1300px){
-  .yourCart{
-    width: 100%;
-
+  .yourCart h5{
+    font-size: 20px;
+  }
+  .couponDiscount h5{
+    font-size: 20px;
   }
 }

@@ -2,7 +2,6 @@ import styles from "../Blog/blogDetail.module.css";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import { BiSearch } from "react-icons/bi";
 import FilterPost from "./popularPost";
 import FilterCategoris from "./categoris";
 import JsonData from "../../fakeData/blog.json";
@@ -27,11 +26,12 @@ function BlogDetail() {
   const filteredBlog = JsonData.filter((val) => {
     if (SearchBlog === "") {
       return true;
-    } else if (val.name.toLowerCase().includes(SearchBlog.toLowerCase())) {
+    } else if (val.title && val.title.toLowerCase().includes(SearchBlog.toLowerCase())) {
       return true;
     }
     return false;
   });
+  
 
   const displayBlog = filteredBlog.slice(
     pagesVisited,
@@ -50,23 +50,13 @@ function BlogDetail() {
       </div>
       <div className={styles.blogDetail}>
         <div className={styles.categoryOfBlog}>
-          <div className={styles.templateContainerBlog}>
-            <div className={styles.searchInput_ContainerBlog}>
-              <BiSearch className={styles.searchIconBlog} />
-              <input
-                id={styles.searchInputBlog}
-                type="text"
-                placeholder="Search here..."
-              />
-            </div>
-          </div>
           <div className={styles.postAndcategories}>
             <FilterPost />
             <FilterCategoris />
           </div>
         </div>
         <div className={styles.blockDetail}>
-          <h1>{list.name}</h1>
+          <h1 className={styles.blockDetailName}>{list.name}</h1>
           <div className={styles.blockDetailHeader}>
             <div className={styles.profileBlog}>
               <img
@@ -100,7 +90,7 @@ function BlogDetail() {
                 aliquet turpis mi quam commodo. Volutpat velit nisl ultricies
                 vitae amet integer mauris.
               </p>
-              <p>
+              <p className={styles.text1}>
                 Aliquam id felis nibh ut risus duis euismod eu. In id eu commodo
                 bibendum bibendum et. Urna imperdiet eget phasellus quam et
                 nulla nibh sed sed. Dictum potenti vestibulum maecenas quis
@@ -110,7 +100,7 @@ function BlogDetail() {
                 mauris eu adipiscing mattis id tempor. Enim dolor bibendum ut
                 commodo accumsan, aliquam.
               </p>
-              <h1>
+              <h1 className={styles.text2}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 tincidunt turpis tellus nunc venenatis, bibendum. Pulvinar
                 gravida ornare convallis nunc est mauris tellus. Facilisis id
@@ -134,7 +124,7 @@ function BlogDetail() {
                 volutpat dis. Pretium lectus elementum donec mattis vestibulum
                 consectetur.
               </p>
-              <h1 >Lorem ipsum dolor sit amet</h1>
+              <h1  className={styles.text3}>Lorem ipsum dolor sit amet</h1>
               <p>
                 Dui tempor, congue neque, augue lectus cursus integer leo.
                 Tristique pellentesque non massa netus. Cursus facilisis
@@ -166,7 +156,9 @@ function BlogDetail() {
                 non vel orci molestie mus sit. Magnis pellentesque quam pulvinar
                 ut non sed. At cras tempus fermentum faucibus mattis maecenas
                 ultrices. Viverra fermentum, mauris porttitor ipsum sollicitudin
-                tristique nunc nec. Varius lorem nunc augue porta enim. Lectus
+                tristique nunc nec. 
+              </p>
+              <p className={styles.text4}>Varius lorem nunc augue porta enim. Lectus
                 ultricies duis viverra ac. Et vel eget nisi scelerisque purus
                 dolor. Purus facilisis egestas nisl, sit sollicitudin vestibulum
                 sed arcu posuere. Varius malesuada condimentum ornare risus
@@ -177,8 +169,7 @@ function BlogDetail() {
                 nisl. At tellus euismod platea commodo sodales et et, nec
                 tincidunt. Pretium sit mi at porttitor iaculis. Odio diam
                 adipiscing at sed est et a fermentum lectus. Eget adipiscing
-                amet nisl varius arcu morbi lorem pretium.
-              </p>
+                amet nisl varius arcu morbi lorem pretium.</p>
             </div>
             <div className={styles.socials}>
               <h4>Share</h4>

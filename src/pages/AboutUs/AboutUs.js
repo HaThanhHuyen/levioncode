@@ -20,7 +20,7 @@ import halfCircle from "../../image/halfCircle.png";
 import lines from "../../image/lines.png";
 import shadow2 from "../../image/shadow2.png";
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header"
+import Header from "../Header/Header";
 import styles from "./AboutUs.module.css";
 
 export default function AboutUs() {
@@ -44,19 +44,19 @@ export default function AboutUs() {
           <img src={aboutUs1} alt="aboutUs-images"></img>
         </div>
       </div>
+      <div className={styles.shadow}>
+        <img src={shadow} alt="aboutUs-images"></img>
+      </div>
+      <div className={styles.line}>
+        <img src={line} alt="aboutUs-images"></img>
+      </div>
+      <div className={styles.triangle}>
+        <img src={triangle} alt="aboutUs-images"></img>
+      </div>
+      <div className={styles.halfCircle}>
+        <img src={halfCircle} alt="aboutUs-images"></img>
+      </div>
       <div className={styles.part_two}>
-        <div className={styles.shadow}>
-          <img src={shadow} alt="aboutUs-images"></img>
-        </div>
-        <div className={styles.line}>
-          <img src={line} alt="aboutUs-images"></img>
-        </div>
-        <div className={styles.triangle}>
-          <img src={triangle} alt="aboutUs-images"></img>
-        </div>
-        <div className={styles.halfCircle}>
-          <img src={halfCircle} alt="aboutUs-images"></img>
-        </div>
         <div className={styles.part_two_left}>
           <h2>The Levion story</h2>
           <p>
@@ -117,9 +117,7 @@ export default function AboutUs() {
             </p>
           </div>
         </div>
-        <div className={styles.lines2}>
-          <img src={lines} alt="aboutUs-images"></img>
-        </div>
+
         <div className={styles.triangle2}>
           <img src={triangle} alt="aboutUs-images"></img>
         </div>
@@ -127,6 +125,9 @@ export default function AboutUs() {
           <img src={work} alt="aboutUs-images"></img>
         </div>
       </div>
+      {/* <div className={styles.lines2}>
+          <img src={lines} alt="aboutUs-images"></img>
+        </div> */}
       <div className={styles.part_five}>
         <div className={styles.part_five_left}>
           <div className={styles.part_five_details}>
@@ -153,6 +154,8 @@ export default function AboutUs() {
         <div className={styles.part_six_details}>
           <div className={styles.part_six_details_content}>
             <h2>The Levion Team</h2>
+            <div className={styles.part_six_details_border}>
+            </div>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst
               sed massa tempor, sagittis non consequat pretium urna nisi. Vitae,

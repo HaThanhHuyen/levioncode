@@ -22,7 +22,7 @@
   z-index: 2;
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 20px;
   color: #554766;
   width: 30%;
@@ -83,17 +83,19 @@
   cursor: pointer;
 }
 
-
+.change_to_signUp  a{
+  padding-left:1% 
+ }
 
 .forgot_psw a{
+  color: #554766;
   display: flex;
-  margin-top: 10px;
+  padding-top: 10px;
   text-decoration: none;
   justify-content: center;
   display: flex;
   text-decoration: none;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .lds_ring {
@@ -134,11 +136,10 @@
   }
 }
 .change_to_signUp {
-  padding: 10px 0;
+  padding: 3% 0 8% 0;
   display: flex;
   justify-content: center;
   color: #9387a8;
-  margin-top: 10px;
 }
 .change_to_signUp span{
   font-weight: 100;
@@ -150,7 +151,7 @@
   line-height: 40px;
   text-align: center;
   color: #000;
-  margin-top: 2%;
+    padding: 6%;
 }
 .continue button{
     width: 100%;
@@ -161,7 +162,7 @@
     font-weight: 700;
 }
 .continue {
-  margin-top: 5%;
+  padding-top: 9%;
 }
 .continue_facebook{
   margin-bottom: 3%;
@@ -180,9 +181,9 @@ button:hover {
   color: var(--secondaryColor);
   
 }
-/* .continue{
+.continue{
   display: none;
-} */
+}
 @media screen and (max-width: 768px){
   #login, 
   .btn_wrapper{

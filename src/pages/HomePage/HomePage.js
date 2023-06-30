@@ -27,13 +27,20 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import SimpleSlider from "../../components/SimpleSlider";
 import SimpleSlider1 from "../../components/SimpleSlider1";
+import lines2 from "../../image/pattern 4.png";
+import lines1 from "../../image/pattern 5.png";
 function HomePage() {
   return (
     <>
-      {/* <div className={styles.background}></div> */}
       <Header />
       <div className={styles.wrapper}>
         <div className={styles.header_home}>
+          <div className={styles.line1_home}>
+            <img src={lines1} alt="images" />
+          </div>
+          <div className={styles.line2_home}>
+            <img src={lines2} alt="images" />
+          </div>
           <div className={styles.header_info}>
             <h1>Vietnamese Journey with LEVION</h1>
             <p>
@@ -81,7 +88,25 @@ function HomePage() {
               </p>
             </div>
             <div className={styles.part_two_image}>
-              <div className={styles.part_two_image_first}>
+              <div>
+                <img src={Travel} alt="images" />
+                <h4>Travel</h4>
+              </div>
+              <div>
+                <img src={WorkLive} alt="images" />
+                <h4>Work and Live</h4>
+              </div>
+              <div>
+                <img src={Communication} alt="images" />
+                <h4>Communication</h4>
+              </div>
+              <div>
+                <img src={Fun} alt="images" />
+                <h4>Have Fun</h4>
+              </div>
+            </div>
+            <div className={styles.part_two_image_Res}>
+              <div className={styles.part_two_image_Res1}>
                 <div>
                   <img src={Travel} alt="images" />
                   <h4>Travel</h4>
@@ -91,7 +116,7 @@ function HomePage() {
                   <h4>Work and Live</h4>
                 </div>
               </div>
-              <div className={styles.part_two_image_second}>
+              <div className={styles.part_two_image_Res1}>
                 <div>
                   <img src={Communication} alt="images" />
                   <h4>Communication</h4>
@@ -102,6 +127,9 @@ function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className={styles.line1_home_part3}>
+            <img src={lines2} alt="images" />
           </div>
           <div className={styles.part_three}>
             <h1>Why learning Vietnamese with Levion?</h1>
@@ -174,21 +202,24 @@ function HomePage() {
             <div className={styles.images_homepage_details}>
               <div className={styles.contents_details}>
                 <img src={h11} alt="images" />
-                <h4>Test your level and identify your learning journey.</h4>
+                <p>Test your level and identify your learning journey.</p>
               </div>
               <div className={styles.contents_details}>
                 <img src={h12} alt="images" />
-                <h4>Giant supporting resources</h4>
+                <p>Giant supporting resources</p>
               </div>
               <div className={styles.contents_details}>
                 <img src={h13} alt="images" />
-                <h4>Community of Vietnamese-language lovers:</h4>
+                <p>Community of Vietnamese-language lovers:</p>
               </div>
               <div className={styles.contents_details}>
                 <img src={h14} alt="images" />
-                <h4>Giant supporting resources</h4>
+                <p>Giant supporting resources</p>
               </div>
             </div>
+          </div>
+          <div className={styles.line1_home_part4}>
+            <img src={lines2} alt="images" />
           </div>
           <div className={styles.part_four}>
             <h1>What our learners say?</h1>
@@ -279,9 +310,7 @@ function HomePage() {
                 </div>
 
                 <div className={styles.card_name}>
-                  <div className={styles.card_name_images}>
-                    <img src={avt1} alt="images" />
-                  </div>
+                  <img src={avt1} alt="images" />
                   <div className={styles.card}>
                     <h4>Gina H.</h4>
                     <p>Master Your Pronunciation Course</p>
@@ -292,6 +321,9 @@ function HomePage() {
             <div className={styles.SimpleSlider1}>
               <SimpleSlider1 />
             </div>
+          </div>
+          <div className={styles.line2_home_five}>
+            <img src={lines1} alt="images" />
           </div>
           <div className={styles.part_five}>
             <div className={styles.part_five_images}>
@@ -321,19 +353,21 @@ function HomePage() {
             </div>
           </div>
           <div className={styles.part_six}>
-            <h2>Join our Newsletter</h2>
-            <p>
-              Get a notification from us on any updates and tips for your
-              learning progress.
-            </p>
-            <div className={styles.submit}>
-              <input
-                name={styles.email}
-                type="email"
-                placeholder="Enter your email"
-              />
-              <div className={styles.submitBtn}>
-                <button>Subscribe</button>
+            <div className={styles.part_six_detail}>
+              <h2>Join our Newsletter</h2>
+              <p>
+                Get a notification from us on any updates and tips for your
+                learning progress.
+              </p>
+              <div className={styles.submit}>
+                <input
+                  name={styles.email}
+                  type="email"
+                  placeholder="Enter your email"
+                />
+                <div className={styles.submitBtn}>
+                  <button>Subscribe</button>
+                </div>
               </div>
             </div>
           </div>
