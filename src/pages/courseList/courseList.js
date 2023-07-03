@@ -1,6 +1,5 @@
 import styles from "../courseList/courseList.module.css";
-import React, { useState } from "react";
-import JsonData from "../../fakeData/data.json";
+import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import courseMan from "../../image/courses-man.png";
 import heart from "../../image/heart.png";
@@ -8,11 +7,13 @@ import Header from "../Header/Header";
 import TitleOfCourseList from "./titleCourseList";
 import FilterLevel from "./level";
 import FilterSkill from "./skill";
-import { BiSearch, BiFilterAlt } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
 import Footer from "../Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { cartList } from "../redux/selector";
 import { addToCart } from "../redux/actions";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../login/firebase";
 
 function CourseList() {
   const dispatch = useDispatch();
@@ -23,6 +24,33 @@ function CourseList() {
   const [pageNumber, setPageNumber] = useState(0);
   const coursesPerPage = 6;
   const pagesVisited = pageNumber * coursesPerPage;
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    if (!isLoading) {
+      setIsLoading(true);
+
+      try {
+        const querySnapshot = await getDocs(collection(db, "courseList"));
+        const coursesList = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+
+        setData(coursesList);
+        setIsLoading(false);
+      } catch (error) {
+        console.log("fetchData ~ error:", error);
+        setIsLoading(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleAddToCart = (course) => {
     console.log(course.id);
@@ -35,14 +63,15 @@ function CourseList() {
     );
   };
 
-  const filteredCourses = JsonData.filter((val) => {
-    if (searchTerm === "") {
-      return true;
-    } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-      return true;
-    }
-    return false;
-  })
+  const filteredCourses = data
+    .filter((val) => {
+      if (!searchTerm) {
+        return true;
+      } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return true;
+      }
+      return false;
+    })
     .filter((val) => {
       if (selectedSkills.length === 0) {
         return true;
@@ -59,7 +88,6 @@ function CourseList() {
     });
 
   const pageCount = Math.ceil(filteredCourses.length / coursesPerPage);
-
   const displayCourses = filteredCourses.slice(
     pagesVisited,
     pagesVisited + coursesPerPage
@@ -73,10 +101,12 @@ function CourseList() {
     setSelectedLevels(levels);
     setPageNumber(0);
   };
+
   const handleSkillChange = (skills) => {
     setSelectedSkills(skills);
     setPageNumber(0);
   };
+
   return (
     <div className={styles.CourseList}>
       <Header />
@@ -94,7 +124,6 @@ function CourseList() {
                 onChange={(event) => setSearchTerm(event.target.value)}
               />
             </div>
-            {/* <BiFilterAlt className={styles.searchFilter}/> */}
           </div>
           <div className={styles.skillsAndLevels}>
             <FilterLevel
@@ -124,7 +153,9 @@ function CourseList() {
                 <h1>${course.price}.00</h1>
               </div>
               <div className={styles.cart}>
-              <button onClick={() => handleAddToCart(course)}>Add To Cart</button>
+                <button onClick={() => handleAddToCart(course)}>
+                  Add To Cart
+                </button>
                 <img src={heart} alt="heart" />
               </div>
             </div>

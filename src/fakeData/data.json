@@ -30,7 +30,7 @@
         "skill": "Writing",
         "level": "Advanced",
         "price": 20.00
-    },
+    },  
     {
         "id": 5,
         "name": "JavaScript",

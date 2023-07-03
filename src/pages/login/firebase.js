@@ -1,13 +1,8 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
 import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { collection, getFirestore, getDocs } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBdy5Ww-xraZQjjPMgbSbOE_yZ8WNfFqbg",
   authDomain: "levionweb-f3729.firebaseapp.com",
@@ -15,10 +10,25 @@ const firebaseConfig = {
   storageBucket: "levionweb-f3729.appspot.com",
   messagingSenderId: "515728230698",
   appId: "1:515728230698:web:950670523dd57293817653",
-  measurementId: "G-C1L9S7S0GP"
+  measurementId: "G-C1L9S7S0GP",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-export const auth = getAuth(app);
+const auth = getAuth();
+const db = getFirestore(app);
+const colRef = collection(db, "courseList");
+
+getDocs(colRef)
+  .then((snapshot) => {
+    const shoppingCart = snapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    console.log(shoppingCart);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+
+export { auth, db };

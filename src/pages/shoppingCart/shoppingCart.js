@@ -7,7 +7,10 @@ import { removeFromCart } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import CartEmpty from "./cartEmpty";
 
+
 function ShoppingCart() {
+
+
   const dispatch = useDispatch();
   const handleRemove = (course) => {
     console.log(course);
@@ -17,10 +20,12 @@ function ShoppingCart() {
       })
     );
   };
+
   const cart = useSelector(cartList);
   let total = 0;
-  cart.map((e) => (total += e.price));
+  cart.forEach((e) => (total += e.price));
   const discount = 20;
+
   return (
     <div className={styles.ShoppingCart}>
       <Header />
@@ -48,10 +53,10 @@ function ShoppingCart() {
                       </div>
                       <div className={styles.courseDetail_right}>
                         <div className={styles.fee}>
-                        <div className={styles.feeDiscount}>
-                          <h6>$20.00</h6>
-                          <p>$84.99</p>
-                        </div>
+                          <div className={styles.feeDiscount}>
+                            <h6>$20.00</h6>
+                            <p>$84.99</p>
+                          </div>
                         </div>
                         <div className={styles.remove}>
                           <p onClick={() => handleRemove(course)}>Remove</p>
@@ -96,9 +101,9 @@ function ShoppingCart() {
           </div>
         </div>
       )}
-
       <Footer />
     </div>
   );
 }
+
 export default ShoppingCart;
