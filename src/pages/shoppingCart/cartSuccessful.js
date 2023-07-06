@@ -1,5 +1,4 @@
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import LayoutWithHeader from "../../components/layoutWithHeader";
 import styles from "../shoppingCart/cartSuccessful.module.css";
 import success from "../../image/success.png";
 import { Link } from "react-router-dom";
@@ -7,7 +6,7 @@ import { Link } from "react-router-dom";
 function cartSuccesful(){
     return (
         <div>
-            <Header />
+            <LayoutWithHeader>
             <div className={styles.cart}>
                 <h1>Shopping Cart</h1>
                 <img src={success} alt="img"></img>
@@ -18,7 +17,7 @@ function cartSuccesful(){
                 <Link to='/homePage'><button className={styles.btnHome}>Back to Home</button></Link>
                 </div>
             </div>
-            <Footer />
+            </LayoutWithHeader>
         </div>
     );
 }

@@ -69,7 +69,7 @@ function Navbar() {
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
             <FaTimes />
           </button>
-          <div className="header_right">
+          <div className="header_right1">
             <Link to="/shoppingCart">
               <img className="addToCart" src={cart1} alt="cart"></img>
             </Link>

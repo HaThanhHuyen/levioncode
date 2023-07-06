@@ -1,5 +1,5 @@
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import HeaderProfile from "../Header/HeaderProfile";
 import styles from "../LearningResources/SocialNetwork.module.css";
 import socialNetwork from "../../image/socialNetwork.png";
 import Facebook from "../../image/facebook (2) 1.png";
@@ -9,7 +9,7 @@ import Tiktok from "../../image/tik-tok 1.png";
 export default function SocialNetwork() {
   return (
     <div className={styles.socialNetwork}>
-      <Header />
+      <HeaderProfile />
       <div className={styles.contents}>
         <div className={styles.first}>
           <div className={styles.first_details}>
@@ -55,7 +55,6 @@ export default function SocialNetwork() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -184,6 +184,40 @@ button:hover {
 .continue{
   display: none;
 }
+.loadingIcon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #fff;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+.email{
+  padding: 3% 0;
+}
+.psw {
+  padding-bottom: 5%;
+}
+.loadingText {
+  margin-left: 5px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.validMsg{
+  font-size: 12px;
+  color: red;
+  font-weight: 500;
+}
 @media screen and (max-width: 768px){
   #login, 
   .btn_wrapper{

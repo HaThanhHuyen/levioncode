@@ -1,5 +1,3 @@
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
 import styles from "../LearningResources/LearningResources.module.css";
 import Learning from "../../image/learning.png";
 import Podcast from "../../image/podcast.png";
@@ -8,10 +6,11 @@ import Blog from "../../image/blog.png";
 import socialNetwork from "../../image/social.png"
 import ourCommunity from "../../image/community.png"
 import eBooks from "../../image/eBook.png"
+import LayoutWithHeader from "../../components/layoutWithHeader";
 export default function LearningResources() {
   return (
     <div className={styles.learningResources}>
-      <Header />
+      <LayoutWithHeader>
       <div className={styles.contents}>
         <div className={styles.first}>
           <div className={styles.first_details}>
@@ -73,7 +72,7 @@ export default function LearningResources() {
           </div>
         </div>
       </div>
-      <Footer />
+      </LayoutWithHeader>
     </div>
   );
 }

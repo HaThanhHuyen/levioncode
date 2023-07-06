@@ -1,7 +1,7 @@
 import styles from "../Blog/blog.module.css";
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import HeaderProfile from "../Header/HeaderProfile";
 import blog from "../../image/blogdetail.png";
 import { BiSearch } from "react-icons/bi";
 import FilterPost from "./popularPost";
@@ -14,6 +14,7 @@ import Calender from "../../components/Calender";
 import Eye from "../../components/Eye";
 import imageblog from "../../image/imageblog.png";
 import Data from "../../fakeData/postData.json";
+import LayoutWithHeader from "../../components/layoutWithHeader";
 function Blog() {
   const coursesPerPage = 6;
   const [pageNumber, setPageNumber] = useState(0);
@@ -38,7 +39,7 @@ function Blog() {
   };
   return (
     <div className={styles.blog}>
-      <Header />
+      <LayoutWithHeader>
       <div className={styles.blogBody}>
         <div className={styles.firstBlog}>
           <div className={styles.first_details}>
@@ -131,8 +132,9 @@ function Blog() {
           disabledClassName={styles.paginationDisabled}
           activeClassName={styles.paginationActive}
         />
-        <Footer />
+
       </div>
+      </LayoutWithHeader>
     </div>
   );
 }

@@ -3,21 +3,28 @@ import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import courseMan from "../../image/courses-man.png";
 import heart from "../../image/heart.png";
-import Header from "../Header/Header";
+import HeaderProfile from "../Header/HeaderProfile";
 import TitleOfCourseList from "./titleCourseList";
 import FilterLevel from "./level";
 import FilterSkill from "./skill";
 import { BiSearch } from "react-icons/bi";
 import Footer from "../Footer/Footer";
-import { useDispatch, useSelector } from "react-redux";
-import { cartList } from "../redux/selector";
-import { addToCart } from "../redux/actions";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { db } from "../login/firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import { addItemToFirestore } from "../login/firebase";
+import {
+  getItemShoppingCartFromFirestore,
+  removeItemFromFirestore,
+} from "../login/firebase";
+import LayoutWithHeader from "../../components/layoutWithHeader";
 
 function CourseList() {
-  const dispatch = useDispatch();
-  const cart = useSelector(cartList);
+  const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -27,7 +34,8 @@ function CourseList() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-
+  const currentUser = getAuth().currentUser;
+  console.log("currentUser", JSON.stringify(currentUser, null, 2));
   const fetchData = async () => {
     if (!isLoading) {
       setIsLoading(true);
@@ -52,15 +60,36 @@ function CourseList() {
     fetchData();
   }, []);
 
-  const handleAddToCart = (course) => {
-    console.log(course.id);
-    dispatch(
-      addToCart({
+  const handleAddToCart = async (course) => {
+    const confirmAddToCart = window.confirm("Do you want to add to cart?");
+    if (confirmAddToCart) {
+      const item = {
         id: course.id,
         name: course.name,
+        img: "",
+        level: course.level,
+        skill: course.skill,
         price: course.price,
-      })
-    );
+        userEmail: currentUser.email,
+      };
+
+      try {
+        await addItemToFirestore(item, currentUser.email);
+        console.log("Item added to shopping cart on Firebase.");
+        toast.success("Item added to shopping cart!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 3000,
+        });
+        navigate.push("/shoppingCart");
+
+        const updatedCart = await getItemShoppingCartFromFirestore(
+          currentUser.email
+        );
+        setCart(updatedCart);
+      } catch (error) {
+        console.log("handleAddToCart ~ error:", error);
+      }
+    }
   };
 
   const filteredCourses = data
@@ -109,7 +138,7 @@ function CourseList() {
 
   return (
     <div className={styles.CourseList}>
-      <Header />
+      <LayoutWithHeader>
       <TitleOfCourseList />
       <div className={styles.CourseListDetail}>
         <div className={styles.categoryOfCourse}>
@@ -173,7 +202,7 @@ function CourseList() {
         disabledClassName={styles.paginationDisabled}
         activeClassName={styles.paginationActive}
       />
-      <Footer />
+      </LayoutWithHeader>
     </div>
   );
 }

@@ -20,13 +20,14 @@ import halfCircle from "../../image/halfCircle.png";
 import lines from "../../image/lines.png";
 import shadow2 from "../../image/shadow2.png";
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import HeaderProfile from "../Header/HeaderProfile";
 import styles from "./AboutUs.module.css";
+import LayoutWithHeader from "../../components/layoutWithHeader";
 
 export default function AboutUs() {
   return (
     <div className={styles.aboutUs}>
-      <Header />
+      <LayoutWithHeader>
       <div className={styles.part_one}>
         <div className={styles.points}>
           <img src={points} alt="aboutUs-images"></img>
@@ -154,8 +155,7 @@ export default function AboutUs() {
         <div className={styles.part_six_details}>
           <div className={styles.part_six_details_content}>
             <h2>The Levion Team</h2>
-            <div className={styles.part_six_details_border}>
-            </div>
+            <div className={styles.part_six_details_border}></div>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst
               sed massa tempor, sagittis non consequat pretium urna nisi. Vitae,
@@ -193,7 +193,7 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      <Footer />
+      </LayoutWithHeader>
     </div>
   );
 }

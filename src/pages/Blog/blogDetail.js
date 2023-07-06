@@ -1,7 +1,7 @@
 import styles from "../Blog/blogDetail.module.css";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import HeaderProfile from "../Header/HeaderProfile";
 import FilterPost from "./popularPost";
 import FilterCategoris from "./categoris";
 import JsonData from "../../fakeData/blog.json";
@@ -18,6 +18,8 @@ import Back from "../../components/Back";
 import avtprofile from "../../image/avtblog.png";
 import blockDetailBody_img1 from "../../image/blogDetail1.png";
 import blockDetailBody_img2 from "../../image/blogDetail2.png";
+import LayoutWithHeader from "../../components/layoutWithHeader";
+
 function BlogDetail() {
   const coursesPerPage = 3;
   const [pageNumber, setPageNumber] = useState(0);
@@ -41,7 +43,7 @@ function BlogDetail() {
   const list = JsonData.find((data) => data.id == id);
   return (
     <div className={styles.blogBody}>
-      <Header />
+      <LayoutWithHeader>
       <div className={styles.backBlock}>
         <Back />
         <Link to="/blog">
@@ -233,7 +235,7 @@ function BlogDetail() {
           </div>
         </div>
       </div>
-      <Footer />
+      </LayoutWithHeader>
     </div>
   );
 }

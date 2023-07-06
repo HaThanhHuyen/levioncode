@@ -1,13 +1,12 @@
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
 import styles from "../LevelTest/Test.module.css";
 import { Link } from "react-router-dom";
 import test from "../../image/test.png";
+import LayoutWithHeader from "../../components/layoutWithHeader";
 
 function Test() {
   return (
     <div>
-      <Header />
+      <LayoutWithHeader>
       <div className={styles.test}>
         <div className={styles.testBody}>
           <img src={test} alt="img"></img>
@@ -24,7 +23,7 @@ function Test() {
           </Link>
         </div>
       </div>
-      <Footer />
+</LayoutWithHeader>
     </div>
   );
 }

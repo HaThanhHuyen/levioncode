@@ -88,7 +88,6 @@ function Podcast() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import HeaderProfile from "../Header/HeaderProfile";
 import avt from "../../image/avt.png";
 import courseDetail from "../../image/courseDetail.png";
 import star from "../../image/star.png";
@@ -25,13 +25,13 @@ import world from "../../image/world.png";
 import book from "../../image/book.png";
 import play from "../../image/playdetail.png";
 import time from "../../image/time.png";
-
+import LayoutWithHeader from "../../components/layoutWithHeader";
 import styles from "../courseDetail/courseDetail.module.css";
 
 export default function CourseDetail() {
   return (
     <div>
-      <Header />
+      <LayoutWithHeader >
       <div className={styles.courseDetails}>
         <div className={styles.details}>
           <div className={styles.details_title}>
@@ -500,7 +500,7 @@ export default function CourseDetail() {
           </div>
         </div>
       </div>
-      <Footer />
+      </LayoutWithHeader>
     </div>
   );
 }

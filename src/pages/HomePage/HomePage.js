@@ -24,15 +24,16 @@ import quotation from "../../image/Vector 1.png";
 import star from "../../image/star.png";
 import styles from "./HomePage.module.css";
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import HeaderProfile from "../Header/HeaderProfile";
 import SimpleSlider from "../../components/SimpleSlider";
 import SimpleSlider1 from "../../components/SimpleSlider1";
 import lines2 from "../../image/pattern 4.png";
 import lines1 from "../../image/pattern 5.png";
+import LayoutWithHeader from "../../components/layoutWithHeader";
 function HomePage() {
   return (
     <>
-      <Header />
+      <LayoutWithHeader >
       <div className={styles.wrapper}>
         <div className={styles.header_home}>
           <div className={styles.line1_home}>
@@ -373,8 +374,9 @@ function HomePage() {
           </div>
         </div>
       </div>
+        
+      </LayoutWithHeader>
 
-      <Footer />
     </>
   );
 }

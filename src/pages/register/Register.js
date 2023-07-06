@@ -1,109 +1,233 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import logo1 from "../../image/logo 1.png";
-import background from "../../image/OBJECTS.png";
-import styles from "./Register.module.css";
 import facebook from "../../image/fb.png";
 import google from "../../image/google.png";
-import React from "react";
-import { Link } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
-import useLogicRegister from "./useLogicRegister";
+import styles from "./Register.module.css";
 
 function Register() {
-  const {
-    nameRef,
-    onsubmit,
-    setName,
-    emailRef,
-    setEmail,
-    passwordRef,
-    setPassword,
-    setIsChecked,
-    isChecked,
-    validMsg,
-  } = useLogicRegister();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [validMsg, setValidMsg] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+    term_policy: "",
+  });
+  const [isToastShown, setIsToastShown] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || email.trim() === "") {
+      setValidMsg((prevState) => ({
+        ...prevState,
+        email: "Please enter your email.",
+      }));
+    } else if (!emailRegex.test(email)) {
+      setValidMsg((prevState) => ({
+        ...prevState,
+        email: "Please enter a valid email.",
+      }));
+    } else {
+      setValidMsg((prevState) => ({
+        ...prevState,
+        email: "",
+      }));
+    }
+  };
+
+  const validatePassword = (password) => {
+    if (!password || password.trim() === "") {
+      setValidMsg((prevState) => ({
+        ...prevState,
+        password: "Please enter your password.",
+      }));
+    } else if (password.length < 8) {
+      setValidMsg((prevState) => ({
+        ...prevState,
+        password: "Password must be at least 8 characters long.",
+      }));
+    } else {
+      setValidMsg((prevState) => ({
+        ...prevState,
+        password: "",
+      }));
+    }
+  };
+
+  const validateName = (name) => {
+    if (!name || name.trim() === "") {
+      setValidMsg((prevState) => ({
+        ...prevState,
+        fullname: "Please enter your full name.",
+      }));
+    } else {
+      setValidMsg((prevState) => ({
+        ...prevState,
+        fullname: "",
+      }));
+    }
+  };
+
+  const onsubmit = (e) => {
+    e.preventDefault();
+
+    setIsLoading(true); // Start loading
+
+    validateName(name);
+    validateEmail(email);
+    validatePassword(password);
+
+    // Kiểm tra thông báo lỗi và xử lý logic tạo người dùng
+    if (validMsg.fullname || validMsg.email || validMsg.password) {
+      setIsLoading(false); // Stop loading
+      return;
+    }
+
+    // Tiếp tục tạo người dùng
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Success:", user);
+
+        if (!isToastShown) {
+          setIsToastShown(true);
+          toast.success("Account successfully created!", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === "auth/email-already-in-use") {
+          toast.error("Email is already in use!", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+          console.log("Error:", errorCode, errorMessage);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false); // Stop loading
+      });
+  };
 
   return (
     <>
       <div id={styles.wrapper}>
         <div className={styles.layout_background}>
-        <div className={styles.background}>
-          {/* <img src={background} alt="a" /> */}
-        </div>
+          <div className={styles.background}></div>
         </div>
         <div id={styles.register}>
           <div className={styles.logo1}>
-          <a href="/homePage">
+            <a href="/homePage">
               <img src={logo1} alt="a" />
             </a>
           </div>
           <div className={styles.heading}>
             <h1>Create an account</h1>
           </div>
-          
-          <div>
-            <label htmlFor="name">Full name</label><strong>*</strong>
+          <div className={styles.name}>
+            <label htmlFor="name">Full name</label>
+            <strong>*</strong>
             <br />
             <input
               type="text"
               placeholder="Your Name"
-              ref={nameRef}
-              onChange={(e) => setName(e.target.value)}
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+                validateName(e.target.value);
+              }}
             />
-            <span>{validMsg.fullname}</span>
+            <span className={styles.validMsg}>{validMsg.fullname}</span>
             <br />
           </div>
-          <div>
-            <label htmlFor="email">Email</label><strong>*</strong>
+          <div className={styles.email}>
+            <label htmlFor="email">Email</label>
+            <strong>*</strong>
             <br />
             <input
               type="email"
               placeholder="Your Email"
-              ref={emailRef}
-              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                validateEmail(e.target.value);
+              }}
             />
-            <span>{validMsg.email}</span>
+            <span className={styles.validMsg}>{validMsg.email}</span>
             <br />
           </div>
-          <div>
-            <label htmlFor="password">Password</label><strong>*</strong>
+          <div className={styles.psw}>
+            <label htmlFor="password">Password</label>
+            <strong>*</strong>
             <br />
             <input
               type="password"
               placeholder="Your Password"
-              ref={passwordRef}
-              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                validatePassword(e.target.value);
+              }}
             />
-            <span>{validMsg.password}</span>
+            <span className={styles.validMsg}>{validMsg.password}</span>
             <br />
           </div>
           <div className={styles.input_checkbox}>
             <input
               className={styles.checkbox}
               type="checkbox"
+              checked={isChecked}
               onChange={(e) => setIsChecked(e.target.checked)}
             />
             <div className={styles.term_policy}>
-              I accept Levion's <span>Terms of Service</span> and <span>Privacy Policy</span>.
+              I accept Levion's <span>Terms of Service</span> and{" "}
+              <span>Privacy Policy</span>.
             </div>
+            <span className={styles.validMsg}>{validMsg.term_policy}</span>
           </div>
           <div className={styles.btn_wrapper}>
             <button
-              type="button"
               onClick={onsubmit}
               className={`submit ${!isChecked ? "disabled_btn" : ""}`}
+              disabled={isLoading}
             >
-              Create Account
-              {/* {!loading && (
-                <div class={styles.lds_ring}>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              )} */}
+              {isLoading ? (
+                <span>
+                  <span className={styles.loadingText}>Create Account</span>
+                  <div className={styles.loadingIcon}></div>{" "}
+                </span>
+              ) : (
+                "Create Account"
+              )}
             </button>
           </div>
-          <div className={styles.change_to_signIp}>
+          <div className={styles.change_to_signIn}>
             <span>Already have an account? </span>
             <Link to="/">Sign In</Link>
           </div>
@@ -124,9 +248,9 @@ function Register() {
             </Link>
           </div>
         </div>
-        
       </div>
     </>
   );
 }
+
 export default Register;

@@ -1,5 +1,5 @@
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import HeaderProfile from "../Header/HeaderProfile";
 import "../Profile/Profile.css";
 import avtProfile from "../../image/avtProfile.png";
 import upload from "../../image/upload.png";
@@ -13,6 +13,7 @@ import imageMain from "../../image/imageMain.png";
 import process from "../../image/process.png";
 import sadFace from "../../image/sadface.png";
 import { Link } from "react-router-dom";
+import LayoutWithHeader from "../../components/layoutWithHeader";
 // import { useState } from "react";
 import React, { useState, useRef } from "react";
 
@@ -41,7 +42,7 @@ export default function Profile() {
 
   return (
     <div className="profile">
-      <Header />
+      <LayoutWithHeader>
       <div className="contents">
         <div className="profilePerson">
           {/* <div className="uploadImg">
@@ -275,7 +276,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <Footer />
+      </LayoutWithHeader>
     </div>
   );
 }
