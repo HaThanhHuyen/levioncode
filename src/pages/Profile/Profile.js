@@ -14,16 +14,18 @@ import { getAuth } from "firebase/auth";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../login/firebase";
 import Empty from "./Empty";
+import { getItemsFromLearningJourney } from "../login/firebase";
 
 export default function Profile() {
   const currentUser = getAuth().currentUser;
   const userId = currentUser ? currentUser.uid : null;
   const profileRef = doc(db, "profiles", userId);
   const [state, setState] = useState(1);
+  const [learningJourneyItems, setLearningJourneyItems] = useState([]);
+
   const action = (index) => {
     setState(index);
   };
-  const [learningJourneyItems, setLearningJourneyItems] = useState([]);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -48,6 +50,31 @@ export default function Profile() {
       fetchProfile();
     }
   }, [userId]);
+
+  useEffect(() => {
+    const fetchLearningJourneyItems = async () => {
+      try {
+        if (currentUser) {
+          const learningItems = await getItemsFromLearningJourney(currentUser.email);
+          if (learningItems) {
+            setLearningJourneyItems(learningItems);
+            localStorage.setItem("learningJourneyItems", JSON.stringify(learningItems));
+          } else {
+            setLearningJourneyItems([]);
+          }
+        } else {
+          const storedItems = localStorage.getItem("learningJourneyItems");
+          if (storedItems) {
+            setLearningJourneyItems(JSON.parse(storedItems));
+          }
+        }
+      } catch (error) {
+        console.error("Error getting learning journey items:", error);
+      }
+    };
+
+    fetchLearningJourneyItems();
+  }, [currentUser]);
 
   return (
     <div className="profile">
@@ -76,7 +103,13 @@ export default function Profile() {
                   <div className="UserInfoDetails">
                     <p>Họ và tên</p>
                     <div className="edit2">
-                      <input id="name" type="text" name="name" disabled />
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        defaultValue=""
+                        disabled
+                      />
                     </div>
                   </div>
                 </div>
@@ -89,6 +122,7 @@ export default function Profile() {
                         id="phoneNumber"
                         type="text"
                         name="phoneNumber"
+                        defaultValue=""
                         disabled
                       />
                     </div>
@@ -103,6 +137,7 @@ export default function Profile() {
                         id="dateOfBirth"
                         type="date"
                         name="dateOfBirth"
+                        defaultValue=""
                         disabled
                       />
                     </div>
@@ -155,13 +190,11 @@ export default function Profile() {
             <div className="contentTabs">
               <div
                 onClick={() => action(1)}
-                className={`${
-                  state === 1 ? "content content-active" : "content"
-                }`}
+                className={`${state === 1 ? "content content-active" : "content"}`}
               >
                 <div className="Content-Learning">
                   <div className="LearningJourney">
-                    {learningJourneyItems.length === 0 ? (
+                    {learningJourneyItems !== null && learningJourneyItems.length === 0 ? (
                       <Empty />
                     ) : (
                       <div className="LearningJourneyLeft">
@@ -186,18 +219,11 @@ export default function Profile() {
                         ))}
                       </div>
                     )}
-
-                    {/* <div className="process">
-                      <img src={process} alt="process" />
-                      <p>Your Progress</p>
-                    </div> */}
                   </div>
                 </div>
               </div>
               <div
-                className={`${
-                  state === 2 ? "content content-active" : "content"
-                }`}
+                className={`${state === 2 ? "content content-active" : "content"}`}
               >
                 <div className="password">
                   <div className="changePassword">
@@ -223,18 +249,14 @@ export default function Profile() {
                 </div>
               </div>
               <div
-                className={`${
-                  state === 3 ? "content content-active" : "content"
-                }`}
+                className={`${state === 3 ? "content content-active" : "content"}`}
               >
                 <div className="Billing">
                   <Empty />
                 </div>
               </div>
               <div
-                className={`${
-                  state === 4 ? "content content-active" : "content"
-                }`}
+                className={`${state === 4 ? "content content-active" : "content"}`}
               >
                 <div className="WishList">
                   <Empty />
