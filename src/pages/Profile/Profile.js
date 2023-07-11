@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../Profile/Profile.css";
 import upload from "../../image/upload.png";
 import defaultProfile from "../../image/avtProfile.png";
@@ -11,103 +11,43 @@ import email from "../../image/email.png";
 import LayoutWithHeader from "../../components/layoutWithHeader";
 import coursesMan from "../../image/courses-man.png";
 import { getAuth } from "firebase/auth";
-import {
-  getItemsFromLearningJourney,
-  getCurrentUserAndSaveToFireStore,
-} from "../login/firebase";
-import Empty from "./Empty";
-import { getDoc, doc, setDoc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../login/firebase";
+import Empty from "./Empty";
 
 export default function Profile() {
-  const [edit, setEdit] = useState(false);
-  const [profile, setProfile] = useState({
-    displayName: "",
-    email: "",
-    phoneNumber: "",
-    dateOfBirth: "",
-  });
-  const [learningJourneyItems, setLearningJourneyItems] = useState([]);
-  const [profileItem, setProfileItem] = useState([]);
-  const [state, setState] = useState(1);
-  const [loading, setLoading] = useState(true);
-
-  const handleEdit = () => {
-    setEdit(!edit);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      [name]: value,
-    }));
-  };
-
   const currentUser = getAuth().currentUser;
-
+  const userId = currentUser ? currentUser.uid : null;
+  const profileRef = doc(db, "profiles", userId);
+  const [state, setState] = useState(1);
   const action = (index) => {
     setState(index);
   };
+  const [learningJourneyItems, setLearningJourneyItems] = useState([]);
 
   useEffect(() => {
-    if (currentUser) {
-      getCurrentUserAndSaveToFireStore(currentUser.email)
-        .then((users) => {
-          setProfileItem(users);
-          localStorage.setItem("profileItem", JSON.stringify(users));
-        })
-        .catch((error) => {
-          console.error("error", error);
-        });
-    } else {
-      const storedItem = localStorage.getItem("profileItem");
-      if (storedItem) {
-        setProfileItem(JSON.parse(storedItem));
+    const fetchProfile = async () => {
+      try {
+        const profileSnapshot = await getDoc(profileRef);
+        if (profileSnapshot.exists()) {
+          const profileData = profileSnapshot.data();
+          document.getElementById("name").value = profileData.name || "";
+          document.getElementById("phoneNumber").value =
+            profileData.phoneNumber || "";
+          document.getElementById("dateOfBirth").value =
+            profileData.dateOfBirth || "";
+        } else {
+          console.log("Profile does not exist.");
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error);
       }
-    }
-  }, []);
+    };
 
-  useEffect(() => {
-    if (currentUser) {
-      getItemsFromLearningJourney(currentUser.email)
-        .then((learningItems) => {
-          setLearningJourneyItems(learningItems);
-          localStorage.setItem(
-            "learningJourneyItems",
-            JSON.stringify(learningItems)
-          );
-        })
-        .catch((error) => {
-          console.error("Error getting learning journey items:", error);
-        });
-    } else {
-      const storedItems = localStorage.getItem("learningJourneyItems");
-      if (storedItems) {
-        setLearningJourneyItems(JSON.parse(storedItems));
-      }
+    if (userId) {
+      fetchProfile();
     }
-  }, []);
-
-  useEffect(() => {
-    if (currentUser) {
-      setProfile((prevProfile) => ({
-        ...prevProfile,
-        email: currentUser.email,
-      }));
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
-    if (profileItem && profileItem.length > 0) {
-      setProfile(profileItem[0]);
-    }
-    setLoading(false);
-  }, [profileItem]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  }, [userId]);
 
   return (
     <div className="profile">
@@ -127,27 +67,16 @@ export default function Profile() {
                 <div className="userInfo">
                   <p>User Information</p>
                   <div className="editUser">
-                    <img
-                      onClick={handleEdit}
-                      src={editImg}
-                      alt="edit"
-                      className="editIcon"
-                    />
-                    <p onClick={handleEdit}>{edit ? "Done" : "Edit"}</p>
+                    <img src={editImg} alt="edit" className="editIcon" />
+                    <p>Edit</p>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
                   <img src={account} alt="account" />
                   <div className="UserInfoDetails">
                     <p>Họ và tên</p>
-                    <div className={edit ? "edit" : "edit2"}>
-                      <input
-                        type="text"
-                        name="name"
-                        value={profile.name}
-                        onChange={handleChange}
-                        disabled={!edit}
-                      />
+                    <div className="edit2">
+                      <input id="name" type="text" name="name" disabled />
                     </div>
                   </div>
                 </div>
@@ -155,13 +84,12 @@ export default function Profile() {
                   <img src={call} alt="call" />
                   <div className="UserInfoDetails">
                     <p>Số điện thoại</p>
-                    <div className={edit ? "edit" : "edit2"}>
+                    <div className="edit2">
                       <input
+                        id="phoneNumber"
                         type="text"
                         name="phoneNumber"
-                        value={profile.phoneNumber}
-                        onChange={handleChange}
-                        disabled={!edit}
+                        disabled
                       />
                     </div>
                   </div>
@@ -170,13 +98,12 @@ export default function Profile() {
                   <img src={birthday} alt="birthday" />
                   <div className="UserInfoDetails">
                     <p>Ngày sinh</p>
-                    <div className={edit ? "edit" : "edit2"}>
+                    <div className="edit2">
                       <input
+                        id="dateOfBirth"
                         type="date"
                         name="dateOfBirth"
-                        value={profile.dateOfBirth}
-                        onChange={handleChange}
-                        disabled={!edit}
+                        disabled
                       />
                     </div>
                   </div>
@@ -189,7 +116,7 @@ export default function Profile() {
                       <input
                         type="email"
                         name="email"
-                        value={profile.email}
+                        defaultValue={currentUser?.email || ""}
                         disabled
                       />
                     </div>

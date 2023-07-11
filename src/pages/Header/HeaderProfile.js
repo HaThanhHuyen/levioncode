@@ -1,15 +1,15 @@
-import logo from "../../image/logo 1.png";
-import "../Header/Header.css";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { BiChevronDown, BiMinus, BiMenu, BiChevronRight } from "react-icons/bi";
+import { signOut } from "firebase/auth";
+import { auth } from "../login/firebase";
+
+import logo from "../../image/logo 1.png";
 import cart1 from "../../image/Icon Cart.png";
 import cow_header from "../../image/cow-header.png";
-import { useRef, useState } from "react";
-import { BiChevronDown, BiMinus, BiMenu, BiChevronRight } from "react-icons/bi";
 import heart from "../../image/heart1.png";
 import noti from "../../image/notification.png";
 import avtProfile from "../../image/avtcourse.png";
-import { signOut } from "firebase/auth";
-import { auth } from "../login/firebase";
 
 function HeaderProfile() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function HeaderProfile() {
     window.location.reload(true);
   };
 
-  const navRef = useRef();
+  const navRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuOpenProfile, setMenuOpenProfile] = useState(false);
 
@@ -28,12 +28,13 @@ function HeaderProfile() {
   };
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
   };
 
   const toggleMenuProfile = () => {
-    setMenuOpenProfile(!menuOpenProfile);
+    setMenuOpenProfile((prevMenuOpenProfile) => !prevMenuOpenProfile);
   };
+
 
   const data = JSON.parse(sessionStorage.getItem("data"));
 
