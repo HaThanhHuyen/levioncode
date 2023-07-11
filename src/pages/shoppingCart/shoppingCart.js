@@ -87,13 +87,13 @@ function ShoppingCart() {
     }
   }, [currentUser]);
 
-  const handleClick = async () => {
-    await signOut(getAuth());
-    sessionStorage.removeItem("data");
-    localStorage.removeItem("cart");
-    setCart([]);
-    setLoading(false);
-  };
+  // const handleClick = async () => {
+  //   await signOut(getAuth());
+  //   sessionStorage.removeItem("data");
+  //   localStorage.removeItem("cart");
+  //   setCart([]);
+  //   setLoading(false);
+  // };
 
   useEffect(() => {
     return () => {

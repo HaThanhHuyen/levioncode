@@ -9,12 +9,12 @@ import heart from "../../image/heart1.png";
 import noti from "../../image/notification.png";
 import avtProfile from "../../image/avtcourse.png";
 import { signOut } from "firebase/auth";
-import { database } from "../login/firebase";
+import { auth } from "../login/firebase";
 
 function HeaderProfile() {
   const navigate = useNavigate();
   const handleClick = async () => {
-    await signOut(database);
+    await signOut(auth);
     sessionStorage.removeItem("data");
     window.location.reload(true);
   };

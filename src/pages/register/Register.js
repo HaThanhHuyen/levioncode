@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
+import { auth, db } from "../login/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo1 from "../../image/logo 1.png";
@@ -97,6 +105,18 @@ function Register() {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("Success:", user);
+
+        // Lưu thông tin người dùng vào Firestore
+        const userRef = doc(db, "users", user.uid);
+        const userData = {
+          displayName: name,
+          email: email,
+          phoneNumber:"",
+          dateOfBirth: "",
+          createdAt: serverTimestamp(),
+        };
+
+        setDoc(userRef, userData);
 
         if (!isToastShown) {
           setIsToastShown(true);

@@ -6,7 +6,7 @@ import avt from "../../image/avtcourse.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { signOut } from "firebase/auth";
-import { database } from "../login/firebase";
+import { auth } from "../login/firebase";
 export const TitleMobile = () => {
   return (
     <div className={style.title}>
@@ -26,7 +26,7 @@ export const TitlePC = () => {
     setMenuOpenProfile(!menuOpenProfile);
   };
   const handleClick = async () => {
-    await signOut(database);
+    await signOut(auth);
     sessionStorage.removeItem("data");
     window.location.reload(true);
   };

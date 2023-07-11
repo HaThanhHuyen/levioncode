@@ -11,18 +11,26 @@ import email from "../../image/email.png";
 import LayoutWithHeader from "../../components/layoutWithHeader";
 import coursesMan from "../../image/courses-man.png";
 import { getAuth } from "firebase/auth";
-import { getItemsFromLearningJourney } from "../login/firebase";
+import {
+  getItemsFromLearningJourney,
+  getCurrentUserAndSaveToFireStore,
+} from "../login/firebase";
 import Empty from "./Empty";
+import { getDoc, doc, setDoc } from "firebase/firestore";
+import { db } from "../login/firebase";
 
 export default function Profile() {
   const [edit, setEdit] = useState(false);
   const [profile, setProfile] = useState({
-    name: "Tran Van Nhan",
-    phone: "0960 123 456",
-    birthday: "1996-05-04",
-    email: "huongnt@gmail.com",
+    displayName: "",
+    email: "",
+    phoneNumber: "",
+    dateOfBirth: "",
   });
   const [learningJourneyItems, setLearningJourneyItems] = useState([]);
+  const [profileItem, setProfileItem] = useState([]);
+  const [state, setState] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const handleEdit = () => {
     setEdit(!edit);
@@ -36,22 +44,39 @@ export default function Profile() {
     }));
   };
 
-  const [state, setState] = useState(1);
+  const currentUser = getAuth().currentUser;
 
   const action = (index) => {
     setState(index);
   };
 
-  const currentUser = getAuth().currentUser;
+  useEffect(() => {
+    if (currentUser) {
+      getCurrentUserAndSaveToFireStore(currentUser.email)
+        .then((users) => {
+          setProfileItem(users);
+          localStorage.setItem("profileItem", JSON.stringify(users));
+        })
+        .catch((error) => {
+          console.error("error", error);
+        });
+    } else {
+      const storedItem = localStorage.getItem("profileItem");
+      if (storedItem) {
+        setProfileItem(JSON.parse(storedItem));
+      }
+    }
+  }, []);
+
   useEffect(() => {
     if (currentUser) {
       getItemsFromLearningJourney(currentUser.email)
-        .then((shoppingCart) => {
-          setLearningJourneyItems(shoppingCart);
+        .then((learningItems) => {
+          setLearningJourneyItems(learningItems);
           localStorage.setItem(
             "learningJourneyItems",
-            JSON.stringify(shoppingCart)
-          ); // Lưu danh sách mục vào localStorage
+            JSON.stringify(learningItems)
+          );
         })
         .catch((error) => {
           console.error("Error getting learning journey items:", error);
@@ -62,24 +87,39 @@ export default function Profile() {
         setLearningJourneyItems(JSON.parse(storedItems));
       }
     }
+  }, []);
+
+  useEffect(() => {
+    if (currentUser) {
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        email: currentUser.email,
+      }));
+    }
   }, [currentUser]);
+
+  useEffect(() => {
+    if (profileItem && profileItem.length > 0) {
+      setProfile(profileItem[0]);
+    }
+    setLoading(false);
+  }, [profileItem]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="profile">
       <LayoutWithHeader>
         <div className="contents">
           <div className="profilePerson">
             <div className="uploadImg">
-              <img src={defaultProfile} alt="avt"></img>
+              <img src={defaultProfile} alt="avt" />
             </div>
             <div className="information">
-              {/* <div className="uploadButton">
-                <input
-                  id="fileInput"
-                  type="file"
-                />
-              </div> */}
               <button>
-                <img src={upload} alt="upload"></img>
+                <img src={upload} alt="upload" />
                 <h4>Upload image</h4>
               </button>
 
@@ -87,108 +127,72 @@ export default function Profile() {
                 <div className="userInfo">
                   <p>User Information</p>
                   <div className="editUser">
-                    <img onClick={handleEdit} src={editImg} alt="edit"></img>
+                    <img
+                      onClick={handleEdit}
+                      src={editImg}
+                      alt="edit"
+                      className="editIcon"
+                    />
                     <p onClick={handleEdit}>{edit ? "Done" : "Edit"}</p>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
-                  <img src={account} alt="account"></img>
+                  <img src={account} alt="account" />
                   <div className="UserInfoDetails">
                     <p>Họ và tên</p>
-                    {edit ? (
-                      <div className="edit">
-                        <input
-                          type="text"
-                          name="name"
-                          defaultValue={profile.name}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    ) : (
-                      <div className="edit2">
-                        <input
-                          type="text"
-                          name="name"
-                          defaultValue={profile.name}
-                          disabled
-                        />
-                      </div>
-                    )}
+                    <div className={edit ? "edit" : "edit2"}>
+                      <input
+                        type="text"
+                        name="name"
+                        value={profile.name}
+                        onChange={handleChange}
+                        disabled={!edit}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
-                  <img src={call} alt="call"></img>
+                  <img src={call} alt="call" />
                   <div className="UserInfoDetails">
                     <p>Số điện thoại</p>
-                    {edit ? (
-                      <div className="edit">
-                        <input
-                          name="phone"
-                          type="text"
-                          onChange={handleChange}
-                          defaultValue={profile.phone}
-                        />
-                      </div>
-                    ) : (
-                      <div className="edit2">
-                        <input
-                          type="text"
-                          name="phone"
-                          defaultValue={profile.phone}
-                          disabled
-                        />
-                      </div>
-                    )}
+                    <div className={edit ? "edit" : "edit2"}>
+                      <input
+                        type="text"
+                        name="phoneNumber"
+                        value={profile.phoneNumber}
+                        onChange={handleChange}
+                        disabled={!edit}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
-                  <img src={birthday} alt="birthday"></img>
+                  <img src={birthday} alt="birthday" />
                   <div className="UserInfoDetails">
                     <p>Ngày sinh</p>
-                    {edit ? (
-                      <div className="edit">
-                        <input
-                          name="birthday"
-                          type="date"
-                          defaultValue={profile.birthday}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    ) : (
-                      <div className="edit2">
-                        <input
-                          type="date"
-                          name="birthday"
-                          defaultValue={profile.birthday}
-                          disabled
-                        />
-                      </div>
-                    )}
+                    <div className={edit ? "edit" : "edit2"}>
+                      <input
+                        type="date"
+                        name="dateOfBirth"
+                        value={profile.dateOfBirth}
+                        onChange={handleChange}
+                        disabled={!edit}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
-                  <img src={email} alt="email"></img>
+                  <img src={email} alt="email" />
                   <div className="UserInfoDetails">
                     <p>Email</p>
-                    {edit ? (
-                      <div className="edit">
-                        <input
-                          name="email"
-                          type="email"
-                          defaultValue={profile.email}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    ) : (
-                      <div className="edit2">
-                        <input
-                          type="email"
-                          name="email"
-                          defaultValue={profile.email}
-                          disabled
-                        />
-                      </div>
-                    )}
+                    <div className="edit2">
+                      <input
+                        type="email"
+                        name="email"
+                        value={profile.email}
+                        disabled
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

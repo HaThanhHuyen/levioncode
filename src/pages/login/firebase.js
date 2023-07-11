@@ -31,7 +31,6 @@ const colRef1 = collection(db, "shoppingCart");
 
 const auth = getAuth(app);
 
-
 const addItemToFirestore = async (item) => {
   try {
     const docRef = await addDoc(colRef1, { ...item });
@@ -40,8 +39,6 @@ const addItemToFirestore = async (item) => {
     console.error("Error: ", error);
   }
 };
-
-
 
 // Xóa item từ Firestore
 const removeItemFromFirestore = async (id) => {
@@ -90,7 +87,6 @@ const getItemShoppingCartFromFirestore = async (email) => {
   }
 };
 
-
 export const addToLearningJourney = async (userEmail, course) => {
   const docRef = doc(db, "myLearningJourney", userEmail);
   await setDoc(docRef, { items: course }, { merge: true });
@@ -115,28 +111,26 @@ const getItemsFromLearningJourney = async (userEmail) => {
     return [];
   }
 };
-//Lấy thông tin người dùng 
-const getCurrentUserAndSaveToFireStore = async()=>{
-  onAuthStateChanged(auth,async(user)=>{
-    if(user){
-      const {displayName, email,phoneNumber,dateOfBirth} =user;
-      const userObject = {
-        name:displayName || "",
-        email:email || "",
-        phoneNumber:phoneNumber || "",
-        dateOfBirth:dateOfBirth || "",
-      }
-      try{
-        const docRef = await addDoc(collection(db,"users"), userObject);
-        console.log("Users saved with ID", docRef.id)
-      }
-      catch(error){
-        console.log("No user is currently logged in",error)
-      }
+
+// Lấy thông tin người dùng và lưu vào Firestore
+const getCurrentUserAndSaveToFireStore = async (email) => {
+  try {
+    const userRef = doc(db, "users", email);
+    const userSnapshot = await getDoc(userRef);
+
+    if (userSnapshot.exists()) {
+      const userData = userSnapshot.data();
+      console.log("User data retrieved from Firestore:", userData);
+      return userData;
+    } else {
+      console.log("User not found in Firestore.");
+      return null;
     }
-  })
-}
-getCurrentUserAndSaveToFireStore();
+  } catch (error) {
+    console.error("Error getting user data from Firestore:", error);
+    return null;
+  }
+};
 
 export {
   auth,
@@ -145,6 +139,6 @@ export {
   getItemShoppingCartFromFirestore,
   addItemToFirestore,
   removeItemFromFirestore,
-  getItemsFromLearningJourney
+  getItemsFromLearningJourney,
+  getCurrentUserAndSaveToFireStore
 };
-export const database = getAuth(app);
