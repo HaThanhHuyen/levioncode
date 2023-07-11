@@ -640,6 +640,7 @@
     text-align: center;
   }
   .header_info p {
+    margin: 0 auto;
     font-size: 14px;
     width: 284px;
     padding-bottom: 6%;

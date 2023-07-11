@@ -15,7 +15,6 @@ import {
 } from "firebase/auth";
 
 function Login() {
-  const [loggedInEmail, setLoggedInEmail] = useState("");
   const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -25,6 +24,7 @@ function Login() {
   const auth = getAuth();
   const [isToastShown, setIsToastShown] = useState(false);
   const [validMsg, setValidMsg] = useState({});
+  const [errorCode, setErrorCode] = useState("");
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,6 +53,7 @@ function Login() {
     e.preventDefault();
 
     setIsLoading(true); // Start loading
+    setErrorCode(""); // Reset error code
 
     if (!email || !password) {
       setValidMsg({
@@ -72,20 +73,15 @@ function Login() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        sessionStorage.setItem("data", JSON.stringify(userCredential));
         const user = userCredential.user;
-        setLoggedInEmail(email);
         console.log(user, "authData");
 
         if (!isToastShown) {
           setIsToastShown(true);
           toast.success("Login successfully!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 3000,
           });
         }
 
@@ -93,20 +89,8 @@ function Login() {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        if (errorCode === "auth/user-not-found") {
-          toast.error("Account does not exist!", {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        } else {
-          console.log("Error:", errorCode, errorMessage);
-        }
+        setErrorCode(errorCode);
+        console.log("Error:", errorCode, error.message);
       })
       .finally(() => {
         setIsLoading(false); // Stop loading
@@ -120,10 +104,9 @@ function Login() {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      setLoggedInEmail(user.email);
       console.log("data", result);
-      // window.sessionStorage.setItem("session", user.accessToken);
-      // window.sessionStorage.setItem("email", user.email);
+      sessionStorage.setItem("data", JSON.stringify(user));
+      console.log("user", user);
       console.log(user, "authData");
       navigate("/shoppingCart");
     } catch (error) {
@@ -132,6 +115,26 @@ function Login() {
       setIsLoading(false);
     }
   };
+
+  const getErrorMessage = (errorCode) => {
+    switch (errorCode) {
+      case "auth/user-not-found":
+        return "Account does not exist!";
+      case "auth/wrong-password":
+        return "Incorrect password!";
+      default:
+        return "An error occurred. Please try again.";
+    }
+  };
+
+  useEffect(() => {
+    if (errorCode) {
+      toast.error(getErrorMessage(errorCode), {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 3000,
+      });
+    }
+  }, [errorCode]);
 
   useEffect(() => {
     if (user != null) {

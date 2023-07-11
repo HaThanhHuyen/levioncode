@@ -24,6 +24,7 @@ import Blog from "./pages/Blog/blog";
 import BlogDetail from "./pages/Blog/blogDetail";
 import Podcast from "./pages/Podcast/Podcast";
 import ForgotPassword from "./pages/forgot_password/forgot_password";
+import { Empty } from "antd";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/blogDetail/:id" element={<BlogDetail />} />
           <Route path="/podcast" element={<Podcast />} />
           <Route path="/forgot_password" element={<ForgotPassword />} />
+          <Route path="/empty" element={<Empty />} />
         </Routes>
       </LevionContextProvider>
       <ToastContainer position="top-right" />

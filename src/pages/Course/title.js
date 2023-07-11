@@ -4,6 +4,9 @@ import logo from "../../image/logo 1.png";
 import process from "../../image/process.png";
 import avt from "../../image/avtcourse.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { signOut } from "firebase/auth";
+import { database } from "../login/firebase";
 export const TitleMobile = () => {
   return (
     <div className={style.title}>
@@ -18,11 +21,23 @@ export const TitleMobile = () => {
   );
 };
 export const TitlePC = () => {
+  const [menuOpenProfile, setMenuOpenProfile] = useState(false);
+  const toggleMenuProfile = () => {
+    setMenuOpenProfile(!menuOpenProfile);
+  };
+  const handleClick = async () => {
+    await signOut(database);
+    sessionStorage.removeItem("data");
+    window.location.reload(true);
+  };
   return (
     <div className={style.titlePC}>
       <div className={style.titlePCLeft}>
         <div>
-          <img src={logo} alt="logo"></img>
+          <Link to="/homePage">
+            {" "}
+            <img src={logo} alt="logo"></img>
+          </Link>
         </div>
         <div className={style.titleMiddle}></div>
         <div className={style.titlePCDetail}>
@@ -37,9 +52,42 @@ export const TitlePC = () => {
               <p>Course Progress</p>
             </div>
           </div>
-          <Link to ="/profile ">
-          <img src={avt} alt="avt"></img>
-          </Link>
+          <div className="Profile">
+            <ul>
+              <li className="menuImg">
+                {menuOpenProfile ? (
+                  <img
+                    className=""
+                    src={avt}
+                    alt="avtProfile"
+                    onClick={toggleMenuProfile}
+                  />
+                ) : (
+                  <img
+                    className=""
+                    src={avt}
+                    alt="avtProfile"
+                    onClick={toggleMenuProfile}
+                  />
+                )}
+
+                <ul
+                  className={
+                    menuOpenProfile ? "menuProfile showProfile" : "menuProfile"
+                  }
+                >
+                  <button onClick={handleClick}>
+                    <li>Log out</li>
+                  </button>
+                  <Link to="/profile" className="btnProfile">
+                    <button>
+                      <li>Profile</li>
+                    </button>
+                  </Link>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

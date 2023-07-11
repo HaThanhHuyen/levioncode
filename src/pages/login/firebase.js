@@ -7,9 +7,13 @@ import {
   deleteDoc,
   where,
   query,
+  doc,
+  getDoc,
+  updateDoc,
+  setDoc,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { doc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBdy5Ww-xraZQjjPMgbSbOE_yZ8WNfFqbg",
   authDomain: "levionweb-f3729.firebaseapp.com",
@@ -21,21 +25,23 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 const colRef = collection(db, "courseList");
-const colRef1 = collection(db, "shopping-cart");
+const colRef1 = collection(db, "shoppingCart");
+
 const auth = getAuth(app);
 
-// Hàm để thêm item vào Firestore
+
 const addItemToFirestore = async (item) => {
   try {
     const docRef = await addDoc(colRef1, { ...item });
-    console.log("Đã thêm mục với ID: ", docRef.id);
+    console.log("Added with ID: ", docRef.id);
   } catch (error) {
-    console.error("Lỗi khi thêm mục: ", error);
+    console.error("Error: ", error);
   }
 };
+
+
 
 // Xóa item từ Firestore
 const removeItemFromFirestore = async (id) => {
@@ -67,7 +73,7 @@ const getItemCourseListFromFirestore = async () => {
 const getItemShoppingCartFromFirestore = async (email) => {
   try {
     const shoppingCartQuery = query(
-      collection(db, "shopping-cart"),
+      collection(db, "shoppingCart"),
       where("userEmail", "==", email)
     );
     const querySnapshot = await getDocs(shoppingCartQuery);
@@ -84,7 +90,54 @@ const getItemShoppingCartFromFirestore = async (email) => {
   }
 };
 
-// Export db, auth và các hàm để sử dụng ở các thành phần khác
+
+export const addToLearningJourney = async (userEmail, course) => {
+  const docRef = doc(db, "myLearningJourney", userEmail);
+  await setDoc(docRef, { items: course }, { merge: true });
+};
+
+// Lấy danh sách các mục từ learning journey
+const getItemsFromLearningJourney = async (userEmail) => {
+  try {
+    const docRef = doc(db, "myLearningJourney", userEmail);
+    const docSnapshot = await getDoc(docRef);
+
+    if (docSnapshot.exists()) {
+      const learningJourneyItems = docSnapshot.data().items;
+      console.log(learningJourneyItems);
+      return learningJourneyItems;
+    } else {
+      console.log("Learning journey not found for user:", userEmail);
+      return [];
+    }
+  } catch (error) {
+    console.error("Error getting learning journey items:", error);
+    return [];
+  }
+};
+//Lấy thông tin người dùng 
+const getCurrentUserAndSaveToFireStore = async()=>{
+  onAuthStateChanged(auth,async(user)=>{
+    if(user){
+      const {displayName, email,phoneNumber,dateOfBirth} =user;
+      const userObject = {
+        name:displayName || "",
+        email:email || "",
+        phoneNumber:phoneNumber || "",
+        dateOfBirth:dateOfBirth || "",
+      }
+      try{
+        const docRef = await addDoc(collection(db,"users"), userObject);
+        console.log("Users saved with ID", docRef.id)
+      }
+      catch(error){
+        console.log("No user is currently logged in",error)
+      }
+    }
+  })
+}
+getCurrentUserAndSaveToFireStore();
+
 export {
   auth,
   db,
@@ -92,5 +145,6 @@ export {
   getItemShoppingCartFromFirestore,
   addItemToFirestore,
   removeItemFromFirestore,
+  getItemsFromLearningJourney
 };
-export const database = getAuth(app)
+export const database = getAuth(app);

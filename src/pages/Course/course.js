@@ -6,7 +6,6 @@ import { IconDropdown } from "../../components/Dropdown";
 import SectionDownload1 from "../../components/sectionDowload1";
 import SectionDownload2 from "../../components/sectionDowload2";
 import { TitleMobile, TitlePC } from "../Course/title";
-import { Section } from "../Course/section";
 import PostQuestion from "../Course/postQuestion";
 import Note from "./note";
 import SectionDownload from "../Course/sectionDownload";
@@ -19,7 +18,6 @@ export default function Course() {
   const {
     handleAnswer,
     answer,
-    progress,
     tab1,
     tab2,
     tougle1,
@@ -27,8 +25,6 @@ export default function Course() {
     handleSubmit,
     message,
     messages,
-    lessons,
-    handleCollapse,
   } = UseLogic();
 
   return (

@@ -1,5 +1,5 @@
 .cart {
-  padding: 64px 80px 160px 80px;
+  padding: 5% 5% 10% 5%;
 }
 .title h3 {
   color: #281c42;
@@ -11,11 +11,13 @@
   display: flex;
 }
 .cart_details {
+  height: 645px;
   padding-top: 2%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 .yourCart {
+  width: 70%;
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -49,7 +51,21 @@
   line-height: 24px;
   margin: 0;
 }
-.courseDetail button {
+
+.levelBTn {
+  color: #9387a8;
+  padding: 4px 8px 4px 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #f7f5fa;
+  border: 1px solid #cac1d8;
+  border-radius: 4px;
+  height: 28px;
+  margin-right: 1%;
+}
+.skillBtn{
   color: #9387a8;
   padding: 4px 8px 4px 8px;
   font-style: normal;
@@ -64,7 +80,7 @@
 }
 .courseDetail {
   width: 100%;
-  margin-right: 40px;
+  /* margin-right: 40px; */
   display: flex;
   justify-content: space-around;
 }
@@ -74,7 +90,6 @@
 .fee {
   width: 69px;
   height: 56px;
-  padding-left: 25%;
 }
 .fee h6 {
   color: #9453ff;
@@ -153,7 +168,7 @@
   display: flex;
 }
 .couponApply input {
-  width: 32vw;
+  width: 100%;
   height: 48px;
   border: 1px solid #cac1d8;
   border-radius: 4px;
@@ -173,7 +188,7 @@
   background-color: #9453ff;
   border: 1px solid #9453ff;
   border-radius: 4px;
-  /* width: 100px; */
+  width: 100px;
   height: 48px;
   cursor: pointer;
 }
@@ -271,13 +286,14 @@
   cursor: pointer;
   text-decoration: underline;
 }
-@media only screen and (min-width: 768px) and (max-width: 1300px){
-
+.remove{
+  padding: 13%;
 }
+
 @media screen and (max-width: 768px) {
   .cart_details {
     display: block;
-    height: 100vh;
+    height: 165vh;
   }
   .coupon {
     padding-top: 10%;
@@ -287,10 +303,7 @@
   .couponDiscount { 
     height: 30vh;
   }
-  .couponCode {
-    width: 0;
-    height: 0;
-  }
+
   /* .cart {
     width: 100vw;
     height: 100vh;
@@ -310,6 +323,7 @@
   .title h3{
     font-size: 32px;
   }
+
   /* .yourCart {
     width: 70vw;
     padding: 24px 40px 24px 40px;
@@ -321,20 +335,28 @@
     width: 100%;
     margin: 0 auto;
   } */
-  .courseDetail_buttons {
-    width: 120%;
-  }
-  .courseDetail button {
-    margin: 0;
-  }
   .course img {
-    height: 80px;
-    width: 30%;
+    border-radius: 6px;
+    height: 100px;
+    width: 33%;
   }
-  .course button {
+  .levelBTn {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 70px;
     margin-right: 5%;
-    font-size: 8px;
-    width: 21vw;  
+    font-size: 12px;
+  }
+  .skillBtn{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 99px;
+    margin-right: 5%;
+    font-size: 12px;
   }
   .courseDetail h6 {
     font-size: 14px;
@@ -348,7 +370,7 @@
 
   }
   .courses{
-    height: 20vh;
+    height: 14vh;
     width: 80vw;
   }
   .feeDiscount{
@@ -374,5 +396,11 @@
   }
   .couponDiscount h5{
     font-size: 20px;
+  }
+  .yourCart{
+    width: 94%;
+  }
+  .remove{
+    padding: 0;
   }
 }

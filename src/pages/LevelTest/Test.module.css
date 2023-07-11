@@ -6,7 +6,7 @@
 .testBody {
   display: flex;
   text-align: center;
-  width: 50%;
+  width: 47%;
   flex-direction: column;
   margin: 0 auto;
   background-color: #f2ebfd;
@@ -16,12 +16,15 @@
   width: 50%;
   margin: 0 auto;
 }
+.testContent{
+  padding: 4%;
+}
 .testTitle {
+  font-size: 29px;
   color: #9453ff;
 }
 .test {
-  padding-bottom: 5%;
-  padding-top: 5%;
+  padding: 5% 0 10% 0;
 }
 .testButton {
   padding: 0.1em 1.2em;
@@ -38,6 +41,9 @@
   margin-bottom: 5%;
 }
 @media screen and (max-width: 768px) {
+  .testBody{
+    width: 72%;
+  }
   .testContent {
     font-size: 10px;
   }
