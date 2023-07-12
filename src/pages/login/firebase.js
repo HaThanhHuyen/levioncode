@@ -13,6 +13,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBdy5Ww-xraZQjjPMgbSbOE_yZ8WNfFqbg",
@@ -26,9 +27,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app)
 const colRef = collection(db, "courseList");
 const colRef1 = collection(db, "shoppingCart");
-
 const auth = getAuth(app);
 
 const addItemToFirestore = async (item) => {
@@ -116,6 +117,7 @@ const getItemsFromLearningJourney = async (userEmail) => {
 export {
   auth,
   db,
+  storage,
   getItemCourseListFromFirestore,
   getItemShoppingCartFromFirestore,
   addItemToFirestore,
