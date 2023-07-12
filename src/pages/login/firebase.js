@@ -112,25 +112,6 @@ const getItemsFromLearningJourney = async (userEmail) => {
   }
 };
 
-// Lấy thông tin người dùng và lưu vào Firestore
-const getCurrentUserAndSaveToFireStore = async (email) => {
-  try {
-    const userRef = doc(db, "users", email);
-    const userSnapshot = await getDoc(userRef);
-
-    if (userSnapshot.exists()) {
-      const userData = userSnapshot.data();
-      console.log("User data retrieved from Firestore:", userData);
-      return userData;
-    } else {
-      console.log("User not found in Firestore.");
-      return null;
-    }
-  } catch (error) {
-    console.error("Error getting user data from Firestore:", error);
-    return null;
-  }
-};
 
 export {
   auth,
@@ -140,5 +121,5 @@ export {
   addItemToFirestore,
   removeItemFromFirestore,
   getItemsFromLearningJourney,
-  getCurrentUserAndSaveToFireStore
+
 };

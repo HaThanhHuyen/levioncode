@@ -15,7 +15,7 @@ import {
 } from "firebase/auth";
 
 function Login() {
-  const { googleSignIn, user } = UserAuth();
+  const { user } = UserAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -75,7 +75,7 @@ function Login() {
       .then((userCredential) => {
         sessionStorage.setItem("data", JSON.stringify(userCredential));
         const user = userCredential.user;
-        console.log(user, "authData");
+        console.log("login success with user", user);
 
         if (!isToastShown) {
           setIsToastShown(true);
@@ -106,8 +106,6 @@ function Login() {
       const user = result.user;
       console.log("data", result);
       sessionStorage.setItem("data", JSON.stringify(user));
-      console.log("user", user);
-      console.log(user, "authData");
       navigate("/shoppingCart");
     } catch (error) {
       console.log(error);

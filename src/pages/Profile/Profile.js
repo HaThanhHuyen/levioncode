@@ -18,38 +18,13 @@ import { getItemsFromLearningJourney } from "../login/firebase";
 
 export default function Profile() {
   const currentUser = getAuth().currentUser;
-  const userId = currentUser ? currentUser.uid : null;
-  const profileRef = doc(db, "profiles", userId);
   const [state, setState] = useState(1);
   const [learningJourneyItems, setLearningJourneyItems] = useState([]);
+  const [userDetails, setUserDetails] = useState(null);
 
   const action = (index) => {
     setState(index);
   };
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const profileSnapshot = await getDoc(profileRef);
-        if (profileSnapshot.exists()) {
-          const profileData = profileSnapshot.data();
-          document.getElementById("name").value = profileData.name || "";
-          document.getElementById("phoneNumber").value =
-            profileData.phoneNumber || "";
-          document.getElementById("dateOfBirth").value =
-            profileData.dateOfBirth || "";
-        } else {
-          console.log("Profile does not exist.");
-        }
-      } catch (error) {
-        console.error("Error fetching profile:", error);
-      }
-    };
-
-    if (userId) {
-      fetchProfile();
-    }
-  }, [userId]);
 
   useEffect(() => {
     const fetchLearningJourneyItems = async () => {
@@ -73,7 +48,23 @@ export default function Profile() {
       }
     };
 
+    const fetchUserDetails = async () => {
+      try {
+        if (currentUser) {
+          const userDocRef = doc(db, "users", currentUser.uid);
+          const userDocSnapshot = await getDoc(userDocRef);
+          if (userDocSnapshot.exists()) {
+            const userData = userDocSnapshot.data();
+            setUserDetails(userData);
+          }
+        }
+      } catch (error) {
+        console.error("Error getting user details:", error);
+      }
+    };
+
     fetchLearningJourneyItems();
+    fetchUserDetails();
   }, [currentUser]);
 
   return (
@@ -107,7 +98,7 @@ export default function Profile() {
                         id="name"
                         type="text"
                         name="name"
-                        defaultValue=""
+                        defaultValue={userDetails?.displayName || ""}
                         disabled
                       />
                     </div>
@@ -122,7 +113,7 @@ export default function Profile() {
                         id="phoneNumber"
                         type="text"
                         name="phoneNumber"
-                        defaultValue=""
+                        defaultValue={userDetails?.phoneNumber || ""}
                         disabled
                       />
                     </div>
@@ -137,7 +128,7 @@ export default function Profile() {
                         id="dateOfBirth"
                         type="date"
                         name="dateOfBirth"
-                        defaultValue=""
+                        defaultValue={userDetails?.dateOfBirth || ""}
                         disabled
                       />
                     </div>

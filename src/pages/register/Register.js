@@ -7,6 +7,7 @@ import {
   serverTimestamp,
   doc,
   setDoc,
+  onSnapshot
 } from "firebase/firestore";
 import { auth, db } from "../login/firebase";
 import { ToastContainer, toast } from "react-toastify";
@@ -87,37 +88,48 @@ function Register() {
 
   const onsubmit = (e) => {
     e.preventDefault();
-
+  
     setIsLoading(true); // Start loading
-
+  
     validateName(name);
     validateEmail(email);
     validatePassword(password);
-
-    // Kiểm tra thông báo lỗi và xử lý logic tạo người dùng
+  
     if (validMsg.fullname || validMsg.email || validMsg.password) {
       setIsLoading(false); // Stop loading
       return;
     }
-
-    // Tiếp tục tạo người dùng
+  
+    // Continue creating the user
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("Success:", user);
-
-        // Lưu thông tin người dùng vào Firestore
+        // Save user data in Firestore
         const userRef = doc(db, "users", user.uid);
         const userData = {
+          avt:"",
           displayName: name,
           email: email,
-          phoneNumber:"",
+          phoneNumber: "",
           dateOfBirth: "",
           createdAt: serverTimestamp(),
         };
-
+  
         setDoc(userRef, userData);
-
+        console.log("success",userData)
+        // Listen for changes to the user document
+        const unsubscribe = onSnapshot(userRef, (doc) => {
+          if (doc.exists()) {
+            const userData = doc.data();
+            console.log("User Data:", userData);
+            setName(userData.displayName);
+          }
+        });
+  
+        // Unsubscribe from the listener when no longer needed
+        return unsubscribe();
+      })
+      .then(() => {
         if (!isToastShown) {
           setIsToastShown(true);
           toast.success("Account successfully created!", {
@@ -130,7 +142,7 @@ function Register() {
             progress: undefined,
           });
         }
-
+  
         navigate("/");
       })
       .catch((error) => {
@@ -154,7 +166,6 @@ function Register() {
         setIsLoading(false); // Stop loading
       });
   };
-
   return (
     <>
       <div id={styles.wrapper}>
