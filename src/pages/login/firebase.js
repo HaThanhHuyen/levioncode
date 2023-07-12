@@ -12,7 +12,7 @@ import {
   updateDoc,
   setDoc,
 } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
@@ -41,7 +41,6 @@ const addItemToFirestore = async (item) => {
   }
 };
 
-// Xóa item từ Firestore
 const removeItemFromFirestore = async (id) => {
   try {
     await deleteDoc(doc(colRef1, id));
@@ -51,7 +50,6 @@ const removeItemFromFirestore = async (id) => {
   }
 };
 
-// Lấy danh sách khóa học từ Firestore
 const getItemCourseListFromFirestore = async () => {
   try {
     const querySnapshot = await getDocs(colRef);
@@ -67,7 +65,6 @@ const getItemCourseListFromFirestore = async () => {
   }
 };
 
-// Lấy danh sách mục từ giỏ hàng từ Firestore
 const getItemShoppingCartFromFirestore = async (email) => {
   try {
     const shoppingCartQuery = query(
@@ -83,17 +80,16 @@ const getItemShoppingCartFromFirestore = async (email) => {
     console.log(shoppingCart);
     return shoppingCart;
   } catch (error) {
-    console.error("Lỗi: ", error);
+    console.error("Error: ", error);
     return [];
   }
 };
 
-export const addToLearningJourney = async (userEmail, course) => {
+const addToLearningJourney = async (userEmail, course) => {
   const docRef = doc(db, "myLearningJourney", userEmail);
   await setDoc(docRef, { items: course }, { merge: true });
 };
 
-// Lấy danh sách các mục từ learning journey
 const getItemsFromLearningJourney = async (userEmail) => {
   try {
     const docRef = doc(db, "myLearningJourney", userEmail);
@@ -126,15 +122,20 @@ const saveImageToFirestore = async (userUid, imageFile) => {
       (error) => {
         console.error("Error uploading image:", error);
       },
-      () => {
-        // Image upload completed successfully
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      async () => {
+        try {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
           console.log("Image download URL:", downloadURL);
 
-          // Save the image download URL to Firestore
           const userRef = doc(db, "users", userUid);
-          updateDoc(userRef, { image: downloadURL });
-        });
+          await updateDoc(userRef, { image: downloadURL });
+          console.log("Image updated successfully");
+
+          // Save the image download URL to local storage
+          localStorage.setItem("profileImageUrl", downloadURL);
+        } catch (error) {
+          console.error("Error updating image in Firestore:", error);
+        }
       }
     );
   } catch (error) {
@@ -151,6 +152,7 @@ export {
   getItemShoppingCartFromFirestore,
   addItemToFirestore,
   removeItemFromFirestore,
+  addToLearningJourney,
   getItemsFromLearningJourney,
   saveImageToFirestore,
 };

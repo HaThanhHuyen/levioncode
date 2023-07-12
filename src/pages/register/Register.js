@@ -107,7 +107,7 @@ function Register() {
         // Save user data in Firestore
         const userRef = doc(db, "users", user.uid);
         const userData = {
-          image:null,
+          image:"",
           displayName: name,
           email: email,
           phoneNumber: "",
