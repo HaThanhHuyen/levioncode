@@ -14,7 +14,7 @@ import { db } from "../login/firebase";
 import Empty from "./Empty";
 import { getItemsFromLearningJourney } from "../login/firebase";
 
-export default function Profile() {
+export default function Profile(props) {
   const currentUser = getAuth().currentUser;
   const [state, setState] = useState(1);
   const [learningJourneyItems, setLearningJourneyItems] = useState([]);
@@ -85,7 +85,7 @@ export default function Profile() {
           if (userDocSnapshot.exists()) {
             const userData = userDocSnapshot.data();
             setUserDetails(userData);
-            saveUserDetails(userData); // Save user details to localStorage
+            saveUserDetails(userData); 
           }
         } else {
           const storedUserDetails = localStorage.getItem("userDetails");
@@ -114,7 +114,7 @@ export default function Profile() {
         <div className="contents">
           <div className="profilePerson">
             <div className="information">
-              <ImageUpload />
+            <ImageUpload email={email} />
               <div className="frameInfo">
                 <div className="userInfo">
                   <p>User Information</p>

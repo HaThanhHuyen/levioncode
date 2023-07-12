@@ -13,7 +13,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBdy5Ww-xraZQjjPMgbSbOE_yZ8WNfFqbg",
@@ -27,7 +27,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app)
+const storage = getStorage(app);
 const colRef = collection(db, "courseList");
 const colRef1 = collection(db, "shoppingCart");
 const auth = getAuth(app);
@@ -112,17 +112,45 @@ const getItemsFromLearningJourney = async (userEmail) => {
     return [];
   }
 };
-//save image
 
+const saveImageToFirestore = async (userUid, imageFile) => {
+  try {
+    const storageRef = ref(storage, `users/${userUid}/profile-image`);
+    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Track the upload progress if needed
+      },
+      (error) => {
+        console.error("Error uploading image:", error);
+      },
+      () => {
+        // Image upload completed successfully
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log("Image download URL:", downloadURL);
+
+          // Save the image download URL to Firestore
+          const userRef = doc(db, "users", userUid);
+          updateDoc(userRef, { image: downloadURL });
+        });
+      }
+    );
+  } catch (error) {
+    console.error("Error saving image to Firestore:", error);
+  }
+};
 
 export {
   auth,
   db,
   storage,
+  firebaseConfig,
   getItemCourseListFromFirestore,
   getItemShoppingCartFromFirestore,
   addItemToFirestore,
   removeItemFromFirestore,
   getItemsFromLearningJourney,
-
+  saveImageToFirestore,
 };

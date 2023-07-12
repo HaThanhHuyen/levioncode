@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { storage } from "../login/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, updateDoc, query, where, collection, getDocs } from "firebase/firestore";
+import { db } from "../login/firebase";
 import "./Profile.css";
 import upload from "../../image/upload.png";
 
@@ -9,7 +11,7 @@ function ImageUpload(props) {
   const [previewUrl, setPreviewUrl] = useState();
   const filePickerRef = useRef();
   const [percent, setPercent] = useState(0);
-  const [uploadImg, setUploadImg] = useState("");
+  const [key, setKey] = useState(0); // Biến đếm để làm mới component
 
   useEffect(() => {
     const storedFileName = localStorage.getItem("selectedFileName");
@@ -23,7 +25,7 @@ function ImageUpload(props) {
           console.log("Error getting download URL: ", error);
         });
     }
-  }, []);
+  }, [key]); // Sử dụng biến key để làm mới ảnh khi có sự thay đổi
 
   useEffect(() => {
     if (!file) {
@@ -41,22 +43,16 @@ function ImageUpload(props) {
     if (event.target.files && event.target.files.length === 1) {
       pickedFile = event.target.files[0];
       setFile(pickedFile);
+      setPreviewUrl(URL.createObjectURL(pickedFile));
       localStorage.setItem("selectedFileName", pickedFile.name);
+      setKey((prevKey) => prevKey + 1); // Tăng giá trị key để làm mới component
     }
-    console.log("image name", pickedFile.name);
   }
 
-  useEffect(() => {
-    setUploadImg(localStorage.getItem("selectedFileName"));
-  }, []);
-
-  function pickedImageHandler() {
-    filePickerRef.current.click();
-  }
-
-  function handleUpload() {
+  async function handleUpload() {
     if (!file) {
-      alert("Please choose a file first");
+      filePickerRef.current.click();
+      return;
     }
 
     const storageRef = ref(storage, `/files/${file.name}`);
@@ -69,16 +65,28 @@ function ImageUpload(props) {
         );
         setPercent(percent);
       },
-      (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref)
-          .then((url) => {
-            console.log(url);
-            // localStorage.removeItem("selectedFileName");
-          })
-          .catch((error) => {
-            console.log("Error getting download URL: ", error);
+      (error) => {
+        console.log(error);
+      },
+      async () => {
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        console.log(downloadURL);
+
+        const usersCollectionRef = collection(db, "users");
+        const q = query(usersCollectionRef, where("email", "==", props.email));
+        const querySnapshot = await getDocs(q);
+        const userDoc = querySnapshot.docs[0];
+        if (userDoc) {
+          await updateDoc(userDoc.ref, {
+            image: downloadURL,
           });
+          console.log("Image updated successfully");
+        }
+
+        setPreviewUrl(downloadURL);
+        setFile(null);
+        localStorage.setItem("selectedFileName", "");
+        setKey((prevKey) => prevKey + 1); // Tăng giá trị key để làm mới component
       }
     );
   }
@@ -96,30 +104,14 @@ function ImageUpload(props) {
       <div className={`image-upload ${props.center && "center"}`}>
         <div className="image-upload__preview">
           {previewUrl && <img src={previewUrl} alt="preview" />}
-          {!previewUrl && (
-            <button
-              className="image-upload-button"
-              type="button"
-              onClick={pickedImageHandler}
-            >
-              <img src={upload} alt="upload" />
-              Upload image
-            </button>
-          )}
-        </div>
-        <div>
-          {previewUrl && (
-            <div className="center">
-              <button
-                className="image-upload-button"
-                type="button"
-                onClick={handleUpload}
-              >
-                <img src={upload} alt="upload" />
-                Upload image
-              </button>
-            </div>
-          )}
+          <button
+            className="image-upload-button"
+            type="button"
+            onClick={handleUpload}
+          >
+            <img src={upload} alt="upload" />
+            {previewUrl ? "Change Image" : "Upload Image"}
+          </button>
         </div>
       </div>
     </div>
