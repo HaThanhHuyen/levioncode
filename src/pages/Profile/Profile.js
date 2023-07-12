@@ -5,7 +5,7 @@ import account from "../../image/account.png";
 import call from "../../image/call.png";
 import birthday from "../../image/birthday.png";
 import email from "../../image/email.png";
-import ImageUpload from "./ImageUpload"
+import ImageUpload from "./ImageUpload";
 import LayoutWithHeader from "../../components/layoutWithHeader";
 import coursesMan from "../../image/courses-man.png";
 import { getAuth } from "firebase/auth";
@@ -33,10 +33,6 @@ export default function Profile() {
     }));
   };
 
-  const action = (index) => {
-    setState(index);
-  };
-
   const saveUserDetails = (userData) => {
     localStorage.setItem("userDetails", JSON.stringify(userData));
   };
@@ -46,6 +42,9 @@ export default function Profile() {
       const userDocRef = doc(db, "users", currentUser.uid);
       await updateDoc(userDocRef, userDetails);
       console.log("User details updated successfully");
+  
+      // Update user details in local storage
+      saveUserDetails(userDetails);
     } catch (error) {
       console.error("Error updating user details:", error);
     }
@@ -86,7 +85,7 @@ export default function Profile() {
           if (userDocSnapshot.exists()) {
             const userData = userDocSnapshot.data();
             setUserDetails(userData);
-            saveUserDetails(userData); // Lưu thông tin vào localStorage
+            saveUserDetails(userData); // Save user details to localStorage
           }
         } else {
           const storedUserDetails = localStorage.getItem("userDetails");
@@ -115,7 +114,7 @@ export default function Profile() {
         <div className="contents">
           <div className="profilePerson">
             <div className="information">
-              <ImageUpload/>
+              <ImageUpload />
               <div className="frameInfo">
                 <div className="userInfo">
                   <p>User Information</p>
@@ -126,95 +125,55 @@ export default function Profile() {
                       alt="edit"
                       className="editIcon"
                     />
-                    {edit === true ? (
-                      <p onClick={handleEdit}>Done</p>
-                    ) : (
-                      <p onClick={handleEdit}>Edit</p>
-                    )}
+                    <p onClick={handleEdit}>{edit ? "Done" : "Edit"}</p>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
                   <img src={account} alt="account" />
                   <div className="UserInfoDetails">
                     <p>Họ và tên</p>
-                    {edit === true ? (
-                      <div className="edit">
-                        <input
-                          id="name"
-                          type="text"
-                          name="displayName"
-                          value={userDetails?.displayName || ""}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    ) : (
-                      <div className="edit2">
-                        <input
-                          id="name"
-                          type="text"
-                          name="displayName"
-                          value={userDetails?.displayName || ""}
-                          onChange={handleChange}
-                          disabled={!edit}
-                        />
-                      </div>
-                    )}
+                    <div className={edit ? "edit" : "edit2"}>
+                      <input
+                        id="name"
+                        type="text"
+                        name="displayName"
+                        value={userDetails?.displayName || ""}
+                        onChange={handleChange}
+                        disabled={!edit}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
                   <img src={call} alt="call" />
                   <div className="UserInfoDetails">
                     <p>Số điện thoại</p>
-                    {edit === true ? (
-                      <div className="edit">
-                        <input
-                          id="phoneNumber"
-                          type="text"
-                          name="phoneNumber"
-                          value={userDetails?.phoneNumber || ""}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    ) : (
-                      <div className="edit2">
-                        <input
-                          id="phoneNumber"
-                          type="text"
-                          name="phoneNumber"
-                          value={userDetails?.phoneNumber || ""}
-                          onChange={handleChange}
-                          disabled={!edit}
-                        />
-                      </div>
-                    )}
+                    <div className={edit ? "edit" : "edit2"}>
+                      <input
+                        id="phoneNumber"
+                        type="text"
+                        name="phoneNumber"
+                        value={userDetails?.phoneNumber || ""}
+                        onChange={handleChange}
+                        disabled={!edit}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
                   <img src={birthday} alt="birthday" />
                   <div className="UserInfoDetails">
                     <p>Ngày sinh</p>
-                    {edit === true ? (
-                      <div className="edit">
-                        <input
-                          id="dateOfBirth"
-                          type="date"
-                          name="dateOfBirth"
-                          value={userDetails?.dateOfBirth || ""}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    ) : (
-                      <div className="edit2">
-                        <input
-                          id="dateOfBirth"
-                          type="date"
-                          name="dateOfBirth"
-                          value={userDetails?.dateOfBirth || ""}
-                          onChange={handleChange}
-                          disabled={!edit}
-                        />
-                      </div>
-                    )}
+                    <div className={edit ? "edit" : "edit2"}>
+                      <input
+                        id="dateOfBirth"
+                        type="date"
+                        name="dateOfBirth"
+                        value={userDetails?.dateOfBirth || ""}
+                        onChange={handleChange}
+                        disabled={!edit}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="userInfomationDetails">
@@ -237,41 +196,37 @@ export default function Profile() {
           <div className="second">
             <div className="tabs">
               <div
-                onClick={() => action(1)}
-                className={`${state === 1 ? "tab active-tab" : "tab"}`}
+                onClick={() => setState(1)}
+                className={`tab ${state === 1 ? "active-tab" : ""}`}
               >
                 <p>My Learning Journey</p>
               </div>
               <div
-                onClick={() => action(2)}
-                className={`${state === 2 ? "tab active-tab" : "tab"}`}
+                onClick={() => setState(2)}
+                className={`tab ${state === 2 ? "active-tab" : ""}`}
               >
                 <p>Password</p>
               </div>
               <div
-                onClick={() => action(3)}
-                className={`${state === 3 ? "tab active-tab" : "tab"}`}
+                onClick={() => setState(3)}
+                className={`tab ${state === 3 ? "active-tab" : ""}`}
               >
                 <p>Billing & Purchases</p>
               </div>
               <div
-                onClick={() => action(4)}
-                className={`${state === 4 ? "tab active-tab" : "tab"}`}
+                onClick={() => setState(4)}
+                className={`tab ${state === 4 ? "active-tab" : ""}`}
               >
                 <p>Wishlist</p>
               </div>
             </div>
             <div className="contentTabs">
               <div
-                onClick={() => action(1)}
-                className={`${
-                  state === 1 ? "content content-active" : "content"
-                }`}
+                className={`content ${state === 1 ? "content-active" : ""}`}
               >
                 <div className="Content-Learning">
                   <div className="LearningJourney">
-                    {learningJourneyItems !== null &&
-                    learningJourneyItems.length === 0 ? (
+                    {learningJourneyItems.length === 0 ? (
                       <Empty />
                     ) : (
                       <div className="LearningJourneyLeft">
@@ -299,27 +254,23 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-              <div
-                className={`${
-                  state === 2 ? "content content-active" : "content"
-                }`}
-              >
+              <div className={`content ${state === 2 ? "content-active" : ""}`}>
                 <div className="password">
                   <div className="changePassword">
                     <div className="changePasswordDetail">
                       <label>Current Password</label>
                       <br />
-                      <input type="text" placeholder="Example" />
+                      <input type="password" placeholder="Example" />
                     </div>
                     <div className="changePasswordDetail">
                       <label>New Password</label>
                       <br />
-                      <input type="text" placeholder="Example" />
+                      <input type="password" placeholder="Example" />
                     </div>
                     <div className="changePasswordDetail">
                       <label>Re-type Password</label>
                       <br />
-                      <input type="text" placeholder="Example" />
+                      <input type="password" placeholder="Example" />
                     </div>
                     <div className="saveChanges">
                       <button>Save changes</button>
@@ -327,20 +278,12 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-              <div
-                className={`${
-                  state === 3 ? "content content-active" : "content"
-                }`}
-              >
+              <div className={`content ${state === 3 ? "content-active" : ""}`}>
                 <div className="Billing">
                   <Empty />
                 </div>
               </div>
-              <div
-                className={`${
-                  state === 4 ? "content content-active" : "content"
-                }`}
-              >
+              <div className={`content ${state === 4 ? "content-active" : ""}`}>
                 <div className="WishList">
                   <Empty />
                 </div>

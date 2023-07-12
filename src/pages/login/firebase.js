@@ -112,6 +112,7 @@ const getItemsFromLearningJourney = async (userEmail) => {
     return [];
   }
 };
+//save image
 
 
 export {
