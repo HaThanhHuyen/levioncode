@@ -26,9 +26,11 @@ export const TitlePC = () => {
     setMenuOpenProfile(!menuOpenProfile);
   };
   const handleClick = async () => {
-    await signOut(auth);
-    sessionStorage.removeItem("data");
-    window.location.reload(true);
+    // console.log("remove");
+
+    // await signOut(auth);
+    // sessionStorage.removeItem("data");
+    // window.location.reload(true);
   };
   return (
     <div className={style.titlePC}>

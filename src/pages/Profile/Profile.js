@@ -4,7 +4,7 @@ import editImg from "../../image/edit.png";
 import account from "../../image/account.png";
 import call from "../../image/call.png";
 import birthday from "../../image/birthday.png";
-import email from "../../image/email.png";
+import emailImg from "../../image/email.png";
 import ImageUpload from "./ImageUpload";
 import LayoutWithHeader from "../../components/layoutWithHeader";
 import coursesMan from "../../image/courses-man.png";
@@ -14,7 +14,7 @@ import { db } from "../login/firebase";
 import Empty from "./Empty";
 import { getItemsFromLearningJourney } from "../login/firebase";
 
-export default function Profile(props) {
+export default function Profile() {
   const currentUser = getAuth().currentUser;
   const [state, setState] = useState(1);
   const [learningJourneyItems, setLearningJourneyItems] = useState([]);
@@ -39,10 +39,10 @@ export default function Profile(props) {
 
   const updateUserDetails = async () => {
     try {
-      const userDocRef = doc(db, "users", currentUser.uid);
+      const userDocRef = doc(db, "users", currentUser.email);
       await updateDoc(userDocRef, userDetails);
       console.log("User details updated successfully");
-  
+
       // Update user details in local storage
       saveUserDetails(userDetails);
     } catch (error) {
@@ -80,17 +80,17 @@ export default function Profile(props) {
     const fetchUserDetails = async () => {
       try {
         if (currentUser) {
-          const userDocRef = doc(db, "users", currentUser.uid);
+          const userDocRef = doc(db, "users", currentUser.email);
           const userDocSnapshot = await getDoc(userDocRef);
           if (userDocSnapshot.exists()) {
             const userData = userDocSnapshot.data();
             setUserDetails(userData);
-            saveUserDetails(userData); 
+            saveUserDetails(userData);
           }
         } else {
           const storedUserDetails = localStorage.getItem("userDetails");
           if (storedUserDetails) {
-            setUserDetails(JSON.parse(storedUserDetails));
+            setUserDetails(JSON.parse(storedUserDetails));  
           }
         }
       } catch (error) {
@@ -114,7 +114,8 @@ export default function Profile(props) {
         <div className="contents">
           <div className="profilePerson">
             <div className="information">
-            <ImageUpload email={email} />
+              <ImageUpload email={currentUser.email} />
+
               <div className="frameInfo">
                 <div className="userInfo">
                   <p>User Information</p>
@@ -177,7 +178,7 @@ export default function Profile(props) {
                   </div>
                 </div>
                 <div className="userInfomationDetails">
-                  <img src={email} alt="email" />
+                  <img src={emailImg} alt="email" />
                   <div className="UserInfoDetails">
                     <p>Email</p>
                     <div className="edit2">
@@ -221,9 +222,7 @@ export default function Profile(props) {
               </div>
             </div>
             <div className="contentTabs">
-              <div
-                className={`content ${state === 1 ? "content-active" : ""}`}
-              >
+              <div className={`content ${state === 1 ? "content-active" : ""}`}>
                 <div className="Content-Learning">
                   <div className="LearningJourney">
                     {learningJourneyItems.length === 0 ? (

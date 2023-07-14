@@ -35,7 +35,6 @@ function HeaderProfile() {
     setMenuOpenProfile((prevMenuOpenProfile) => !prevMenuOpenProfile);
   };
 
-
   const data = JSON.parse(sessionStorage.getItem("data"));
 
   const renderHeaderRight = () => {
@@ -47,7 +46,7 @@ function HeaderProfile() {
               <img className="addToCart" src={cart1} alt="cart" />
             </Link>
             <Link to="#" id="noti">
-              <img className="" src={noti} alt="noti" />  
+              <img className="" src={noti} alt="noti" />
             </Link>
             <Link to="#" id="Heart">
               <img className="" src={heart} alt="heart" />
