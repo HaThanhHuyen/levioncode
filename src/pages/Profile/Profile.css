@@ -59,12 +59,34 @@
   font-size: 14px;
   line-height: 16px;
   cursor: pointer;
+  display: flex;
+}
+.iconEdit,
+.iconCheck {
+  display: flex;
+  color: #9453ff;
+  font-size: 35px;
+}
+.iconEdit {
+  padding-top: 5%;
+  font-size: 18px;
 }
 
-.editUser img {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
+.Check,
+.Edit {
+  height: 40px;
+  display: flex;
+}
+.iconCheck {
+  font-size: 25px;
+}
+.doneText,
+.editText {
+  padding-top: 8%;
+}
+.editText {
+  font-size: 16px;
+  padding-left: 11%;
 }
 .userInfomationDetails {
   padding-top: 5%;
@@ -144,8 +166,8 @@
   padding: 5%;
   align-items: center;
   justify-content: center;
-  width: 43%;
-  height: 30px;
+  width: 50%;
+  height: 36px;
   display: flex;
   color: #aa77ff;
   background-color: white;
@@ -367,7 +389,7 @@
   justify-content: space-between;
   width: 100%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .userInfomationDetails p {
     display: none;
   }
@@ -386,7 +408,17 @@
   .profilePerson {
     height: 470px;
     width: 100%;
+    padding: 5% 0;
     display: block;
+  }
+  .profilePerson button {
+    padding: 0;
+    width: 16%;
+    height: 41px;
+    margin-top: 2%;
+  }
+  .frameInfo {
+    padding: 0 5%;
   }
   .second {
     height: 800px;
@@ -440,104 +472,6 @@
     width: 100%;
   }
 
-  .levels p {
-    justify-content: center;
-    display: flex;
-    font-size: 10px;
-  }
-  .speaking p {
-    justify-content: center;
-    display: flex;
-    font-size: 10px;
-  }
-  .changePassword {
-    width: 100%;
-  }
-  .password input {
-    width: 100%;
-  }
-  .saveChanges {
-    text-align: center;
-  }
-}
-@media screen and (max-width: 768px) {
-  .userInfomationDetails p {
-    display: none;
-  }
-  .userInfo p {
-    display: none;
-  }
-  .tab {
-    width: 100px;
-  }
-  .contents {
-    display: block;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-  }
-  .profilePerson {
-    height: 470px;
-    width: 100%;
-    display: block;
-  }
-  .second {
-    height: 800px;
-    width: 100%;
-  }
-  .Content-Learning {
-    width: 100%;
-  }
-  .LearningJourney {
-    display: block;
-  }
-  .LearningJourney button {
-    font-size: 11px;
-  }
-  .infoCourse {
-    width: 100%;
-    border: none;
-  }
-  .infoCourse p {
-    font-size: 15px;
-    width: 100%;
-  }
-  .LearningJourneyLeft img {
-    width: 16vw;
-  }
-  .process {
-    display: flex;
-    width: 100%;
-  }
-  .process img {
-    height: 4vh;
-    width: 8vw;
-  }
-  .LearningJourneyLeft {
-    width: 100%;
-  }
-  .process p {
-    margin: 5%;
-  }
-  .LearningJourney h6 {
-    width: 100%;
-    font-size: 16px;
-  }
-  .skills {
-    width: 100%;
-  }
-  .password {
-    width: 100%;
-  }
-  .WishList {
-    width: 100%;
-  }
-  .WishList button {
-    width: 100%;
-  }
-  .WishList p {
-    width: 100%;
-  }
   .levels p {
     justify-content: center;
     display: flex;

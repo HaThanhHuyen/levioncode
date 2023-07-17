@@ -15,7 +15,7 @@ function HeaderProfile() {
   const navigate = useNavigate();
   const handleClick = async () => {
     await signOut(auth);
-    sessionStorage.removeItem("data");
+    localStorage.removeItem("data");
     window.location.reload(true);
   };
 
@@ -35,7 +35,7 @@ function HeaderProfile() {
     setMenuOpenProfile((prevMenuOpenProfile) => !prevMenuOpenProfile);
   };
 
-  const data = JSON.parse(sessionStorage.getItem("data"));
+  const data = JSON.parse(localStorage.getItem("data"));
 
   const renderHeaderRight = () => {
     if (data) {

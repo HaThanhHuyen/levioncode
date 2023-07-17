@@ -73,7 +73,7 @@ function Login() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        sessionStorage.setItem("data", JSON.stringify(userCredential));
+        localStorage.setItem("data", JSON.stringify(userCredential));
         const user = userCredential.user;
         console.log("login success with user", user);
 
@@ -105,7 +105,7 @@ function Login() {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log("data", result);
-      sessionStorage.setItem("data", JSON.stringify(user));
+      localStorage.setItem("data", JSON.stringify(user));
       navigate("/shoppingCart");
     } catch (error) {
       console.log(error);

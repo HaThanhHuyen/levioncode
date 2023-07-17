@@ -8,54 +8,67 @@ import emailImg from "../../image/email.png";
 import ImageUpload from "./ImageUpload";
 import LayoutWithHeader from "../../components/layoutWithHeader";
 import coursesMan from "../../image/courses-man.png";
-import { getAuth } from "firebase/auth";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../login/firebase";
 import Empty from "./Empty";
 import { getItemsFromLearningJourney } from "../login/firebase";
+import { useCallback } from "react";
+import { BiEditAlt, BiCheck } from "react-icons/bi";
 
 export default function Profile() {
-  const currentUser = getAuth().currentUser;
+  const currentUser = localStorage.getItem("data")
+    ? JSON.parse(localStorage.getItem("data")).user
+    : null;
   const [state, setState] = useState(1);
   const [learningJourneyItems, setLearningJourneyItems] = useState([]);
   const [userDetails, setUserDetails] = useState(null);
   const [edit, setEdit] = useState(false);
 
   const handleEdit = () => {
-    setEdit(!edit);
+    if (edit) {
+      updateUserDetails();
+      setEdit(false);
+    } else {
+      setEdit(true);
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value,
-    }));
+    if (edit) {
+      setUserDetails((prevDetails) => ({
+        ...prevDetails,
+        [name]: value,
+      }));
+    }
   };
 
   const saveUserDetails = (userData) => {
     localStorage.setItem("userDetails", JSON.stringify(userData));
   };
 
-  const updateUserDetails = async () => {
+  const updateUserDetails = useCallback(async () => {
     try {
+      if (!currentUser || !edit) {
+        return;
+      }
+
       const userDocRef = doc(db, "users", currentUser.email);
       await updateDoc(userDocRef, userDetails);
       console.log("User details updated successfully");
 
-      // Update user details in local storage
       saveUserDetails(userDetails);
     } catch (error) {
       console.error("Error updating user details:", error);
     }
-  };
+  }, [currentUser, edit, userDetails]);
 
   useEffect(() => {
     const fetchLearningJourneyItems = async () => {
       try {
         if (currentUser) {
           const learningItems = await getItemsFromLearningJourney(
-            currentUser.email
+            currentUser?.email
           );
           if (learningItems) {
             setLearningJourneyItems(learningItems);
@@ -79,18 +92,13 @@ export default function Profile() {
 
     const fetchUserDetails = async () => {
       try {
-        if (currentUser) {
-          const userDocRef = doc(db, "users", currentUser.email);
+        if (currentUser && currentUser?.email) {
+          const userDocRef = doc(db, "users", currentUser?.email);
           const userDocSnapshot = await getDoc(userDocRef);
           if (userDocSnapshot.exists()) {
             const userData = userDocSnapshot.data();
             setUserDetails(userData);
             saveUserDetails(userData);
-          }
-        } else {
-          const storedUserDetails = localStorage.getItem("userDetails");
-          if (storedUserDetails) {
-            setUserDetails(JSON.parse(storedUserDetails));  
           }
         }
       } catch (error) {
@@ -100,13 +108,7 @@ export default function Profile() {
 
     fetchLearningJourneyItems();
     fetchUserDetails();
-  }, [currentUser]);
-
-  useEffect(() => {
-    if (userDetails) {
-      updateUserDetails(userDetails);
-    }
-  }, [userDetails]);
+  }, []);
 
   return (
     <div className="profile">
@@ -114,19 +116,28 @@ export default function Profile() {
         <div className="contents">
           <div className="profilePerson">
             <div className="information">
-              <ImageUpload email={currentUser.email} />
+              <ImageUpload uid={currentUser?.email} />
 
               <div className="frameInfo">
                 <div className="userInfo">
                   <p>User Information</p>
                   <div className="editUser">
-                    <img
-                      onClick={handleEdit}
-                      src={editImg}
-                      alt="edit"
-                      className="editIcon"
-                    />
-                    <p onClick={handleEdit}>{edit ? "Done" : "Edit"}</p>
+                    {edit ? (
+                      <div onClick={handleEdit} className="Check">
+                        <div className="iconCheck">
+                          {" "}
+                          <BiCheck />
+                        </div>
+                        <p className="doneText">Done</p>
+                      </div>
+                    ) : (
+                      <div onClick={handleEdit} className="Edit">
+                        <div className="iconEdit">
+                          <BiEditAlt />
+                        </div>
+                        <p className="editText">Edit</p>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="userInfomationDetails">
@@ -152,7 +163,7 @@ export default function Profile() {
                     <div className={edit ? "edit" : "edit2"}>
                       <input
                         id="phoneNumber"
-                        type="text"
+                        type="number"
                         name="phoneNumber"
                         value={userDetails?.phoneNumber || ""}
                         onChange={handleChange}

@@ -2,15 +2,13 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {
-  collection,
-  addDoc,
   serverTimestamp,
   doc,
   setDoc,
   onSnapshot,
 } from "firebase/firestore";
-import { auth, db } from "../login/firebase";
-import { ToastContainer, toast } from "react-toastify";
+import { db } from "../login/firebase";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo1 from "../../image/logo 1.png";
 import facebook from "../../image/fb.png";
@@ -18,7 +16,7 @@ import google from "../../image/google.png";
 import styles from "./Register.module.css";
 
 function Register() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);

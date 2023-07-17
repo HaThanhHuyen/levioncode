@@ -35,7 +35,6 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 const colRef = collection(db, "courseList");
 const colRef1 = collection(db, "shoppingCart");
-// const usersRef = collection(db, "users");
 const auth = getAuth(app);
 
 const addItemToFirestore = async (item) => {
@@ -115,7 +114,7 @@ const getItemsFromLearningJourney = async (userEmail) => {
   }
 };
 
-const saveImageToFirestore = async (userUid, imageFile) => {
+const saveImageToFirestore = async (userUid, imageFile) => { 
   try {
     const storageRef = ref(storage, `users/${userUid}/profile-image`);
     const uploadTask = uploadBytesResumable(storageRef, imageFile);
@@ -123,7 +122,6 @@ const saveImageToFirestore = async (userUid, imageFile) => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        // Track the upload progress if needed
       },
       (error) => {
         console.error("Error uploading image:", error);
@@ -162,3 +160,5 @@ export {
   getItemsFromLearningJourney,
   saveImageToFirestore,
 };
+
+
